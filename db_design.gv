@@ -1,0 +1,79 @@
+digraph g {
+fontname="Helvetica,Arial,sans-serif"
+splines=ortho
+node [fontname="Helvetica,Arial,sans-serif"]
+edge [fontname="Helvetica,Arial,sans-serif"]
+node [
+fontsize = "16"
+];
+edge [
+];
+
+// nodes
+"text" [
+label = "Text"
+shape = "record"
+];
+
+"chapter" [
+label = "Chapter"
+shape = "record"
+];
+
+"manuscript" [
+label = "Manuscript"
+shape = "record"
+];
+
+"line" [
+label = "Line"
+shape = "record"
+];
+
+"mline" [
+label = "ManuscriptLine"
+shape = "record"
+];
+
+"variant" [
+label = "Variant"
+shape = "record"
+];
+
+"fragment" [
+label = "Fragment"
+shape = "record"
+];
+
+// edges
+"chapter" -> "text" [
+id = 0
+];
+
+"manuscript" -> "chapter" [
+id = 1
+];
+
+"line" -> "chapter" [
+id = 2
+];
+
+"variant" -> "line" [
+id = 3
+];
+
+"mline" -> "variant" [
+id = 4
+];
+
+"mline" -> "manuscript" [
+id = 5
+];
+
+"fragment" -> "manuscript" [
+id = 6
+dir = both
+style = dashed
+xlabel = "museum_number"
+];
+}
