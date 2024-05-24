@@ -18,4 +18,10 @@ Prof Enrique Jimenez:
 
 This project leverages Optical Character Recognition (OCR) and Natural Language Processing (NLP) technologies to read and match the texts. Specifically, they use OCR to convert the cuneiform signs from images into machine-readable text. They then apply algorithms to detect and match overlapping segments of different manuscripts, aiding in the reconstruction of fragmented texts.
 
+![british musem](https://github.com/Melanee-Melanee/eBL-generic-documentation/assets/74653444/470c76b2-5e1f-4134-9ce0-4ed2e3dc5808)
+
+Tablets from Ashurbanipal’s Library, British museum [Ref](https://www.britishmuseum.org/sites/default/files/styles/uncropped_medium/public/2022-07/Ashurbanipal-library-tablets-1000x906.jpg?itok=YDe-Ci1E)
+
+
+
   
