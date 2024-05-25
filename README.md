@@ -34,7 +34,7 @@ To date, thousands of additional cuneiform fragments have been photographed in c
 
 # Process
 
-eBL GitHub organisation includes various tools that the most important ones are:
+[eBL GitHub organisation](https://github.com/ElectronicBabylonianLiterature) includes various tools that the most important ones are:
 
 - [ebl-api](https://github.com/ElectronicBabylonianLiterature/ebl-api): The API for accessing the Electronic Babylonian Literature database.
 - [cuneiform-ocr](https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr): Tools for performing OCR on cuneiform texts.
@@ -47,5 +47,5 @@ These tools collectively enable the identification and matching of text fragment
 
 ![Text Puzzle Gilgamesh](https://github.com/Melanee-Melanee/eBL-generic-documentation/assets/74653444/0080cdbe-ee4e-4b91-97b1-79bdef4136e6)
 
-For more information about eBL project, read [this article](https://levelup.gitconnected.com/the-electronic-babylonian-library-ebl-gilgamesh-project-f883e0ff068f) on Medium. 
+For more information about eBL project, read [this article](https://levelup.gitconnected.com/the-electronic-babylonian-library-ebl-gilgamesh-project-f883e0ff068f) on Medium and [Prof Enrique Jiménez](https://www.youtube.com/watch?v=4QS9oCNUcRY) YouTube speech. 
   
