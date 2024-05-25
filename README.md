@@ -32,7 +32,6 @@ To date, thousands of additional cuneiform fragments have been photographed in c
 
 
 
-
 # Process
 
 eBL GitHub organisation includes various tools that the most important ones are:
