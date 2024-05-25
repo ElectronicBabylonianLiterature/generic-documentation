@@ -21,7 +21,7 @@ The algorithms and techniques used in this project include:
 
 The project leverages Optical Character Recognition (OCR) and Natural Language Processing (NLP) technologies to read and match the texts. Specifically, using OCR to convert the cuneiform signs from images into machine-readable text. Then apply algorithms to detect and match overlapping segments of different manuscripts, aiding in the reconstruction of fragmented texts.
 
-For more detailed information, you can explore the project’s official website and the related publications from LMU and the International Association for Assyriology, which provide insights into the methodologies and technological innovations employed in the [eBL project](https://www.ebl.lmu.de/fragmentarium) and [IAAssyriology](https://iaassyriology.com/in-the-spotlight-the-electronic-babylonian-literature-project/).
+For more detailed information, you can explore the project’s official website and the related publications from [LMU](https://www.lmu.de/en/newsroom/news-overview/news/playing-with-the-source-of-world-literature.html) and the International Association for Assyriology, which provide insights into the methodologies and technological innovations employed in the [eBL project](https://www.ebl.lmu.de/fragmentarium) and [IAAssyriology](https://iaassyriology.com/in-the-spotlight-the-electronic-babylonian-literature-project/).
 
 # Primary data
 To date, thousands of additional cuneiform fragments have been photographed in collaboration with the [British Museum](https://www.britishmuseum.org/collection) in London and the Iraq Museum in Baghdad and [CDLI](https://cdli.mpiwg-berlin.mpg.de/).
