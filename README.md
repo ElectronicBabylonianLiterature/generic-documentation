@@ -19,21 +19,34 @@ The algorithms and techniques used in this project include:
 
 - Machine Learning and AI: Advanced machine learning algorithms are utilized to analyze the patterns and features of the cuneiform signs, facilitating the identification and classification of fragments. This helps in piecing together the fragmented texts and improving the accuracy of the digital reconstructions.
 
-The project's GitHub repository provides access to the source code and tools developed for these purposes. The repository includes scripts and algorithms for image processing, n-gram matching, and other computational methods used to manage and analyze the vast corpus of Babylonian literature.
+The project leverages Optical Character Recognition (OCR) and Natural Language Processing (NLP) technologies to read and match the texts. Specifically, using OCR to convert the cuneiform signs from images into machine-readable text. Then apply algorithms to detect and match overlapping segments of different manuscripts, aiding in the reconstruction of fragmented texts.
 
-For more detailed information, you can explore the project’s official website and the related publications from LMU and the International Association for Assyriology, which provide insights into the methodologies and technological innovations employed in the eBL project​ [EBL LMU](https://www.ebl.lmu.de/fragmentarium) and [IAAssyriology](https://iaassyriology.com/in-the-spotlight-the-electronic-babylonian-literature-project/).
+For more detailed information, you can explore the project’s official website and the related publications from LMU and the International Association for Assyriology, which provide insights into the methodologies and technological innovations employed in the [eBL project](https://www.ebl.lmu.de/fragmentarium) and [IAAssyriology](https://iaassyriology.com/in-the-spotlight-the-electronic-babylonian-literature-project/).
 
-
-
-
-  [British Museum](https://www.britishmuseum.org/collection) 
+# Primary data
+To date, thousands of additional cuneiform fragments have been photographed in collaboration with the [British Museum](https://www.britishmuseum.org/collection) in London and the Iraq Museum in Baghdad and [CDLI](https://cdli.mpiwg-berlin.mpg.de/).
 
 
 
 ![british musem](https://github.com/Melanee-Melanee/eBL-generic-documentation/assets/74653444/470c76b2-5e1f-4134-9ce0-4ed2e3dc5808)
 
-Tablets from Ashurbanipal’s Library, British museum [Ref](https://www.britishmuseum.org/sites/default/files/styles/uncropped_medium/public/2022-07/Ashurbanipal-library-tablets-1000x906.jpg?itok=YDe-Ci1E)
 
 
 
+# Process
+
+eBL GitHub organisation includes various tools that the most important ones are:
+
+- [ebl-api](https://github.com/ElectronicBabylonianLiterature/ebl-api): The API for accessing the Electronic Babylonian Literature database.
+- [cuneiform-ocr](https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr): Tools for performing OCR on cuneiform texts.
+- [ngram-matcher](https://github.com/ElectronicBabylonianLiterature/ngram-matcher): Algorithms for matching n-grams to identify overlapping text segments.
+
+These tools collectively enable the identification and matching of text fragments by comparing pixel patterns and character sequences, allowing researchers to piece together ancient manuscripts from scattered fragments like a text puzzle.
+
+
+
+
+![Text Puzzle Gilgamesh](https://github.com/Melanee-Melanee/eBL-generic-documentation/assets/74653444/0080cdbe-ee4e-4b91-97b1-79bdef4136e6)
+
+For more information about eBL project, read [this article](https://levelup.gitconnected.com/the-electronic-babylonian-library-ebl-gilgamesh-project-f883e0ff068f) on Medium. 
   
