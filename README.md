@@ -7,7 +7,7 @@
   -------------------------------------------------------------------------------------------------------
 # Guide for eBL project
 
-The "Electronic Babylonian Literature" (eBL) project, led by [Prof Enrique Jiménez](https://www.assyriologie.uni-muenchen.de/personen/professoren/jimenez/index.html) from Ludwig Maximilian University (LMU), involves the digital compilation and analysis of Babylonian texts using AI and computer vision technologies. This project leverages several advanced techniques to identify and match manuscript fragments.
+The "Electronic Babylonian Literature" (eBL) project, based at Ludwig Maximilian University of Munich (LMU) and the Bavarian Academy of Sciences (BAdW), involves the digital compilation and analysis of Babylonian texts using AI and computer vision technologies. This project leverages several advanced techniques to identify and match manuscript fragments.
 
 The algorithms and techniques used in this project include:
 
@@ -34,7 +34,7 @@ To date, thousands of additional cuneiform fragments have been photographed in c
 
 # Process
 
-[eBL GitHub organisation](https://github.com/ElectronicBabylonianLiterature) includes various tools that the most important ones are:
+[eBL GitHub organisation](https://github.com/ElectronicBabylonianLiterature) includes various tools, such as:
 
 - [ebl-api](https://github.com/ElectronicBabylonianLiterature/ebl-api): The API for accessing the Electronic Babylonian Literature database.
 - [cuneiform-ocr](https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr): Tools for performing OCR on cuneiform texts.
