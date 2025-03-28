@@ -1,6 +1,7 @@
 # General and Technical Docs for eBL
 
 ## Technical Guides
+- [eBL Coding Standards](guides/codingStandards.md)
 - [How to set up Gitpod](gitpod-setup/setup.md)
 - [How `withData` Works](guides/withData.md)
 - Contribution guidelines
@@ -9,11 +10,19 @@
 ## General Guides
 - [Editorial conventions (Corpus)](guides/editorialConventionsCorpus.md)
 - [Editorial conventions (Library)](guides/editorialConventionsLibrary.md)
-- [Adding Folios and Photos with NoSQL Manager for MongoDB](guides/addingFoliosAndPhotos.md)
-  -------------------------------------------------------------------------------------------------------
-# Guide for eBL project
+- [TEI Export](guides/teiExport.md)
+- [eBL ATF and other ATF Flavors](guides/atfFlavors.md)
 
-The "Electronic Babylonian Literature" (eBL) project, based at Ludwig Maximilian University of Munich (LMU) and the Bavarian Academy of Sciences (BAdW), involves the digital compilation and analysis of Babylonian texts using AI and computer vision technologies. This project leverages several advanced techniques to identify and match manuscript fragments.
+## Photo Guides
+- [How to Create Photo Montages of Tablets to Check Joins](guides/photoMontagesJoins.md)
+
+## Database Management
+- [Adding Folios and Photos with NoSQL Manager for MongoDB](guides/addingFoliosAndPhotos.md)
+- 
+  -------------------------------------------------------------------------------------------------------
+# General Introduction to the eBL Platform
+
+The "Electronic Babylonian Library" (eBL) platform, based at Ludwig Maximilian University of Munich (LMU) and the Bavarian Academy of Sciences (BAdW), involves the digital compilation and analysis of Babylonian texts using AI and computer vision technologies. This project leverages several advanced techniques to identify and match manuscript fragments.
 
 The algorithms and techniques used in this project include:
 
