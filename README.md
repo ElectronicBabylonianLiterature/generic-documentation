@@ -8,6 +8,7 @@
 - How to run migrations
 
 ## General Guides
+- [Adding References to eBL](guides/addingReferences.md)
 - [Editorial conventions (Corpus)](guides/editorialConventionsCorpus.md)
 - [Editorial conventions (Library)](guides/editorialConventionsLibrary.md)
 - [TEI Export](guides/teiExport.md)
