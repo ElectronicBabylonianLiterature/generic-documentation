@@ -1,7 +1,6 @@
 # Instructions for the use of the Library
-# eBL
 
-**General Transliteration Rules for the eBL project**
+**General Transliteration Rules for the eBL**
 
 The eBL project uses a version of the A(scii)T(ransliteration)F(ormat). The ATF, used both by CDLI (in its ASCII version) and by Oracc (in its Unicode version), is the most popular format for
 the transliteration of cuneiform texts. 
