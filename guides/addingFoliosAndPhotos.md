@@ -1,3 +1,5 @@
+# Adding Folios and Photos with NoSQL Manager for MongoDB
+
 N.B.: Photos are since 2024 normally uploaded with the script [`upload-photos-with-thumbnails.py`](https://github.com/ElectronicBabylonianLiterature/ebl-api-data-preparation/blob/main/scripts/upload-photos-with-thumbnails.py), which compresses them, uploads them, and creates thumbnails. The present guide is therefore of limited use.
 
 The simplest way is to add files is the file manager in NoSql Manager for MongoDB. Remember to check the "Write filenames without the paths."
