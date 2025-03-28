@@ -18,7 +18,7 @@
 
 ## Database Management
 - [Adding Folios and Photos with NoSQL Manager for MongoDB](guides/addingFoliosAndPhotos.md)
-- 
+  
   -------------------------------------------------------------------------------------------------------
 # General Introduction to the eBL Platform
 
