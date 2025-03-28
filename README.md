@@ -6,10 +6,10 @@
 - Contribution guidelines
 - How to run migrations
 
-## Philological Guides
+## General Guides
 - [Editorial conventions (Corpus)](guides/editorialConventionsCorpus.md)
 - [Editorial conventions (Library)](guides/editorialConventionsLibrary.md)
-
+- [Adding Folios and Photos with NoSQL Manager for MongoDB](guides/addingFoliosAndPhotos.md)
   -------------------------------------------------------------------------------------------------------
 # Guide for eBL project
 
