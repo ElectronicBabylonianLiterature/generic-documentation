@@ -4,9 +4,9 @@ N.B.: Photos are since 2024 normally uploaded with the script [`upload-photos-wi
 
 The simplest way is to add files is the file manager in NoSql Manager for MongoDB. Remember to check the "Write filenames without the paths."
 
-![](https://github.com/ElectronicBabylonianLiterature/generic-documentation/blob/master/upload_images_collection_name.png?raw=true)
+![](images/upload_images_collection_name.png?raw=true)
 
-![](https://github.com/ElectronicBabylonianLiterature/generic-documentation/blob/master/upload_images_filenames_without_paths.png?raw=true)
+![](images/upload_images_filenames_without_paths.png?raw=true)
 
 Another option is to use `mongofiles` ([Download Mongo Database Tools](https://www.mongodb.com/try/download/database-tools)). The PowerShell script below will upload all `.jpg` files in the current folder.
 
