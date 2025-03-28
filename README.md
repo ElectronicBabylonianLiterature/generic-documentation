@@ -1,8 +1,14 @@
 # General and Technical Docs for eBL
 
+## Technical Guides
 - [How to set up Gitpod](gitpod-setup/setup.md)
+- [How `withData` Works](guides/withData.md)
 - Contribution guidelines
 - How to run migrations
+
+## Philological Guides
+- [Editorial conventions (Corpus)](guides/editorialConventionsCorpus.md)
+- [Editorial conventions (Library)](guides/editorialConventionsLibrary.md)
 
   -------------------------------------------------------------------------------------------------------
 # Guide for eBL project
