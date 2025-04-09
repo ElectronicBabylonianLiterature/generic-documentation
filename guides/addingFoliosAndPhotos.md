@@ -46,9 +46,9 @@ Upload photos to the `photos` GridFS bucket. The filename must be in the form `<
       folios.forEach(({number, _id, accession}) => {
           const query = accession !== '' ? {accession: accession} : {_id: _id}
           if(db.getCollection('fragments').findOne(query)) {
-              db.getCollection('fragments').update(
+              db.getCollection('fragments').updateOne(
                   query,
-                  {$push: {
+                  {$addToSet: {
                       folios: {
                           name: 'WMR',
                           number: number
