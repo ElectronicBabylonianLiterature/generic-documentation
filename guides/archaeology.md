@@ -67,7 +67,7 @@ Archaeological information is stored in the `archaeology` property of a tablet r
 - `primaryContext` (boolean|null): 
 - `site` (string): Archaeological site name (see above).
 
-###Example of findspot document fully populated:
+### Example of findspot document fully populated:
 ```
 {
     "_id" : 2947,
