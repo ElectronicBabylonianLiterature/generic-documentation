@@ -48,8 +48,8 @@ Archaeological information is stored in the `archaeology` property of a tablet r
 ### `findspot` Document Fields:
 - `_id` (number): Unique identifier
 - `sector` (string): Broad archaeological sector
-- `area` (string): Specific area designation
-- `building` (string): Building identifier
+- `area` (string): Specific area designation as established by the excavators.
+- `building` (string): Name of the building.
 - `buildingType` (string|null): Type of building. It must be one of:
    - `RESIDENTIAL`: 
    - `TEMPLE`: 
@@ -58,12 +58,12 @@ Archaeological information is stored in the `archaeology` property of a tablet r
    - `UNKNOWN`: 
    - `NOT_IN_BUILDING`: 
 - `context` (string): 
-- `date` (object):
-  - `start` (object): 
+- `date` (object): Date of the earliest and latest dated or datable artifacts found within the same level.
+  - `start` (object): Earliest artifact.
     - `year` (number)
     - `month` (number, optional)
     - `day` (number, optional)
-  - `end` (object, optional): 
+  - `end` (object, optional): Latest artifact.
     - `year` (number)
     - `month` (number, optional)
     - `day` (number, optional)
