@@ -50,7 +50,13 @@ Archaeological information is stored in the `archaeology` property of a tablet r
 - `sector` (string): Broad archaeological sector
 - `area` (string): Specific area designation
 - `building` (string): Building identifier
-- `buildingType` (string|null): Type of building
+- `buildingType` (string|null): Type of building. It must be one of:
+   - `RESIDENTIAL`: 
+   - `TEMPLE`: 
+   - `PALACE`: 
+   - `OTHER_MONUMENTAL`: 
+   - `UNKNOWN`: 
+   - `NOT_IN_BUILDING`: 
 - `context` (string): 
 - `date` (object):
   - `start` (object): 
