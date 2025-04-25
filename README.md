@@ -13,7 +13,8 @@
 - [Editorial conventions (Library)](guides/editorialConventionsLibrary.md)
 - [TEI Export](guides/teiExport.md)
 - [eBL ATF and other ATF Flavors](guides/atfFlavors.md)
-
+- [Archaeology and Findspot Properties](guides/archaeology.md)
+  
 ## Photo Guides
 - [How to Create Photo Montages of Tablets to Check Joins](guides/photoMontagesJoins.md)
 
