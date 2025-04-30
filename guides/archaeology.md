@@ -70,8 +70,8 @@ Archaeological information is stored in the `archaeology` property of a tablet r
     - `month` (number, optional)
     - `day` (number, optional)
   - `notes` (string, optional)
-- `levelLayerPhase` (string): Stratigraphic information. Layername as given by the excavator/primary publication.
-- `room` (string): Room or locus identifier, as given by the excavator. A Room should be clearly demarcated from its surroundings.
+- `levelLayerPhase` (string): Stratigraphic information. Denomination of the layer as given by the excavator/primary publication.
+- `room` (string): Room or locus identifier, as given by the excavator. A room should be clearly demarcated from its surroundings.
 - `primaryContext` (boolean|null): Defines whether the tablets were found in their original location.
 - `site` (string): Archaeological site name (see above).
 
