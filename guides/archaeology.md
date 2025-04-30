@@ -6,7 +6,8 @@ Archaeological information is stored in the `archaeology` property of a tablet r
   - `number` (string): Artifact number
   - `suffix` (string): Additional identifier suffix
 - `site` (string): Archaeological site name from [this list](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/common/domain/provenance.py). The long name ("Aššur", "Ḫuzirina") follows the conventions of the [Cuneiform Inscriptions Geographical Site Index (CIGS)](https://zenodo.org/records/14568765)
-- `isRegularExcavation` (boolean|null): Whether the find comes from a regular excavation or from uncontrolled diggings.
+- `isRegularExcavation` (boolean|null): Whether the find comes from a regular excavation or from uncontrolled diggings. Regular Esxacavations: Excavation by a legal archaeological project. The location of the tablet is known from the archaeological documentation of the findspot. The findspot does not have to be precisely recorded, the assignment to the site by the excavator is sufficient.
+Uncontrolled diggings: Excavation by looters. The location of the tablet can only be reconstructed on the basis of the content of the text, the tablet itself only became known to science in its dislocated state. 
 - `date` (object):
   - `start` (object): Date of finding of the artifact, if known; if not, start date of the excavation campaign. 
     - `year` (number)
@@ -47,17 +48,17 @@ Archaeological information is stored in the `archaeology` property of a tablet r
 
 ### `findspot` Document Fields:
 - `_id` (number): Unique identifier
-- `sector` (string): Broad archaeological sector
-- `area` (string): Specific area designation as established by the excavators.
-- `building` (string): Name of the building.
-- `buildingType` (string|null): Type of building. It must be one of:
+- `sector` (string): Broad archaeological sector. Defined not by the excavator, but by the topography of the site.
+- `area` (string): Specific area designation as established by the excavators. 
+- `building` (string): Name of the building, as given by the escavator/primary publication.
+- `buildingType` (string|null): Type of building, defined by the excavator/primary publication. It must be one of:
    - `RESIDENTIAL`: 
    - `TEMPLE`: 
    - `PALACE`: 
    - `OTHER_MONUMENTAL`: 
    - `UNKNOWN`: 
    - `NOT_IN_BUILDING`: 
-- `context` (string): 
+- `context` (string): Smallest archaeologically definable unit. All the Objects within the Context were deposited in one stratigraphic event. Provides the exact location of the find as well as stratigraphic information.
 - `date` (object): Date of the earliest and latest dated or datable artifacts found within the same level.
   - `start` (object): Earliest artifact.
     - `year` (number)
@@ -68,9 +69,9 @@ Archaeological information is stored in the `archaeology` property of a tablet r
     - `month` (number, optional)
     - `day` (number, optional)
   - `notes` (string, optional)
-- `levelLayerPhase` (string): Stratigraphic information
-- `room` (string): Room or locus identifier
-- `primaryContext` (boolean|null): 
+- `levelLayerPhase` (string): Stratigraphic information. Layername as given by the excavator/primary publication.
+- `room` (string): Room or locus identifier, as given by the excavator. A Room should be clearly demarcated from its surroundings.
+- `primaryContext` (boolean|null): Defines whether the tablets were found in their original location.
 - `site` (string): Archaeological site name (see above).
 
 ### Example of findspot document fully populated:
