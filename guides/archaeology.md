@@ -50,7 +50,7 @@ Uncontrolled diggings: Excavation by looters. The location of the tablet can onl
 - `_id` (number): Unique identifier
 - `sector` (string): Broad archaeological sector. Defined not by the excavator, but by the topography of the site.
 - `area` (string): Specific area designation as established by the excavators. 
-- `building` (string): Name of the building, as given by the escavator/primary publication.
+- `building` (string): Name of the building, as given by the excavator/primary publication.
 - `buildingType` (string|null): Type of building, defined by the excavator/primary publication. It must be one of:
    - `RESIDENTIAL`: 
    - `TEMPLE`: 
