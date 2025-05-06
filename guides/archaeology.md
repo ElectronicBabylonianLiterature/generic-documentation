@@ -53,12 +53,12 @@ Archaeological information is stored in the `archaeology` property of a tablet r
 - `area` (string): Specific area designation as established by the excavators. 
 - `building` (string): Name of the building, as given by the excavator/primary publication.
 - `buildingType` (string|null): Type of building, defined by the excavator/primary publication. It must be one of:
-   - `RESIDENTIAL`: 
-   - `TEMPLE`: 
-   - `PALACE`: 
-   - `OTHER_MONUMENTAL`: 
-   - `UNKNOWN`: 
-   - `NOT_IN_BUILDING`: 
+   - `RESIDENTIAL`: Usually relatively small buildings, clearly demarcated from the neighboring houses, whose rooms are organized around a central courtyard. They are forming quarters together with many similar buildings.
+   - `TEMPLE`: A building that shows typical signs of sacred use, such as thick, buttressed walls and a cella. The decisive criterion is not the size, but the use.
+   - `PALACE`: Residential architecture that far exceeds the size of the otherwise documented buildings at this site or in this time and region.
+   - `OTHER_MONUMENTAL`: A building or part of a building that exceeds the usual dimensions of architecture at this site or in this time and region, but whose exact purpose cannot be determined.
+   - `UNKNOWN`: Associated architecture was recorded, but was too poorly preserved or documented to make more detailed statements.
+   - `NOT_IN_BUILDING`: No associated architecture recorded.
 - `context` (string): Smallest archaeologically definable unit. All the Objects within the Context were deposited in one stratigraphic event. Provides the exact location of the find as well as stratigraphic information.
 - `date` (object): Date of the earliest and latest dated or datable artifacts found within the same level.
   - `start` (object): Earliest artifact.
