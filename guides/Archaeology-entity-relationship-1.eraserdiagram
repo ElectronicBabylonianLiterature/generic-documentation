@@ -1,0 +1,72 @@
+entity-relationship-diagram
+
+typeface clean
+colorMode outline
+
+// define tables
+sites [icon: map-pin, color: green]{
+  id number pk
+  name string
+}
+
+sectors [icon: layers, color: orange]{
+  id number pk
+  name string
+  site_id number
+}
+
+areas [icon: grid, color: yellow]{
+  id number pk
+  name string
+  sector_id number
+}
+
+buildings [icon: home, color: blue]{
+  id number pk
+  name string
+  buildingType string // RESIDENTIAL, TEMPLE, PALACE, OTHER_MONUMENTAL, UNKNOWN, NOT_IN_BUILDING
+  area_id number
+}
+
+rooms [icon: square, color: purple]{
+  id number pk
+  name string
+  building_id number
+}
+
+contexts [icon: archive, color: red]{
+  id number pk
+  name string // context
+  levelLayerPhase string
+  primaryContext boolean
+  room_id number
+  building_id number
+  area_id number
+  sector_id number
+  site_id number
+  date_id number
+}
+
+dates [icon: calendar, color: teal]{
+  id number pk
+  start_year number
+  start_month number
+  start_day number
+  end_year number
+  end_month number
+  end_day number
+  notes string
+}
+
+// define relationships
+sectors.site_id > sites.id
+areas.sector_id > sectors.id
+buildings.area_id > areas.id
+rooms.building_id > buildings.id
+contexts.room_id > rooms.id
+contexts.building_id > buildings.id
+contexts.area_id > areas.id
+contexts.sector_id > sectors.id
+contexts.site_id > sites.id
+contexts.date_id > dates.id
+
