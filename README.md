@@ -14,7 +14,7 @@
 - [TEI Export](guides/teiExport.md)
 - [eBL ATF and other ATF Flavors](guides/atfFlavors.md)
 - [Archaeology and Findspot Properties](guides/archaeology.md)
-- [Manual for Mapping Cuneiform Tablets](mappingCuneiformTablets.md)
+- [Manual for Mapping Cuneiform Tablets](guides/mappingCuneiformTablets.md)
 
 ## Photo Guides
 - [How to Create Photo Montages of Tablets to Check Joins](guides/photoMontagesJoins.md)
