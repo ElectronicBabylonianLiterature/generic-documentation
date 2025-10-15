@@ -45,11 +45,9 @@ The final product of this guide are
 
 The AD button can now be used to insert maps. With the other functions they can be moved, rotated, scaled and distorted. This allows the correct position of the map to be determined before the actual georeferencing. For three reasons, the "Freehand raster Georeferencer" cannot be used directly for the final result:
 
-\1) The resolution of the inserted images suffers\.
-
-\2) Distortions that occur in the plans during printing or scanning are difficult to remove\.
-
-\3) There may be problems with the export\.
+1) The resolution of the inserted images suffers.
+2) Distortions that occur in the plans during printing or scanning are difficult to remove.
+3) There may be problems with the export.
 
 
 **8.** Next comes the actual georeferencing of the plans. To do this, navigate via "Layers" → "Georeferenzierung". In the window that opens, click on the "Raster hinzufügen" button on the far left and choose the map you want to insert.
@@ -91,7 +89,7 @@ This window opens: To set the file name, click on the three dots to the left of 
 
 ### **Finalization**
 
-**10.** When all relevant maps are georeferenced and all locations have been marked on the map, the created GeoTiffs still need to be named correctly. The scheme is <EBL-literature-ID@Seitenzahl>. If no EBL ID exists yet, it must be created.
+**10.** When all relevant maps are georeferenced and all locations have been marked on the map, the created GeoTiffs still need to be named correctly. The scheme is `EBL-literature-ID@pageNumbers`. If no EBL ID exists yet, it must be created (see [Adding References to eBL](addingReferences.md)).
 
 **11.** Now you have to enter in the list which location is shown on which map. For this purpose, the name of the corresponding GeoTiff files is specified in the "map" column.
 
