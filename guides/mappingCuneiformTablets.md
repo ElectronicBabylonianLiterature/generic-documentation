@@ -17,13 +17,13 @@ The final product of this guide are
 
 **1.**  This guide is based on the example site of Assur. The first step is to copy all records (i.e. all boards) to this location from the "Findspots" table of the CAIC project into an Excel file and add the "map" column. Next, it is recommended to create the following folder structure:
 
-**2.** Next, the relevant literature on this site (i.e. the literature that contains information about the sites and corresponding map material) must be identified and procured. The PDFs should not have a resolution below 600 dpi, and are stored in the "Literatur" folder.
-
-**3.** The literature is then searched. Each plan that can be found should be saved separately as an image in the "Karten" folder. In common PDF readers (e.g. PDF24), this can be done quickly by right-clicking → save page as image.
-
 <p align="center">
          <img src="images/mappingAbb_1.png">
 </p>
+
+**2.** Next, the relevant literature on this site (i.e. the literature that contains information about the sites and corresponding map material) must be identified and procured. The PDFs should not have a resolution below 600 dpi, and are stored in the "Literatur" folder.
+
+**3.** The literature is then searched. Each plan that can be found should be saved separately as an image in the "Karten" folder. In common PDF readers (e.g. PDF24), this can be done quickly by right-clicking → save page as image.
 
 ### **Georeferencing**
 
