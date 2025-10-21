@@ -1,7 +1,7 @@
-# Setting up Gitpod
+# Setting up Gitpod with Ona
 
 Gitpod is a browser-based development environment that lets you contribute to a
-codebase without the need to set up any local dependencies. To learn more about Gitpod,
+codebase without the need to set up any local dependencies. Ona is Gitpod's AI assistant that can help you with coding tasks. To learn more about Gitpod,
 check out their docs at <https://gitpod.io/docs>.
 
 Before you can start working on eBL, you need to set up a few things. Most of the steps
@@ -18,6 +18,7 @@ for the frontend - see below).
 - [3. Running eBL Locally](#3-running-ebl-locally)
   - [3.1 Version A: Open the Workspaces in VS Code Desktop and use Native Port Forwarding](#31-version-a-open-the-workspaces-in-vs-code-desktop-and-use-native-port-forwarding)
   - [3.2 Version B: Use Manual SSH Forwarding](#32-version-b-use-manual-ssh-forwarding)
+  - [3.3 Version C: Use Ona's Preview URLs (Simplest)](#33-version-c-use-onas-preview-urls-simplest)
 - [4. General Notes and Best Practices](#4-general-notes-and-best-practices)
   - [4.1 Timeouts](#41-timeouts)
   - [4.2 Data Persistence](#42-data-persistence)
@@ -75,7 +76,7 @@ API, navigate to the Variables entry in the user settings:
 For each of the variables we sent you, create a new variable and enter its name, its
 value, and `electronicbabylonianliterature/ebl-api` as scope. You only need to do this
 once: The variables will automatically be available whenever you create a new ebl-api
-workspace.
+environment.
 
 ![Gitpod set a variable](<img/new-variable.png>)
 
@@ -101,7 +102,7 @@ Select the ebl-api repository, leave the other default settings and click Contin
 
 ![Gitpod new ebl-api workspace](<img/dashboard-new-ebl-api.png>)
 
-Gitpod will create and start the new workspace.
+Gitpod will create and start the new environment.
 
 ![Gitpod creating workspace](<img/creating-workspace.png>)
 
@@ -139,7 +140,7 @@ way of handling them. Luckily, all you need to do is to create an .env.local fil
 your variables once the workspace is created, and you only need to do that once for every
 workspace.
 
-With the api workspace running in your browser, open up a new tab or window and go to
+With the api environment running in your browser, open up a new tab or window and go to
 your Gitpod dashboard at <https://gitpod.io/workspaces> again.
 
 As before, create a new workspace, this time selecting the
@@ -147,7 +148,7 @@ ebl-frontend repository.
 
 ![Gitpod new ebl-frontend workspace](<img/dashboard-new-ebl-frontend.png>)
 
-Again, a new workspace is created and requirements are installed once the VS Code Browser
+Again, a new environment is created and requirements are installed once the VS Code Browser
 instance starts up.
 
 ![Gitpod first time ebl-frontend](<img/ebl-frontend-first-time-yarn-install.png>)
@@ -168,7 +169,7 @@ provider blocks them. We cannot whitelist all of them, but we do allow the app t
 localhost. I.e., we need to forward the Gitpod urls to localhost in order for you to be able
 to log in to eBL as you would do on the public version at <www.ebl.lmu.de>.
 
-There are two ways to achieve that.
+There are three ways to achieve that.
 
 ### 3.1 Version A: Open the Workspaces in VS Code Desktop and use Native Port Forwarding
 
@@ -264,6 +265,48 @@ supported. So you need to set up port forward with SSH, which is actually not th
    - Open up another console tab or window **locally**
    - In the console, run `ssh -L 3000:localhost:3000 <copied-url>`, again inserting your url - note
      this time it's port **3000** for the frontend app!
+
+### 3.3 Version C: Use Ona's Preview URLs (Simplest)
+
+If you're using Ona (Gitpod's AI assistant), you can skip the port forwarding setup entirely. Ona can start development servers and provide you with preview URLs automatically.
+
+**To use this method:**
+
+1. In your **ebl-api** workspace, ask Ona in the chat:
+   ```
+   "Start the API server"
+   ```
+   or
+   ```
+   "Run task start"
+   ```
+
+2. In your **ebl-frontend** workspace, ask Ona:
+   ```
+   "Start the development server"
+   ```
+   or
+   ```
+   "Run yarn start"
+   ```
+
+3. Ona will provide you with preview URLs that look like:
+   ```
+   https://3000-electronicb-eblfrontend-<hash>.ws-eu108.gitpod.io
+   ```
+
+4. Click on the URL to access your application.
+
+**Important notes:**
+- These preview URLs are publicly accessible but temporary
+- They change each time you create a new workspace
+- **Do not use localhost URLs** - they won't work in Gitpod
+- Authentication may not work with preview URLs due to Auth0 restrictions (use Version A or B for full functionality)
+
+**Tip:** You can also ask Ona for help with other tasks:
+- "Run the tests"
+- "Check if my environment variables are set correctly"
+- "Show me the last 50 lines of the server logs"
 
 ## 4. General Notes and Best Practices
 
