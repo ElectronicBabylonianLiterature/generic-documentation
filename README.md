@@ -2,7 +2,7 @@
 
 ## Technical Guides
 - [eBL Coding Standards](guides/codingStandards.md)
-- [How to set up Gitpod](gitpod-setup/setup.md)
+- [Setting up Gitpod with Ona](gitpod-setup/setup.md)
 - [How `withData` Works](guides/withData.md)
 - Contribution guidelines
 - How to run migrations
