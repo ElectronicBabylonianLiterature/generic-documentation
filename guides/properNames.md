@@ -48,7 +48,7 @@ Transliterated signs are not capitalized to indicate a proper name.
 
 In normalized forms, all proper names are capitalized.
 
-a) *šu-eš*₁₈*-tár* = Šu-Eštar "he of Eštar," but *šu-ì-lí-šu* = Šu-ilīšu "he of his god."
+a) *šu-eš*₁₈-*tár* = Šu-Eštar "he of Eštar," but *šu-ì-lí-šu* = Šu-ilīšu "he of his god."
 
 b) ur-<sup>d</sup>en-lil₂-la₂ = Ur-Enlila "Dog of Enlil."[^5]
 
@@ -82,7 +82,7 @@ The abstraction and connection of the same name written differently is undertake
 
 Cuneiform signs are only read if the choice is unambiguous.
 
-d) Akkadian *bu-la-*NI = BulāNI (uncertain etymology).
+d) Akkadian *bu-la*-NI = BulāNI (uncertain etymology).
 
 e) LU₂-AN is read lu₂-AN = LuAN.[^9]
 
@@ -92,7 +92,7 @@ e) LU₂-AN is read lu₂-AN = LuAN.[^9]
 
 Non-proper month and year names (not hyphenated) are translated with an additional abbreviation in N. Proper month names are **not** translated. Month numbers are only added when the sequence is certain. In Akkadian texts, logographically written month names are converted into Akkadian in N from OB onwards. In such cases, <sup>iti</sup> becomes a classifier.
 
-a) Early OB Nippur written in Sumerian: iti še-KIN-ku₅ = month: Šekinku (xii).
+a) Early OB Nippur written in Sumerian: iti še-KIN-ku₅ = month: ŠeKINku (xii).
 
 b) OB written in Akkadian: iti še-KIN-ku₅ = month: *Addaru* (xii).
 
@@ -106,7 +106,7 @@ Q: Abbreviations for rulers, source for month equivalizations, sequences, need r
 
 Logograms are converted into Akkadian when normalized, **not** in T.
 
-a) *ì-lí-*BAD₃*-ri* = Ilī-dūrī "my god is my wall."
+a) *ì-lí*-BAD₃-*ri* = Ilī-dūrī "my god is my wall."
 
 Readings of logograms in Akkadian, independent of period follow MesZL; logograms from the Ur III period and earlier follow the Sumerian readings of Attinger (2021/2023).
 
@@ -116,7 +116,7 @@ c) <sup>d</sup>SUEN*-i-din-nam* (OB); <sup>d</sup>SUEN*-dú-rí* (Ur III), **not
 
 The normalization of logograms follows the grammar of the respective dialect; key references are listed in [§11](#11-additional-fundamental-studies-to-onomastics); additional examples for dialectal differences are found under [§7.3](#73-reproducing-dialectal-differences).
 
-d) LU₂*-ia* (MA) = Aˀīlīya, **not** Awīlīya.
+d) LU₂-*ia* (MA) = Aˀīlīya, **not** Awīlīya.
 
 e) LU₂-<sup>d</sup>*šá-maš* (NA) = Amēl-Šamaš, **not** Awīl-Šamaš.
 
@@ -136,13 +136,13 @@ I₃-LI₂ is used as an Akkadogram, often parallel to DINGIR.
 
 j) I₃-LI₂-*a-wi-lim-ra-bi* (OB) = Il-awīlim-rabi "The deity of the person is grand."
 
-k) *a-wi-il-*DINGIR (OB) = Awīl-ilim // *a-wi-il-*I₃-LI₂ (OB) = Awīl-ilim "Man of the deity."
+k) *a-wi-il*-DINGIR (OB) = Awīl-ilim // *a-wi-il*-I₃-LI₂ (OB) = Awīl-ilim "Man of the deity."
 
 ### §7.2 PaRiS vs. PāriS
 
 Verbs-of-**doing** are interpreted as **participles** and verbs-of-being as statives.
 
-a) DINGIR*-šu-ba-ni* = Ilšu-bāni "his deity is the creat**or**," but *be-lí-a-rí-ik* = Bēlī-arik "my lord is long."
+a) DINGIR-*šu-ba-ni* = Ilšu-bāni "his deity is the creat**or**," but *be-lí-a-rí-ik* = Bēlī-arik "my lord is long."
 
 ### §7.3 Reproducing Dialectal Differences
 
@@ -158,7 +158,7 @@ a) *a-wi-lu-ma* = Awīlumma (OB).
 
 but b) *a-wi-la-tum* = Awīlatum (OB) following [§5](#5-reading-and-normalizing-names).
 
-c) *a-wi-il-tu*₄*-ba-ni-tu*₄ = Awīltu-banītu (MB).
+c) *a-wi-il-tu*₄-*ba-ni-tu*₄ = Awīltu-banītu (MB).
 
 For phonological and morphological features see Kouwenberg 2017: 11 (OA), Wende 2022: 262–263 (OB), Leonhardt 2024: 663–667 (NA), Leonhardt 2024: 668–678 (NB), and for all dialects Vita (2021, HdOr I.152/II).
 
@@ -170,7 +170,7 @@ a) BA-*šá-a* (NB/LB) = Iqīšāya, **not** Iqīšâ "the he gifted."
 
 b) DU₃-*ia* (NB/LB) = Bānīya, **not** Bānia "the creator."
 
-c) SIPA-*ú-a* (MB) = Rēʾûa, **not** Rēʾûwa "the herder."
+c) SIPA-*ú-a* (MB) = Rēʾûa, **not** Rēʾûwa or Rēʾûya "the herder."
 
 ## §8 Specific Rules for Sumerian
 
