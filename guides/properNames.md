@@ -1,4 +1,4 @@
-# Rules for Names in Cuneiform Texts
+# Rules for Normalizing Names in Cuneiform Texts
 
 **Abbreviations:** T = transliteration, N = normalization, LB = Late Babylonian, NA = Neo-Assyrian, NB = Neo-Babylonian, MA = Middle Assyrian, MB = Middle Babylonian, OAkk = Old Akkadian, OA = Old Assyrian, OB = Old Babylonian
 
