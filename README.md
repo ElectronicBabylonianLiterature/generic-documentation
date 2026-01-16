@@ -10,6 +10,7 @@
 
 ## General Guides
 - [Adding References to eBL](guides/addingReferences.md)
+- [Rules for Normalizing Names in Cuneiform Texts](guides/properNames.md)
 - [Editorial conventions (Corpus)](guides/editorialConventionsCorpus.md)
 - [Editorial conventions (Library)](guides/editorialConventionsLibrary.md)
 - [TEI Export](guides/teiExport.md)
