@@ -70,21 +70,23 @@ d) iti izim munu₄-gu₇ <sup>d</sup>nin-ĝir₂-su-ka-ka "in the month of Nin�
 
 ## §5 Reading and Normalizing Names
 
-Names are not reconstructed but transliterated and normalized according to the cuneiform signs, grammar, and etymology.
+Names are not reconstructed but transliterated and normalized according to the cuneiform signs, grammar, vocabulary (based on AHw/dialectal dictionaries for Akkadian), and etymology.
 
-a) *e-gar-šu-e-mid* = Egāršu-ēmid, **not** Igāršu-ēmid, which is the same name as *i-gar-šu-e-mi-id* = Igāršu-ēmid "I leaned against his wall."
+a) <sup>d</sup>SUEN-*i-din-nam* = Sîn-iddinam "Sîn gave to me," **not** Sîn-idinnam. 
 
-b) ur-<sup>d</sup>en-lil₂ = Ur-Enlil "one of Enlil," **not** Ur-Enlila, Ur-Enlilak, or Enlilâk.[^8]
+b) *e-gar-šu-e-mid* = Igāršu-ēmid "I leaned against his wall," **not** Egāršu-ēmid.
 
-c) urdu₂-ĝu₁₀ = Urduĝu "my slave," **not** Urdudĝu.
+c) ur-<sup>d</sup>en-lil₂ = Ur-Enlil "one of Enlil," **not** Ur-Enlila, Ur-Enlilak, or Enlilâk.[^8]
+
+d) urdu₂-ĝu₁₀ = Urduĝu "my slave," **not** Urdudĝu.
 
 The abstraction and connection of the same name written differently is undertaken in the step of identifying entities, not by standardizing names in N (differently in PNA, p. XXII).
 
 Cuneiform signs are only read if the choice is unambiguous.
 
-d) Akkadian *bu-la*-NI = BulāNI (uncertain etymology).
+e) Akkadian *bu-la*-NI = BulāNI (uncertain etymology).
 
-e) LU₂-AN is read lu₂-AN = LuAN.[^9]
+f) LU₂-AN is read lu₂-AN = LuAN.[^9]
 
 ## §6 Specific Rules for Month and Year Names
 
