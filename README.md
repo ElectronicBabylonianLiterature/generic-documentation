@@ -13,6 +13,7 @@
 - [Rules for Normalizing Names in Cuneiform Texts](guides/properNames.md)
 - [Editorial conventions (Corpus)](guides/editorialConventionsCorpus.md)
 - [Editorial conventions (Library)](guides/editorialConventionsLibrary.md)
+- [Adding Dossiers](guides/dossiers.md)
 - [TEI Export](guides/teiExport.md)
 - [eBL ATF and other ATF Flavors](guides/atfFlavors.md)
 - [Archaeology and Findspot Properties](guides/archaeology.md)
