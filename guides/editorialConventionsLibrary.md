@@ -116,14 +116,25 @@ The introduction (max. 100 words) should contain the following elements:
 3.	Context (Archaeology, Sitz im Leben, etc.)
 (If the References are not enough, it can also include a History of Research with selected Bibliography)
 
-Example ([ND.6200](https://www.ebl.lmu.de/library/ND.6200)):
+Example ([ND.6200](https://www.ebl.lmu.de/library/ND.5516)):
 ```
-This tablet contains portions of what appears to be a hymn to Nippur, its sanctuaries and gods. The first column seems to describe the Nippur people in general (i′ 2′, @i{ṣābū kidinni}), whereas the second contains a list of shrines attached to the Ekur temple together with their epithets.
-	The tablet has two columns per side; the presence of a decimal marker in ii′ 12′ means that the text was probably very long. The lower section of the second column is a duplicate of @url{BM.82959}. The tablet ND.5592 belongs in all likelihood to the same manuscript. 
-	The manuscript was found in the Ezida temple of Nabû in Kalḫu, although its exact provenance is unknown.
+Fragment from the upper middle (probably of the reverse) of a multi-column tablet in a rather rough
+Neo-Assyrian hand, with parts of two columns preserved. The right column covers a section of tablet
+VII of the celestial omen series Enūma Anu Enlil (@i{EAE}), which is concerned with the prediction of
+lunar eclipses in different months of the first half of the year. Specifically, the present fragment
+parallels the end of the section on month I (Nisannu, @akk{{iti}BARA₂}).
+
+The fragment likely belonged the same tablet as @url{ND.5513.B} (not in @i{CTN} 4), which covers the section
+of @i{EAE} VII concerned with month II (Ayyāru, @akk{{iti}GU₄}) and the beginning of the section on month III
+(Simānu, @akk{{iti}SIG₄}), and possibly joins the reverse of ND.5582+ (CTN 4, 2), a triple-column tablet which
+on its obverse holds omens one would expect for EAE IV-V. Alternatively, it might belong to the same tablet as
+@url{ND.5511} (and possibly @url{ND.5512}), which seems to have been a commentary on @i{EAE} VII.
+
+The fragment was found in the south-eastern corner of the Nabû Temple at Kalḫu, in room “NT 14, below taban
+near door socked at n. end of pit, c. 20cm. below bottom of section” (@bib{RN1696@37}).
  ```
 
-Use eBL markup: `@i{}`, `@bib{}`, etc. (see (here)[https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/docs/ebl-atf.md#ebl-atf-specification]).
+Use eBL markup: `@i{}`, `@bib{}`, etc. (see [here](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/docs/ebl-atf.md#ebl-atf-specification)).
 
 ### Correction
 1. All editions should be checked twice by the editor against the copy or the photo: one on the day the edition is prepared, and again the day after.
