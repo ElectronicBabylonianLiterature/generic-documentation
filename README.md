@@ -1,8 +1,11 @@
 # General and Technical Docs for eBL
 
+## Backend and Frontend Documentation
+- [Backend Documentation (ebl-api)](backend-docs/README.md) — architecture, services, standards, security, runbooks, and ADRs for the backend
+- [Frontend Documentation (ebl-frontend)](frontend-docs/README.md) — architecture, feature docs, API traceability, and runtime flows for the frontend
+
 ## Technical Guides
 - [eBL Coding Standards](guides/codingStandards.md)
-- [Setting up Gitpod with Ona](gitpod-setup/setup.md)
 - [How `withData` Works](guides/withData.md)
 - Contribution guidelines
 - How to run migrations
