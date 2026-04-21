@@ -1,0 +1,181 @@
+# Reference: API Endpoint Catalog (Inferred from Frontend Calls)
+
+This catalog is derived from non-test ApiClient callsites and should be validated against backend schema.
+
+## Endpoint Entries
+
+- Method: GET
+  - Path expression: /bibliography/all
+  - Response type: string[]
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/bibliography/infrastructure/BibliographyRepository.ts#L55](src/bibliography/infrastructure/BibliographyRepository.ts#L55)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: ExtantLines
+  - Auth mode arg: default
+  - Source: [src/corpus/application/TextService.ts#L357](src/corpus/application/TextService.ts#L357)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: CorpusQueryResult
+  - Auth mode arg: default
+  - Source: [src/corpus/application/TextService.ts#L391](src/corpus/application/TextService.ts#L391)
+- Method: GET
+  - Path expression: /corpus/texts/all
+  - Response type: TextSlugs
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/corpus/application/TextService.ts#L451](src/corpus/application/TextService.ts#L451)
+- Method: GET
+  - Path expression: /corpus/chapters/all
+  - Response type: ChapterSlugs
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/corpus/application/TextService.ts#L455](src/corpus/application/TextService.ts#L455)
+- Method: GET
+  - Path expression: /words/${encodeURIComponent(id)}
+  - Response type: implicit
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/dictionary/infrastructure/WordRepository.ts#L13](src/dictionary/infrastructure/WordRepository.ts#L13)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: implicit
+  - Auth mode arg: default
+  - Source: [src/dictionary/infrastructure/WordRepository.ts#L17](src/dictionary/infrastructure/WordRepository.ts#L17)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: implicit
+  - Auth mode arg: default
+  - Source: [src/dictionary/infrastructure/WordRepository.ts#L24](src/dictionary/infrastructure/WordRepository.ts#L24)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: implicit
+  - Auth mode arg: default
+  - Source: [src/dictionary/infrastructure/WordRepository.ts#L31](src/dictionary/infrastructure/WordRepository.ts#L31)
+- Method: GET
+  - Path expression: /words/all
+  - Response type: implicit
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/dictionary/infrastructure/WordRepository.ts#L38](src/dictionary/infrastructure/WordRepository.ts#L38)
+- Method: POST
+  - Path expression: dynamic-expression
+  - Response type: implicit
+  - Auth mode arg: default
+  - Source: [src/dictionary/infrastructure/WordRepository.ts#L42](src/dictionary/infrastructure/WordRepository.ts#L42)
+- Method: POST
+  - Path expression: /words/create-proper-noun
+  - Response type: implicit
+  - Auth mode arg: default
+  - Source: [src/dictionary/infrastructure/WordRepository.ts#L49](src/dictionary/infrastructure/WordRepository.ts#L49)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: implicit
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L183](src/fragmentarium/infrastructure/FragmentRepository.ts#L183)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: FragmentInfoDto
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L237](src/fragmentarium/infrastructure/FragmentRepository.ts#L237)
+- Method: GET
+  - Path expression: /genres
+  - Response type: string[][]
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L244](src/fragmentarium/infrastructure/FragmentRepository.ts#L244)
+- Method: GET
+  - Path expression: /provenances
+  - Response type: string[][]
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L248](src/fragmentarium/infrastructure/FragmentRepository.ts#L248)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: string[]
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L252](src/fragmentarium/infrastructure/FragmentRepository.ts#L252)
+- Method: GET
+  - Path expression: /periods
+  - Response type: string[]
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L259](src/fragmentarium/infrastructure/FragmentRepository.ts#L259)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: FolioPagerData
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L361](src/fragmentarium/infrastructure/FragmentRepository.ts#L361)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: FragmentPagerData
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L370](src/fragmentarium/infrastructure/FragmentRepository.ts#L370)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: Word[][]
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L377](src/fragmentarium/infrastructure/FragmentRepository.ts#L377)
+- Method: POST
+  - Path expression: dynamic-expression
+  - Response type: readonly Annotation[]
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L410](src/fragmentarium/infrastructure/FragmentRepository.ts#L410)
+- Method: POST
+  - Path expression: dynamic-expression
+  - Response type: FragmentAfoRegisterQueryResult
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L481](src/fragmentarium/infrastructure/FragmentRepository.ts#L481)
+- Method: GET
+  - Path expression: /fragments/all
+  - Response type: string[]
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L491](src/fragmentarium/infrastructure/FragmentRepository.ts#L491)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: readonly ApiEntityAnnotationSpan[]
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/FragmentRepository.ts#L513](src/fragmentarium/infrastructure/FragmentRepository.ts#L513)
+- Method: GET(BLOB)
+  - Path expression: dynamic-expression
+  - Response type: implicit
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/ImageRepository.ts#L19](src/fragmentarium/infrastructure/ImageRepository.ts#L19)
+- Method: GET(BLOB)
+  - Path expression: /folios/${name}/${number}
+  - Response type: implicit
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/fragmentarium/infrastructure/ImageRepository.ts#L28](src/fragmentarium/infrastructure/ImageRepository.ts#L28)
+- Method: GET(BLOB)
+  - Path expression: dynamic-expression
+  - Response type: implicit
+  - Auth mode arg: default
+  - Source: [src/fragmentarium/infrastructure/ImageRepository.ts#L32](src/fragmentarium/infrastructure/ImageRepository.ts#L32)
+- Method: GET
+  - Path expression: /signs/all
+  - Response type: implicit
+  - Auth mode arg: public-or-no-auth
+  - Source: [src/signs/infrastructure/SignRepository.ts#L81](src/signs/infrastructure/SignRepository.ts#L81)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: implicit
+  - Auth mode arg: default
+  - Source: [src/signs/infrastructure/SignRepository.ts#L87](src/signs/infrastructure/SignRepository.ts#L87)
+- Method: GET
+  - Path expression: dynamic-expression
+  - Response type: implicit
+  - Auth mode arg: default
+  - Source: [src/signs/infrastructure/SignRepository.ts#L93](src/signs/infrastructure/SignRepository.ts#L93)
+
+## Canonical Request/Response Shapes
+
+- GET JSON
+  - Request: path + optional auth flag + optional abort signal
+  - Response: typed generic T via fetchJson<T>()
+- POST JSON
+  - Request: path + JSON payload body
+  - Response: typed generic T or null
+- PUT JSON
+  - Request: path + JSON payload body
+  - Response: typed generic T or falsy
+- GET BLOB
+  - Request: path (+ auth flag)
+  - Response: Blob
+
+## Error Contract
+
+- Non-OK responses are normalized into API errors.
+- Sources: [src/http/ApiClient.ts](src/http/ApiClient.ts), [src/http/ApiClient.test.ts](src/http/ApiClient.test.ts), [src/http/ApiClient.edge-cases.test.ts](src/http/ApiClient.edge-cases.test.ts).

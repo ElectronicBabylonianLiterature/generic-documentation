@@ -1,0 +1,122 @@
+# File Reference: ebl/transliteration/application/token_schemas.py
+
+- Lines: 625
+- Characters: 19057
+
+## Top-Level Symbols
+
+- Classes: BaseTokenSchema, ValueTokenSchema, LanguageShiftSchema, EnclosureSchema, DocumentOrientedGlossSchema, BrokenAwaySchema, PerhapsBrokenAwaySchema, AccidentalOmissionSchema, IntentionalOmissionSchema, RemovalSchema, EmendationSchema, ErasureSchema, UnknownNumberOfSignsSchema, EgyptianMetricalFeetSeparatorSchema, WordOmittedSchema, TabulationSchema, CommentaryProtocolSchema, DividerSchema, ColumnSchema, UnidentifiedSignSchema, UnclearSignSchema, JoinerSchema, InWordNewlineSchema, NamedSignSchema, ReadingSchema, LogogramSchema, NumberSchema, BaseWordSchema, WordSchema, LoneDeterminativeSchema, VariantSchema, GraphemeSchema, CompoundGraphemeSchema, GlossSchema, DeterminativeSchema, PhoneticGlossSchema, LinguisticGlossSchema, LineBreakSchema, AkkadianWordSchema, BreakSchema, CaesuraSchema, MetricalFootSeparatorSchema, GreekLetterSchema, GreekWordSchema, OneOfWordSchema, OneOfTokenSchema
+- Functions: None
+- Constants: None
+
+## Methods by Class
+
+- BaseTokenSchema: No methods
+- ValueTokenSchema: make_token
+- LanguageShiftSchema: make_token
+- EnclosureSchema: make_token
+- DocumentOrientedGlossSchema: make_token
+- BrokenAwaySchema: make_token
+- PerhapsBrokenAwaySchema: make_token
+- AccidentalOmissionSchema: make_token
+- IntentionalOmissionSchema: make_token
+- RemovalSchema: make_token
+- EmendationSchema: make_token
+- ErasureSchema: make_token
+- UnknownNumberOfSignsSchema: make_token
+- EgyptianMetricalFeetSeparatorSchema: make_token
+- WordOmittedSchema: make_token
+- TabulationSchema: make_token
+- CommentaryProtocolSchema: make_token
+- DividerSchema: make_token
+- ColumnSchema: make_token
+- UnidentifiedSignSchema: make_token
+- UnclearSignSchema: make_token
+- JoinerSchema: make_token
+- InWordNewlineSchema: make_token
+- NamedSignSchema: No methods
+- ReadingSchema: make_token
+- LogogramSchema: make_token
+- NumberSchema: make_token
+- BaseWordSchema: No methods
+- WordSchema: make_token, dump_token
+- LoneDeterminativeSchema: make_token, dump_token
+- VariantSchema: make_token
+- GraphemeSchema: make_token
+- CompoundGraphemeSchema: make_token
+- GlossSchema: make_token
+- DeterminativeSchema: make_token
+- PhoneticGlossSchema: make_token
+- LinguisticGlossSchema: make_token
+- LineBreakSchema: make_token
+- AkkadianWordSchema: make_token
+- BreakSchema: No methods
+- CaesuraSchema: make_token
+- MetricalFootSeparatorSchema: make_token
+- GreekLetterSchema: make_token
+- GreekWordSchema: make_token
+- OneOfWordSchema: No methods
+- OneOfTokenSchema: No methods
+
+## Imports
+
+- abc.abstractmethod
+- ebl.schemas.NameEnumField
+- ebl.schemas.ValueEnumField
+- ebl.transliteration.domain.atf
+- ebl.transliteration.domain.atf.Flag
+- ebl.transliteration.domain.egyptian_metrical_feet_separator_token.EgyptianMetricalFeetSeparator
+- ebl.transliteration.domain.enclosure_tokens.AccidentalOmission
+- ebl.transliteration.domain.enclosure_tokens.BrokenAway
+- ebl.transliteration.domain.enclosure_tokens.Determinative
+- ebl.transliteration.domain.enclosure_tokens.DocumentOrientedGloss
+- ebl.transliteration.domain.enclosure_tokens.Emendation
+- ebl.transliteration.domain.enclosure_tokens.Erasure
+- ebl.transliteration.domain.enclosure_tokens.Gloss
+- ebl.transliteration.domain.enclosure_tokens.IntentionalOmission
+- ebl.transliteration.domain.enclosure_tokens.LinguisticGloss
+- ebl.transliteration.domain.enclosure_tokens.PerhapsBrokenAway
+- ebl.transliteration.domain.enclosure_tokens.PhoneticGloss
+- ebl.transliteration.domain.enclosure_tokens.Removal
+- ebl.transliteration.domain.enclosure_type.EnclosureType
+- ebl.transliteration.domain.greek_tokens.GreekLetter
+- ebl.transliteration.domain.greek_tokens.GreekWord
+- ebl.transliteration.domain.language.Language
+- ebl.transliteration.domain.normalized_akkadian.AkkadianWord
+- ebl.transliteration.domain.normalized_akkadian.Caesura
+- ebl.transliteration.domain.normalized_akkadian.MetricalFootSeparator
+- ebl.transliteration.domain.side.Side
+- ebl.transliteration.domain.sign_tokens.CompoundGrapheme
+- ebl.transliteration.domain.sign_tokens.Divider
+- ebl.transliteration.domain.sign_tokens.Grapheme
+- ebl.transliteration.domain.sign_tokens.Logogram
+- ebl.transliteration.domain.sign_tokens.Number
+- ebl.transliteration.domain.sign_tokens.Reading
+- ebl.transliteration.domain.tokens.Column
+- ebl.transliteration.domain.tokens.CommentaryProtocol
+- ebl.transliteration.domain.tokens.Joiner
+- ebl.transliteration.domain.tokens.LanguageShift
+- ebl.transliteration.domain.tokens.LineBreak
+- ebl.transliteration.domain.tokens.Tabulation
+- ebl.transliteration.domain.tokens.Token
+- ebl.transliteration.domain.tokens.UnknownNumberOfSigns
+- ebl.transliteration.domain.tokens.ValueToken
+- ebl.transliteration.domain.tokens.Variant
+- ebl.transliteration.domain.tokens.WordOmitted
+- ebl.transliteration.domain.unknown_sign_tokens.UnclearSign
+- ebl.transliteration.domain.unknown_sign_tokens.UnidentifiedSign
+- ebl.transliteration.domain.word_tokens.ErasureState
+- ebl.transliteration.domain.word_tokens.InWordNewline
+- ebl.transliteration.domain.word_tokens.LoneDeterminative
+- ebl.transliteration.domain.word_tokens.Word
+- marshmallow.EXCLUDE
+- marshmallow.Schema
+- marshmallow.fields
+- marshmallow.post_dump
+- marshmallow.post_load
+- marshmallow.validate
+- marshmallow_oneofschema.OneOfSchema
+- pydash
+- typing.Mapping
+- typing.Type
+

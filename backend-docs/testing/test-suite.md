@@ -1,0 +1,122 @@
+# Testing Guide and Coverage Map
+
+- Test-related files: 263
+- Total test lines: 127159
+
+## Test Distribution by Feature Folder
+- **conftest.py**: 1 files
+- **ebl/tests/__init__.py**: 1 files
+- **ebl/tests/afo_register**: 3 files
+- **ebl/tests/alignment**: 5 files
+- **ebl/tests/assertions.py**: 1 files
+- **ebl/tests/asserts.py**: 1 files
+- **ebl/tests/atf_importer**: 13 files
+- **ebl/tests/bibliography**: 5 files
+- **ebl/tests/cache**: 4 files
+- **ebl/tests/chronology**: 1 files
+- **ebl/tests/common**: 4 files
+- **ebl/tests/conftest.py**: 1 files
+- **ebl/tests/corpus**: 42 files
+- **ebl/tests/dictionary**: 9 files
+- **ebl/tests/dossiers**: 3 files
+- **ebl/tests/downloader.py**: 1 files
+- **ebl/tests/factories**: 13 files
+- **ebl/tests/files**: 3 files
+- **ebl/tests/fragmentarium**: 69 files
+- **ebl/tests/io**: 2 files
+- **ebl/tests/lemmatization**: 2 files
+- **ebl/tests/markup**: 1 files
+- **ebl/tests/signs**: 6 files
+- **ebl/tests/test_app_bootstrap.py**: 1 files
+- **ebl/tests/test_changelog.py**: 1 files
+- **ebl/tests/test_dispatcher.py**: 1 files
+- **ebl/tests/test_ebl_ai_client.py**: 1 files
+- **ebl/tests/test_error_handler.py**: 1 files
+- **ebl/tests/test_image.jpeg**: 1 files
+- **ebl/tests/test_merger.py**: 1 files
+- **ebl/tests/test_mongo_collection.py**: 1 files
+- **ebl/tests/test_schemas.py**: 1 files
+- **ebl/tests/transliteration**: 58 files
+- **ebl/tests/users**: 5 files
+
+## Representative Test Entry Points
+- `conftest.py`
+- `ebl/tests/__init__.py`
+- `ebl/tests/afo_register/test_afo_register.py`
+- `ebl/tests/afo_register/test_afo_register_repository.py`
+- `ebl/tests/afo_register/test_afo_register_route.py`
+- `ebl/tests/alignment/__init__.py`
+- `ebl/tests/alignment/test_align.py`
+- `ebl/tests/alignment/test_alignment_result.py`
+- `ebl/tests/alignment/test_named_sequence.py`
+- `ebl/tests/alignment/test_scoring.py`
+- `ebl/tests/assertions.py`
+- `ebl/tests/asserts.py`
+- `ebl/tests/atf_importer/__init__.py`
+- `ebl/tests/atf_importer/conftest.py`
+- `ebl/tests/atf_importer/test_atf_importer_core.py`
+- `ebl/tests/atf_importer/test_atf_importer_lemmatization.py`
+- `ebl/tests/atf_importer/test_atf_importer_workflow.py`
+- `ebl/tests/atf_importer/test_atf_preprocessor.py`
+- `ebl/tests/atf_importer/test_atf_preprocessor_translation.py`
+- `ebl/tests/atf_importer/test_data.zip`
+- `ebl/tests/atf_importer/test_data/database_setup.py`
+- `ebl/tests/atf_importer/test_data/signs.json`
+- `ebl/tests/atf_importer/test_data/words.json`
+- `ebl/tests/atf_importer/test_glossaries_data.py`
+- `ebl/tests/atf_importer/test_lemma_lines.json`
+- `ebl/tests/bibliography/__init__.py`
+- `ebl/tests/bibliography/test_bibliography.py`
+- `ebl/tests/bibliography/test_bibliography_repository.py`
+- `ebl/tests/bibliography/test_bibliography_route.py`
+- `ebl/tests/bibliography/test_reference.py`
+- `ebl/tests/cache/__init__.py`
+- `ebl/tests/cache/test_cache.py`
+- `ebl/tests/cache/test_custom_cache.py`
+- `ebl/tests/cache/test_mongo_cache_repository.py`
+- `ebl/tests/chronology/test_chronology.py`
+- `ebl/tests/common/test_accession.py`
+- `ebl/tests/common/test_parameter_parser.py`
+- `ebl/tests/common/test_period.py`
+- `ebl/tests/common/test_project.py`
+- `ebl/tests/conftest.py`
+- `ebl/tests/corpus/__init__.py`
+- `ebl/tests/corpus/support.py`
+- `ebl/tests/corpus/test_alignment.py`
+- `ebl/tests/corpus/test_alignment_schemas.py`
+- `ebl/tests/corpus/test_api_chapter_schema.py`
+- `ebl/tests/corpus/test_chapter.py`
+- `ebl/tests/corpus/test_chapter_alignment_route.py`
+- `ebl/tests/corpus/test_chapter_colophons_route.py`
+- `ebl/tests/corpus/test_chapter_display.py`
+- `ebl/tests/corpus/test_chapter_display_lines_route.py`
+- `ebl/tests/corpus/test_chapter_display_route.py`
+- `ebl/tests/corpus/test_chapter_display_schema.py`
+- `ebl/tests/corpus/test_chapter_extant_lines_route.py`
+- `ebl/tests/corpus/test_chapter_info.py`
+- `ebl/tests/corpus/test_chapter_lemmatization_route.py`
+- `ebl/tests/corpus/test_chapter_lines_route.py`
+- `ebl/tests/corpus/test_chapter_manuscripts_route.py`
+- `ebl/tests/corpus/test_chapter_merge.py`
+- `ebl/tests/corpus/test_chapter_schema.py`
+- `ebl/tests/corpus/test_chapter_unplaced_lines_route.py`
+- `ebl/tests/corpus/test_corpus.py`
+- `ebl/tests/corpus/test_corpus_list_all_route.py`
+- `ebl/tests/corpus/test_corpus_query_route.py`
+- `ebl/tests/corpus/test_corpus_text.py`
+- `ebl/tests/corpus/test_create_alignment_map.py`
+- `ebl/tests/corpus/test_extant_lines_schema.py`
+- `ebl/tests/corpus/test_line.py`
+- `ebl/tests/corpus/test_line_details_schema.py`
+- `ebl/tests/corpus/test_line_variant.py`
+- `ebl/tests/corpus/test_make_title.py`
+- `ebl/tests/corpus/test_manuscript.py`
+- `ebl/tests/corpus/test_manuscript_attestation.py`
+- `ebl/tests/corpus/test_manuscript_line.py`
+- `ebl/tests/corpus/test_manuscript_line_display_schema.py`
+- `ebl/tests/corpus/test_mongo_text_repository.py`
+- `ebl/tests/corpus/test_parse_chapter.py`
+- `ebl/tests/corpus/test_signs_updater.py`
+- `ebl/tests/corpus/test_stage.py`
+- `ebl/tests/corpus/test_text.py`
+- `ebl/tests/corpus/test_text_id.py`

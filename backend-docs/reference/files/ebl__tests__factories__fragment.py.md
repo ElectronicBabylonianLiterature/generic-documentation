@@ -1,0 +1,124 @@
+# File Reference: ebl/tests/factories/fragment.py
+
+- Lines: 714
+- Characters: 26125
+
+## Top-Level Symbols
+
+- Classes: JoinFactory, ScriptFactory, YearFactory, MonthFactory, DayFactory, DateFactory, ExternalNumbersFactory, FragmentDossierReferenceFactory, AcquisitionFactory, FragmentFactory, InterestingFragmentFactory, TransliteratedFragmentFactory, LemmatizedFragmentFactory
+- Functions: create_date_king
+- Constants: None
+
+## Methods by Class
+
+- JoinFactory: No methods
+- ScriptFactory: No methods
+- YearFactory: No methods
+- MonthFactory: No methods
+- DayFactory: No methods
+- DateFactory: No methods
+- ExternalNumbersFactory: No methods
+- FragmentDossierReferenceFactory: No methods
+- AcquisitionFactory: No methods
+- FragmentFactory: No methods
+- InterestingFragmentFactory: No methods
+- TransliteratedFragmentFactory: No methods
+- LemmatizedFragmentFactory: No methods
+
+## Imports
+
+- ebl.chronology.chronology.King
+- ebl.chronology.chronology.chronology
+- ebl.common.domain.accession.Accession
+- ebl.common.domain.period.Period
+- ebl.common.domain.period.PeriodModifier
+- ebl.common.domain.project.ResearchProject
+- ebl.corpus.domain.chapter.Stage
+- ebl.dictionary.domain.word.WordId
+- ebl.fragmentarium.domain.date.Date
+- ebl.fragmentarium.domain.date.DateKing
+- ebl.fragmentarium.domain.date.DateKingSchema
+- ebl.fragmentarium.domain.date.Day
+- ebl.fragmentarium.domain.date.Month
+- ebl.fragmentarium.domain.date.Ur3Calendar
+- ebl.fragmentarium.domain.date.Year
+- ebl.fragmentarium.domain.folios.Folio
+- ebl.fragmentarium.domain.folios.Folios
+- ebl.fragmentarium.domain.fragment.Acquisition
+- ebl.fragmentarium.domain.fragment.DossierReference
+- ebl.fragmentarium.domain.fragment.Fragment
+- ebl.fragmentarium.domain.fragment.Genre
+- ebl.fragmentarium.domain.fragment.Introduction
+- ebl.fragmentarium.domain.fragment.Notes
+- ebl.fragmentarium.domain.fragment.Script
+- ebl.fragmentarium.domain.fragment.UncuratedReference
+- ebl.fragmentarium.domain.fragment_external_numbers.ExternalNumbers
+- ebl.fragmentarium.domain.joins.Join
+- ebl.fragmentarium.domain.line_to_vec_encoding.LineToVecEncoding
+- ebl.fragmentarium.domain.museum.Museum
+- ebl.fragmentarium.domain.record.Record
+- ebl.fragmentarium.domain.record.RecordEntry
+- ebl.fragmentarium.domain.record.RecordType
+- ebl.tests.factories.archaeology.ArchaeologyFactory
+- ebl.tests.factories.collections.TupleFactory
+- ebl.tests.factories.colophon.ColophonFactory
+- ebl.transliteration.domain.at_line.ColumnAtLine
+- ebl.transliteration.domain.at_line.CompositeAtLine
+- ebl.transliteration.domain.at_line.DiscourseAtLine
+- ebl.transliteration.domain.at_line.DivisionAtLine
+- ebl.transliteration.domain.at_line.HeadingAtLine
+- ebl.transliteration.domain.at_line.ObjectAtLine
+- ebl.transliteration.domain.at_line.SealAtLine
+- ebl.transliteration.domain.at_line.SurfaceAtLine
+- ebl.transliteration.domain.atf
+- ebl.transliteration.domain.atf.Flag
+- ebl.transliteration.domain.dollar_line.ImageDollarLine
+- ebl.transliteration.domain.dollar_line.LooseDollarLine
+- ebl.transliteration.domain.dollar_line.RulingDollarLine
+- ebl.transliteration.domain.dollar_line.ScopeContainer
+- ebl.transliteration.domain.dollar_line.SealDollarLine
+- ebl.transliteration.domain.dollar_line.StateDollarLine
+- ebl.transliteration.domain.enclosure_tokens.BrokenAway
+- ebl.transliteration.domain.genre.Genre
+- ebl.transliteration.domain.labels.ColumnLabel
+- ebl.transliteration.domain.labels.ObjectLabel
+- ebl.transliteration.domain.labels.SurfaceLabel
+- ebl.transliteration.domain.language.Language
+- ebl.transliteration.domain.line_number.LineNumber
+- ebl.transliteration.domain.markup.EmphasisPart
+- ebl.transliteration.domain.markup.LanguagePart
+- ebl.transliteration.domain.markup.StringPart
+- ebl.transliteration.domain.museum_number.MuseumNumber
+- ebl.transliteration.domain.normalized_akkadian.AkkadianWord
+- ebl.transliteration.domain.note_line.NoteLine
+- ebl.transliteration.domain.parallel_line.ChapterName
+- ebl.transliteration.domain.parallel_line.Labels
+- ebl.transliteration.domain.parallel_line.ParallelComposition
+- ebl.transliteration.domain.parallel_line.ParallelFragment
+- ebl.transliteration.domain.parallel_line.ParallelText
+- ebl.transliteration.domain.sign_tokens.CompoundGrapheme
+- ebl.transliteration.domain.sign_tokens.Divider
+- ebl.transliteration.domain.sign_tokens.Logogram
+- ebl.transliteration.domain.sign_tokens.Number
+- ebl.transliteration.domain.sign_tokens.Reading
+- ebl.transliteration.domain.text.Text
+- ebl.transliteration.domain.text_id.TextId
+- ebl.transliteration.domain.text_line.TextLine
+- ebl.transliteration.domain.tokens.Column
+- ebl.transliteration.domain.tokens.CommentaryProtocol
+- ebl.transliteration.domain.tokens.Joiner
+- ebl.transliteration.domain.tokens.LanguageShift
+- ebl.transliteration.domain.tokens.Tabulation
+- ebl.transliteration.domain.tokens.UnknownNumberOfSigns
+- ebl.transliteration.domain.tokens.ValueToken
+- ebl.transliteration.domain.tokens.Variant
+- ebl.transliteration.domain.tokens.WordOmitted
+- ebl.transliteration.domain.unknown_sign_tokens.UnclearSign
+- ebl.transliteration.domain.unknown_sign_tokens.UnidentifiedSign
+- ebl.transliteration.domain.word_tokens.InWordNewline
+- ebl.transliteration.domain.word_tokens.Word
+- factory.fuzzy
+- pydash
+- random
+- typing.Sequence
+
