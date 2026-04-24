@@ -54,7 +54,7 @@ To understand one endpoint contract end-to-end:
 
 ## Related References
 
-- `docs/reference/packages/common.md`
-- `docs/reference/packages/corpus.md`
-- `docs/reference/packages/fragmentarium.md`
-- `docs/reference/packages/transliteration.md`
+- `backend-docs/standards/api-endpoint-catalog.md`
+- `backend-docs/standards/endpoint-contract-register.md`
+- `backend-docs/standards/authorization-matrix.md`
+- `backend-docs/guides/backend-service-map.md`

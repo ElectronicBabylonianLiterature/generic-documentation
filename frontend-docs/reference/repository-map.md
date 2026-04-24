@@ -3,6 +3,11 @@
 ## Purpose
 High-level map from top-level source directories to their architectural role.
 
+## Boundary Conventions
+- Feature modules should keep domain logic, application orchestration, and infrastructure adapters aligned.
+- Shared modules should expose stable contracts to reduce cross-feature coupling.
+- Routing and transport modules are platform boundaries, not feature logic containers.
+
 ## Map
 - `src/about`: informational and editorial content UI
 - `src/afo-register`: register search domain
@@ -25,3 +30,18 @@ High-level map from top-level source directories to their architectural role.
 - `src/signs`: cuneiform sign domain
 - `src/test-support`: fixtures, drivers, fake APIs
 - `src/transliteration`: transliteration domain and transformations
+
+## Directory-Level Risk Notes
+- `src/router`: route contract drift can break deep links and navigation.
+- `src/http`: transport changes can affect all backend integrations.
+- `src/auth`: token/scope regressions can break protected operations globally.
+- `src/transliteration`, `src/corpus`, `src/fragmentarium`: shared model drift risk.
+
+## Typical Change Mapping
+
+| Change Type | Usually Touched Areas |
+| --- | --- |
+| New endpoint integration | `src/<feature>/infrastructure`, `src/<feature>/domain`, `src/http` |
+| New route/page | `src/router`, `src/<feature>/ui`, possibly `src/<feature>/application` |
+| Shared component behavior | `src/common`, consuming feature UI modules |
+| Auth behavior change | `src/auth`, affected mutation/read workflows |

@@ -1,32 +1,65 @@
 # eBL Frontend Documentation
 
-This folder contains comprehensive engineering documentation for the eBL frontend codebase, organized for architecture understanding, feature ownership, API/contract traceability, and operations readiness.
+This documentation set is architecture-first and domain-first. It explains how the system works and how to change it safely without maintaining one document per source file.
+
+## Goals
+- Provide practical onboarding and implementation guidance.
+- Document product domains, routes, and backend-facing contracts.
+- Preserve operational and testing standards required for safe releases.
 
 ## Scope
 - Includes repository code and configuration except environment files (`.env*`).
-- Includes implementation, test, route, and endpoint traceability references.
+- Uses backend schema as the source of truth for request and response names.
 
-## Structure
-- `architecture/` - dependency model, runtime flows, and sequence diagrams.
-- `features/` - per-feature docs with invariants, edge cases, failure modes, and traceability links.
-- `guides/` - development workflow, testing strategy, and onboarding/runbook procedures.
-- `reference/` - inventories for files, symbols, endpoints, module behavior, and change-log templates.
+## Intended Audience
+- New engineers onboarding to the eBL frontend.
+- Feature engineers implementing or refactoring behavior.
+- Reviewers validating architecture, routing, and contract changes.
+- Release owners preparing safe production rollouts.
+
+## Documentation Map
+1. [architecture/overview.md](architecture/overview.md)
+	- System architecture, runtime flow, and dependency boundaries.
+2. [features/overview.md](features/overview.md)
+	- Product domains, ownership boundaries, integrations, and risks.
+3. [reference/repository-map.md](reference/repository-map.md)
+	- High-level map from source directories to responsibilities.
+4. [reference/api-and-data-contracts.md](reference/api-and-data-contracts.md)
+	- API transport contract, endpoint groups, auth and error semantics.
+5. [reference/route-catalog.md](reference/route-catalog.md)
+	- Supported route families and path patterns.
+6. [guides/engineering-playbook.md](guides/engineering-playbook.md)
+	- Local development workflow, operations, runbook, and release checks.
+7. [guides/testing-strategy.md](guides/testing-strategy.md)
+	- Testing architecture, validation focus, and quality gates.
+8. [reference/change-log-template.md](reference/change-log-template.md)
+	- Standard release note template for behavior and contract changes.
 
 ## Recommended Reading Order
-1. [docs/architecture/overview.md](docs/architecture/overview.md)
-2. [docs/architecture/runtime-and-data-flow.md](docs/architecture/runtime-and-data-flow.md)
-3. [docs/guides/development-workflow.md](docs/guides/development-workflow.md)
-4. [docs/guides/testing-strategy.md](docs/guides/testing-strategy.md)
-5. [docs/guides/onboarding-and-runbook.md](docs/guides/onboarding-and-runbook.md)
-6. [docs/features/README.md](docs/features/README.md)
-7. [docs/reference/code-index.md](docs/reference/code-index.md)
-8. [docs/reference/module-behavior-catalog.md](docs/reference/module-behavior-catalog.md)
-9. [docs/reference/symbol-catalog.md](docs/reference/symbol-catalog.md)
-10. [docs/reference/api-endpoints.md](docs/reference/api-endpoints.md)
+1. [architecture/overview.md](architecture/overview.md)
+2. [features/overview.md](features/overview.md)
+3. [reference/repository-map.md](reference/repository-map.md)
+4. [reference/api-and-data-contracts.md](reference/api-and-data-contracts.md)
+5. [reference/route-catalog.md](reference/route-catalog.md)
+6. [guides/engineering-playbook.md](guides/engineering-playbook.md)
+7. [guides/testing-strategy.md](guides/testing-strategy.md)
 
-## Traceability Artifacts
-- Full repository inventory: [docs/reference/code-index.md](docs/reference/code-index.md)
-- Per-module behavior map: [docs/reference/module-behavior-catalog.md](docs/reference/module-behavior-catalog.md)
-- Exported function/class/interface index: [docs/reference/symbol-catalog.md](docs/reference/symbol-catalog.md)
-- Endpoint catalog and examples: [docs/reference/api-endpoints.md](docs/reference/api-endpoints.md), [docs/reference/api-schema-examples.md](docs/reference/api-schema-examples.md)
-- Feature file maps: [docs/reference/file-maps](docs/reference/file-maps)
+## Task-Oriented Paths
+
+| If You Need To | Read |
+| --- | --- |
+| Understand system boundaries and flows | `architecture/overview.md` |
+| Identify which feature/domain owns behavior | `features/overview.md`, `reference/repository-map.md` |
+| Add or change backend integration | `reference/api-and-data-contracts.md`, `guides/testing-strategy.md` |
+| Add or change routes/deep links | `reference/route-catalog.md`, `guides/engineering-playbook.md` |
+| Prepare release notes | `reference/change-log-template.md`, `guides/engineering-playbook.md` |
+
+## Maintenance Rules
+- Keep docs at architecture and domain level, not file-by-file.
+- Update contracts and routes docs whenever backend-facing behavior changes.
+- Update runbook/testing docs when release gates or quality expectations change.
+
+## Documentation Quality Bar
+- Every behavior change should be traceable through domain, route, and contract docs.
+- Documentation should explain decision boundaries, not restate implementation details.
+- New docs should merge into existing pages unless a distinct architectural concern requires a new file.

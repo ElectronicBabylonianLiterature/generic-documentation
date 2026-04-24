@@ -52,6 +52,6 @@ This document defines an initial reliability baseline for the API and can be ref
 
 ## Related Docs
 
-- docs/runbooks/incident-response.md
-- docs/operations/deployment.md
-- docs/standards/error-status-matrix.md
+- backend-docs/runbooks/incident-response.md
+- backend-docs/operations/deployment.md
+- backend-docs/standards/error-status-matrix.md

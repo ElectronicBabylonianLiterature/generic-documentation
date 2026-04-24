@@ -41,6 +41,6 @@ Before release with API contract changes:
 
 ## References
 
-- `docs/standards/api-endpoint-catalog.md`
-- `docs/standards/authorization-matrix.md`
-- `docs/standards/error-status-matrix.md`
+- `backend-docs/standards/api-endpoint-catalog.md`
+- `backend-docs/standards/authorization-matrix.md`
+- `backend-docs/standards/error-status-matrix.md`

@@ -21,18 +21,18 @@ Use repository task commands:
 ## Change Types and Required Docs Updates
 
 1. Route/resource changes
-- Update `docs/standards/api-endpoint-catalog.md`.
-- Update relevant domain guide in `docs/guides/`.
+- Update `backend-docs/standards/api-endpoint-catalog.md`.
+- Update relevant domain guide in `backend-docs/guides/`.
 
 2. Scope/auth changes
-- Update `docs/standards/authorization-matrix.md`.
-- Update `docs/security/security-model.md`.
+- Update `backend-docs/standards/authorization-matrix.md`.
+- Update `backend-docs/security/security-model.md`.
 
 3. Error handling changes
-- Update `docs/standards/error-status-matrix.md`.
+- Update `backend-docs/standards/error-status-matrix.md`.
 
 4. Architecture/process changes
-- Add or update ADR in `docs/adr/`.
+- Add or update ADR in `backend-docs/adr/`.
 
 ## Review Checklist
 

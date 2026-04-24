@@ -1,38 +1,54 @@
 # Reference: Route Catalog
 
-Routes derived from router files.
+## Purpose
+Current route families and path patterns used by the application router.
 
-- Path: /about/* - Source: [src/router/aboutRoutes.tsx#L69](src/router/aboutRoutes.tsx#L69)
-- Path: /bibliography/afo-register - Source: [src/router/bibliographyRoutes.tsx#L101](src/router/bibliographyRoutes.tsx#L101)
-- Path: /bibliography/* - Source: [src/router/bibliographyRoutes.tsx#L126](src/router/bibliographyRoutes.tsx#L126)
-- Path: /bibliography/references/new-reference - Source: [src/router/bibliographyRoutes.tsx#L29](src/router/bibliographyRoutes.tsx#L29)
-- Path: /bibliography/references/:id - Source: [src/router/bibliographyRoutes.tsx#L45](src/router/bibliographyRoutes.tsx#L45)
-- Path: /bibliography/references/:id/edit - Source: [src/router/bibliographyRoutes.tsx#L65](src/router/bibliographyRoutes.tsx#L65)
-- Path: /bibliography/references - Source: [src/router/bibliographyRoutes.tsx#L81](src/router/bibliographyRoutes.tsx#L81)
-- Path: /corpus - Source: [src/router/corpusRoutes.tsx#L115](src/router/corpusRoutes.tsx#L115)
-- Path: /corpus/:genre - Source: [src/router/corpusRoutes.tsx#L129](src/router/corpusRoutes.tsx#L129)
-- Path: /corpus/* - Source: [src/router/corpusRoutes.tsx#L150](src/router/corpusRoutes.tsx#L150)
-- Path: /corpus/:genre/:category/:index/:stage/:chapter/edit - Source: [src/router/corpusRoutes.tsx#L57](src/router/corpusRoutes.tsx#L57)
-- Path: /corpus/:genre/:category/:index/:stage/:chapter - Source: [src/router/corpusRoutes.tsx#L71](src/router/corpusRoutes.tsx#L71)
-- Path: /corpus/:genre/:category/:index - Source: [src/router/corpusRoutes.tsx#L94](src/router/corpusRoutes.tsx#L94)
-- Path: /dictionary/:id/edit - Source: [src/router/dictionaryRoutes.tsx#L32](src/router/dictionaryRoutes.tsx#L32)
-- Path: /dictionary/:id - Source: [src/router/dictionaryRoutes.tsx#L43](src/router/dictionaryRoutes.tsx#L43)
-- Path: /dictionary - Source: [src/router/dictionaryRoutes.tsx#L66](src/router/dictionaryRoutes.tsx#L66)
-- Path: /dictionary/* - Source: [src/router/dictionaryRoutes.tsx#L80](src/router/dictionaryRoutes.tsx#L80)
-- Path: /impressum - Source: [src/router/footerRoutes.tsx#L16](src/router/footerRoutes.tsx#L16)
-- Path: /datenschutz - Source: [src/router/footerRoutes.tsx#L27](src/router/footerRoutes.tsx#L27)
-- Path: /library/:id/match - Source: [src/router/fragmentariumRoutes.tsx#L105](src/router/fragmentariumRoutes.tsx#L105)
-- Path: /library/:id/annotate - Source: [src/router/fragmentariumRoutes.tsx#L121](src/router/fragmentariumRoutes.tsx#L121)
-- Path: /library/:id/record - Source: [src/router/fragmentariumRoutes.tsx#L133](src/router/fragmentariumRoutes.tsx#L133)
-- Path: /library/:id - Source: [src/router/fragmentariumRoutes.tsx#L149](src/router/fragmentariumRoutes.tsx#L149)
-- Path: /library - Source: [src/router/fragmentariumRoutes.tsx#L179](src/router/fragmentariumRoutes.tsx#L179)
-- Path: /library/* - Source: [src/router/fragmentariumRoutes.tsx#L204](src/router/fragmentariumRoutes.tsx#L204)
-- Path: /library/search - Source: [src/router/fragmentariumRoutes.tsx#L80](src/router/fragmentariumRoutes.tsx#L80)
-- Path: /library/:id/html - Source: [src/router/FullPageRoutes.tsx#L13](src/router/FullPageRoutes.tsx#L13)
-- Path: /sitemap - Source: [src/router/router.tsx#L31](src/router/router.tsx#L31)
-- Path: /sitemap/sitemap.xml - Source: [src/router/router.tsx#L34](src/router/router.tsx#L34)
-- Path: / - Source: [src/router/router.tsx#L55](src/router/router.tsx#L55)
-- Path: /signs/:id - Source: [src/router/signRoutes.tsx#L25](src/router/signRoutes.tsx#L25)
-- Path: /signs - Source: [src/router/signRoutes.tsx#L46](src/router/signRoutes.tsx#L46)
-- Path: /signs/* - Source: [src/router/signRoutes.tsx#L60](src/router/signRoutes.tsx#L60)
-- Path: /tools/* - Source: [src/router/toolsRoutes.tsx#L108](src/router/toolsRoutes.tsx#L108)
+## Route Families
+
+| Area | Path Patterns |
+| --- | --- |
+| Root and Static | `/`, `/sitemap`, `/sitemap/sitemap.xml` |
+| About | `/about/*` |
+| Fragmentarium | `/library`, `/library/search`, `/library/:id`, `/library/:id/match`, `/library/:id/annotate`, `/library/:id/record`, `/library/:id/html`, `/library/*` |
+| Corpus | `/corpus`, `/corpus/:genre`, `/corpus/:genre/:category/:index`, `/corpus/:genre/:category/:index/:stage/:chapter`, `/corpus/:genre/:category/:index/:stage/:chapter/edit`, `/corpus/*` |
+| Dictionary | `/dictionary`, `/dictionary/:id`, `/dictionary/:id/edit`, `/dictionary/*` |
+| Bibliography | `/bibliography/references/new-reference`, `/bibliography/references`, `/bibliography/references/:id`, `/bibliography/references/:id/edit`, `/bibliography/afo-register`, `/bibliography/*` |
+| Signs | `/signs`, `/signs/:id`, `/signs/*` |
+| Tools | `/tools/*` |
+| Legal/Footer | `/impressum`, `/datenschutz` |
+
+## Route Behavior Classes
+- Static informational routes: mostly content-driven, low contract risk.
+- Search/list routes: query-driven routes with pagination/filter coupling.
+- Detail routes: identifier-based routes with strict data-loading expectations.
+- Edit/mutation routes: auth-sensitive flows with higher regression risk.
+- Utility routes: sitemap and other operational/static endpoints.
+
+## Ownership by Router Modules
+- `src/router/fragmentariumRoutes.tsx`
+- `src/router/corpusRoutes.tsx`
+- `src/router/dictionaryRoutes.tsx`
+- `src/router/bibliographyRoutes.tsx`
+- `src/router/signRoutes.tsx`
+- `src/router/aboutRoutes.tsx`
+- `src/router/toolsRoutes.tsx`
+- `src/router/footerRoutes.tsx`
+- `src/router/FullPageRoutes.tsx`
+- `src/router/router.tsx`
+
+## Route Change Guidance
+- Preserve deep-link compatibility unless migration is explicitly planned.
+- Update this catalog and release notes when adding or changing path structure.
+- Validate route-level data loading and error handling for changed paths.
+
+## Route Change Process
+1. Declare route addition/change and expected compatibility.
+2. Update route definitions and related navigation links.
+3. Validate direct deep-link entry and back/forward browser behavior.
+4. Validate route-level fallback behavior for missing/invalid identifiers.
+5. Update release notes with migration guidance when path contracts change.
+
+## High-Risk Route Changes
+- Renaming existing path segments used in external bookmarks.
+- Changing dynamic parameter semantics without compatibility handling.
+- Changing route guards for auth-sensitive pages.

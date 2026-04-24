@@ -26,6 +26,7 @@ Endpoints:
 - `/signs`
 - `/signs/{sign_name}`
 - `/signs/{sign_name}/images`
+- `/signs/{sign_name}/images/cluster/{cluster_id}`
 - `/signs/all`
 - `/signs/{sign_name}/{sort_era}`
 - `/signs/transliteration/{line}`
@@ -68,7 +69,7 @@ Key modules:
 
 ## Suggested Deep Links
 
-- `docs/reference/packages/dictionary.md`
-- `docs/reference/packages/signs.md`
-- `docs/reference/packages/lemmatization.md`
-- `docs/reference/packages/transliteration.md`
+- `backend-docs/guides/backend-service-map.md`
+- `backend-docs/guides/request-response-contracts.md`
+- `backend-docs/standards/api-endpoint-catalog.md`
+- `backend-docs/standards/authorization-matrix.md`

@@ -55,6 +55,6 @@ This document defines data classes and retention guidance for API domains.
 
 ## Related Docs
 
-- docs/security/security-model.md
-- docs/runbooks/backup-and-restore.md
-- docs/standards/authorization-matrix.md
+- backend-docs/security/security-model.md
+- backend-docs/runbooks/backup-and-restore.md
+- backend-docs/standards/authorization-matrix.md

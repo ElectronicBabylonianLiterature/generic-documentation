@@ -4,9 +4,9 @@ Use this checklist to evaluate whether backend documentation meets industry expe
 
 ## API Contract Documentation
 
-- [x] Route inventory exists and is code-derived (`docs/standards/api-endpoint-catalog.md`).
-- [x] Authorization matrix exists (`docs/standards/authorization-matrix.md`).
-- [x] Error/status mapping exists (`docs/standards/error-status-matrix.md`).
+- [x] Route inventory exists and is code-derived (`backend-docs/standards/api-endpoint-catalog.md`).
+- [x] Authorization matrix exists (`backend-docs/standards/authorization-matrix.md`).
+- [x] Error/status mapping exists (`backend-docs/standards/error-status-matrix.md`).
 - [ ] Every endpoint includes request examples for happy path.
 - [ ] Every endpoint includes non-happy-path examples.
 - [ ] Every endpoint explicitly lists status codes and error payload examples.

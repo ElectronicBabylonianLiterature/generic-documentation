@@ -62,4 +62,4 @@ The test suite under `ebl/tests/` mirrors domain structure and validates:
 - repository queries/index behavior
 - route behavior and authorization constraints
 
-Use `docs/testing/test-suite.md` and package references for test file discovery.
+Use `backend-docs/testing/test-suite.md` for test strategy and execution guidance.

@@ -24,11 +24,11 @@ Positive:
 
 Trade-offs:
 - Contract and behavior discovery spans multiple layers.
-- Requires robust documentation and generated references for maintainability.
+- Requires robust standards and domain documentation for maintainability.
 
 ## Implementation References
 
 - `ebl/app.py`
 - `ebl/context.py`
 - `ebl/*/infrastructure/*.py`
-- `docs/guides/dependency-and-data-flow.md`
+- `backend-docs/guides/dependency-and-data-flow.md`

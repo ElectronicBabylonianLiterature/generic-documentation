@@ -1,31 +1,23 @@
 # Documentation Status
 
-This status page summarizes documentation maturity after the standards uplift.
+This page tracks documentation maturity for the backend service.
 
-## Completed Artifacts
+## Current Baseline
 
-- Route catalog: `docs/standards/api-endpoint-catalog.md`
-- Authorization matrix: `docs/standards/authorization-matrix.md`
-- Error/status matrix: `docs/standards/error-status-matrix.md`
-- Domain guides: `docs/guides/`
-- Security model: `docs/security/security-model.md`
-- Runbooks: `docs/runbooks/`
-- ADRs: `docs/adr/`
-- API lifecycle policy: `docs/policies/api-versioning-and-deprecation.md`
-- Developer contribution guide: `docs/developer/contribution-and-review.md`
-- Troubleshooting matrix: `docs/developer/troubleshooting-matrix.md`
-- SLO/SLI baseline: `docs/operations/slo-sli-and-alerting.md`
-- Data classification/retention: `docs/security/data-classification-and-retention.md`
-- Docs drift governance: `docs/standards/docs-drift-governance.md`
+- Endpoint inventory is maintained in [API Endpoint Catalog](api-endpoint-catalog.md).
+- Auth scope coverage is maintained in [Authorization Matrix](authorization-matrix.md).
+- Error/status behavior is maintained in [Error and Status Mapping](error-status-matrix.md).
+- Contract governance is defined in [Endpoint Contract Register](endpoint-contract-register.md).
+- Domain and architecture narratives are maintained under `backend-docs/guides/` and `backend-docs/architecture/`.
 
-## Remaining Improvements for Full Enterprise Maturity
+## Outstanding Improvements
 
-- Endpoint-level example payload sets for every route.
-- Automated docs drift checks in CI.
-- Data model diagrams linked to domain docs.
+- Add representative request/response examples for each write endpoint family.
+- Automate docs drift checks in CI for route/scope/error changes.
+- Add and maintain architecture/data diagrams for critical domains.
 
-## Suggested Maintenance Cadence
+## Maintenance Cadence
 
-- On each route/auth/error change: update standards matrices in same PR.
-- On each architectural change: add/update ADR.
-- Monthly: review runbooks and security model for operational drift.
+- Per PR: route/scope/error changes include corresponding standards updates.
+- Per architecture change: add or update an ADR.
+- Monthly: review runbooks, security model, and SLO docs for drift.

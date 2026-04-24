@@ -65,8 +65,7 @@ Behavior:
 
 ## Suggested Deep Links
 
-- `docs/reference/packages/files.md`
-- `docs/reference/packages/markup.md`
-- `docs/reference/packages/cache.md`
-- `docs/reference/packages/users.md`
-- `docs/reference/packages/common.md`
+- `backend-docs/guides/backend-service-map.md`
+- `backend-docs/guides/request-response-contracts.md`
+- `backend-docs/standards/api-endpoint-catalog.md`
+- `backend-docs/standards/error-status-matrix.md`

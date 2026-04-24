@@ -40,6 +40,15 @@ Endpoints:
 - `/dossiers/filter`
 - `/dossiers/suggestions`
 
+## Provenance
+
+Route registration: `ebl/provenance/web/bootstrap.py`
+
+Endpoints:
+- `/provenances`
+- `/provenances/{id_}`
+- `/provenances/{id_}/children`
+
 ## Data Access Patterns
 
 All three domains follow repository-backed service/resource patterns:
@@ -49,6 +58,6 @@ All three domains follow repository-backed service/resource patterns:
 
 ## Suggested Deep Links
 
-- `docs/reference/packages/bibliography.md`
-- `docs/reference/packages/afo_register.md`
-- `docs/reference/packages/dossiers.md`
+- `backend-docs/guides/backend-service-map.md`
+- `backend-docs/guides/request-response-contracts.md`
+- `backend-docs/standards/api-endpoint-catalog.md`

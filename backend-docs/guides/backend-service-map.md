@@ -1,83 +1,54 @@
 # Backend Service Map
 
-This guide is a narrative map of the backend modules, how they are wired into the Falcon application, and where to find implementation and generated reference pages.
+This guide maps backend capabilities to owning domains and route entry points.
 
-## Application Composition
+## Composition Root
 
-The app assembly starts in `ebl/app.py` and uses `Context` from `ebl/context.py` to construct infrastructure dependencies, service objects, and route registration.
+Application startup occurs in `ebl/app.py`:
+1. Build infrastructure dependencies and repositories.
+2. Build `Context` with service dependencies.
+3. Create Falcon app and attach middleware.
+4. Register route sets per domain via `create_*_routes` bootstraps.
 
-Initialization phases:
-1. Build cross-cutting infrastructure:
-- MongoDB client and database handles
-- Auth backends (Auth0 + guest fallback)
-- Caching layers
-- Repository implementations
-2. Create Falcon app:
-- CORS enabled
-- Auth middleware attached
-- Error handling registered
-3. Register domain route modules:
-- signs
-- bibliography
-- corpus
-- dictionary
-- files
-- fragmentarium
-- lemmatization
-- markup
-- afo_register
-- dossiers
+## Route Registration Ownership
 
-## Domain Modules and Primary Responsibilities
+| Domain Area | Route Bootstrap |
+|---|---|
+| Signs | `ebl/signs/web/bootstrap.py` |
+| Bibliography | `ebl/bibliography/web/bootstrap.py` |
+| Corpus | `ebl/corpus/web/bootstrap.py` |
+| Dictionary | `ebl/dictionary/web/bootstrap.py` |
+| Files | `ebl/files/web/bootstrap.py` |
+| Fragmentarium | `ebl/fragmentarium/web/bootstrap.py` |
+| Lemmatization | `ebl/lemmatization/web/bootstrap.py` |
+| Markup | `ebl/markup/web/bootstrap.py` |
+| AfO Register | `ebl/afo_register/web/bootstrap.py` |
+| Dossiers | `ebl/dossiers/web/bootstrap.py` |
+| Provenance | `ebl/provenance/web/bootstrap.py` |
 
-### Core runtime and composition
-- `ebl/app.py`: environment boot, context creation, route composition.
-- `ebl/context.py`: dependency container and factory methods for derived services.
-- `ebl/error_handler.py`: API error mapping strategy.
-- `ebl/changelog.py`: change tracking hooks.
+## Capability Map
 
-### Corpus and text domain
-- `ebl/corpus`: text/chapter retrieval, line editing/import, query surfaces.
-- Route wiring: `ebl/corpus/web/bootstrap.py`.
-- Service root: `ebl/corpus/application/corpus.py`.
+| Capability Group | Primary Responsibilities | Main Integration Dependencies |
+|---|---|---|
+| Corpus | Text/chapter retrieval, search, chapter updates | Transliteration query factory, bibliography, changelog, cache |
+| Fragmentarium | Fragment retrieval/query, metadata updates, annotations, media | Dictionary, bibliography, photo/folio storage, AI client, cache |
+| Lexical Services | Word/sign search, transliteration helpers, lemma suggestions | Sign repository, annotation/media services, lemma repository |
+| Reference Services | Bibliography, AfO register, dossiers, provenance lookups | Domain-specific repositories, shared query parsing |
+| Support Services | Auth, error mapping, file delivery, cache, changelog | Auth0, Falcon middleware, MongoDB/GridFS |
 
-### Fragmentarium domain
-- `ebl/fragmentarium`: fragment retrieval, query/filter surfaces, metadata updates, annotation and media-driven operations.
-- Route wiring: `ebl/fragmentarium/web/bootstrap.py`.
-- Service roots: `ebl/fragmentarium/application/fragmentarium.py`, `ebl/fragmentarium/application/fragment_finder.py`, `ebl/fragmentarium/application/fragment_updater.py`.
+## Cross-Cutting Flows
 
-### Lexical and transliteration-related domains
-- `ebl/dictionary`: dictionary word search and updates.
-- `ebl/signs`: sign repository/search and transliteration parse helper endpoints.
-- `ebl/lemmatization`: lemma suggestion search endpoint.
-- `ebl/transliteration`: transliteration parsing, query building, line/token schemas, and parallel-line services used by corpus and fragmentarium.
+- Authentication and scopes: enforced by middleware plus route-level guards.
+- Contract validation: schema classes in web/application layers.
+- Persistence: repository adapters in infrastructure modules.
+- Observability and reliability: Sentry integration, runbooks, SLO/SLI baselines.
 
-### Reference/catalog domains
-- `ebl/bibliography`: bibliography lookup and listing.
-- `ebl/afo_register`: AfO register search/suggestions/text-number joins.
-- `ebl/dossiers`: dossier search/filter/suggestions.
+## Related Guides
 
-### Utility/support domains
-- `ebl/files`: image/file serving from GridFS-backed repository.
-- `ebl/cache`: cache primitives and repository adapter.
-- `ebl/common`: common schemas, enums, query abstractions.
-- `ebl/users`: auth integration and user model/scopes.
-- `ebl/io`: import/export and data ingestion helpers.
-- `ebl/alignment`: alignment algorithms and update support.
-- `ebl/chronology`: chronology static data and chronology-specific logic.
-- `ebl/markup`: text markup conversion endpoints.
-
-## Where To Continue Reading
-
-Narrative domain guides:
-- `docs/guides/domain-corpus.md`
-- `docs/guides/domain-fragmentarium.md`
-- `docs/guides/domain-lexical-services.md`
-- `docs/guides/domain-reference-services.md`
-- `docs/guides/domain-support-services.md`
-- `docs/guides/request-response-contracts.md`
-- `docs/guides/dependency-and-data-flow.md`
-
-Auto-generated references:
-- Package references: `docs/reference/packages/`
-- File references: `docs/reference/files/`
+- [Domain: Corpus](domain-corpus.md)
+- [Domain: Fragmentarium](domain-fragmentarium.md)
+- [Domain: Lexical Services](domain-lexical-services.md)
+- [Domain: Reference Services](domain-reference-services.md)
+- [Domain: Support Services](domain-support-services.md)
+- [Request and Response Contracts](request-response-contracts.md)
+- [Dependency and Data Flow](dependency-and-data-flow.md)

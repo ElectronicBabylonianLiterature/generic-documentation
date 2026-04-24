@@ -21,6 +21,6 @@ This matrix maps common failure signatures to likely causes and first-response a
 
 ## Related Docs
 
-- docs/runbooks/incident-response.md
-- docs/security/security-model.md
-- docs/operations/slo-sli-and-alerting.md
+- backend-docs/runbooks/incident-response.md
+- backend-docs/security/security-model.md
+- backend-docs/operations/slo-sli-and-alerting.md

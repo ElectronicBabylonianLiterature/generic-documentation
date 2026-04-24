@@ -77,7 +77,7 @@ Primary threat categories and current mitigations:
 
 ## Related References
 
-- `docs/standards/authorization-matrix.md`
-- `docs/standards/error-status-matrix.md`
-- `docs/policies/api-versioning-and-deprecation.md`
+- `backend-docs/standards/authorization-matrix.md`
+- `backend-docs/standards/error-status-matrix.md`
+- `backend-docs/policies/api-versioning-and-deprecation.md`
 - `README.md` Auth0 section

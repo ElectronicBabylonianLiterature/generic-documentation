@@ -34,5 +34,5 @@ Reviewers should block merge when code-behavior changes are missing required doc
 
 ## Related Docs
 
-- docs/standards/README.md
-- docs/developer/contribution-and-review.md
+- standards/README.md
+- ../developer/contribution-and-review.md

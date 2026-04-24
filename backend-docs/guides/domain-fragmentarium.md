@@ -40,7 +40,6 @@ Main endpoint families:
   - `/folios/{name}/{number}`
 - Taxonomy/reference lookup endpoints:
   - `/genres`
-  - `/provenances`
   - `/periods`
   - `/statistics`
   - `/findspots`
@@ -94,9 +93,7 @@ The repository is responsible for:
 
 ## Suggested Deep Links
 
-- `docs/reference/packages/fragmentarium.md`
-- `docs/reference/files/ebl__fragmentarium__web__bootstrap.py.md`
-- `docs/reference/files/ebl__fragmentarium__infrastructure__mongo_fragment_repository.py.md`
-- `docs/reference/files/ebl__fragmentarium__application__fragmentarium.py.md`
-- `docs/reference/files/ebl__fragmentarium__application__fragment_finder.py.md`
-- `docs/reference/files/ebl__fragmentarium__application__fragment_updater.py.md`
+- `backend-docs/guides/backend-service-map.md`
+- `backend-docs/guides/request-response-contracts.md`
+- `backend-docs/standards/api-endpoint-catalog.md`
+- `backend-docs/standards/authorization-matrix.md`

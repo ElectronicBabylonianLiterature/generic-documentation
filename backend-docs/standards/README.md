@@ -1,16 +1,20 @@
-# Standards and Governance Docs
+# Standards and Governance
 
-This folder contains code-derived API governance artifacts and process-quality guidance.
+This directory contains the API governance artifacts that must stay aligned with code behavior.
 
-## Core Matrices
+## Contract Standards
 
 - [API Endpoint Catalog](api-endpoint-catalog.md)
 - [Endpoint Contract Register](endpoint-contract-register.md)
 - [Authorization Matrix](authorization-matrix.md)
 - [Error and Status Mapping](error-status-matrix.md)
 
-## Quality and Status
+## Documentation Governance
 
+- [Docs Drift Governance](docs-drift-governance.md)
 - [Documentation Quality Checklist](documentation-quality-checklist.md)
 - [Documentation Status](documentation-status.md)
-- [Docs Drift Governance](docs-drift-governance.md)
+
+## Operating Rule
+
+When routes, scopes, schemas, or error mappings change, these standards docs are updated in the same change set.

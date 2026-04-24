@@ -81,7 +81,7 @@ The repository encapsulates chapter/text collection access and query aggregation
 
 ## Suggested Deep Links
 
-- `docs/reference/packages/corpus.md`
-- `docs/reference/files/ebl__corpus__web__bootstrap.py.md`
-- `docs/reference/files/ebl__corpus__application__corpus.py.md`
-- `docs/reference/files/ebl__corpus__infrastructure__mongo_text_repository.py.md`
+- `backend-docs/guides/backend-service-map.md`
+- `backend-docs/guides/request-response-contracts.md`
+- `backend-docs/standards/api-endpoint-catalog.md`
+- `backend-docs/standards/authorization-matrix.md`

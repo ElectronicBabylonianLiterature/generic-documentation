@@ -23,10 +23,10 @@ Positive:
 
 Trade-offs:
 - Authorization reasoning is distributed across resource classes and guard helpers.
-- Route-level policy visibility requires generated matrices.
+- Route-level policy visibility requires maintained standards matrices.
 
 ## Implementation References
 
 - `ebl/users/infrastructure/auth0.py`
 - `ebl/users/web/require_scope.py`
-- `docs/standards/authorization-matrix.md`
+- `backend-docs/standards/authorization-matrix.md`
