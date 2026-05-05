@@ -1,5 +1,7 @@
 # Reference: Repository Map
 
+Last updated: May 2026
+
 ## Purpose
 
 High-level map from top-level source directories to their architectural role.

@@ -1,5 +1,7 @@
 # Domain Guide: Corpus
 
+Last updated: May 2026
+
 This domain powers the text/chapter APIs and chapter-level operations such as line imports, line updates, alignment access, manuscripts, and chapter-level query surfaces.
 
 ## Route Surface

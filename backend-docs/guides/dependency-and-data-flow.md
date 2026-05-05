@@ -1,5 +1,7 @@
 # Dependency and Data Flow
 
+Last updated: May 2026
+
 This guide explains how data moves through the backend and where dependencies are introduced.
 
 ## Composition Root
@@ -45,7 +47,7 @@ Read endpoints may combine:
 
 ## Domain Interaction Patterns
 
-- Corpus and Fragmentarium both depend on transliteration/query primitives and bibliography support.
+- Corpus and Fragmentarium (Library) both depend on transliteration/query primitives and bibliography support.
 - Fragmentarium additionally composes dictionary/media/annotations components for rich responses.
 - Reference services (bibliography, AfO register, dossiers) provide lookup dimensions used by other domains.
 

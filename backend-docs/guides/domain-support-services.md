@@ -1,5 +1,7 @@
 # Domain Guide: Support Services
 
+Last updated: May 2026
+
 This guide covers utility and infrastructural services that are cross-cutting for all API domains.
 
 ## Files and Media

@@ -1,5 +1,7 @@
 # Engineering Playbook
 
+Last updated: May 2026
+
 ## Purpose
 
 Standard workflow for local development, delivery readiness, and production-support actions.

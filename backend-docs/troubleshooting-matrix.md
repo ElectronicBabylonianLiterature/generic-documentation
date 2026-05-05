@@ -1,5 +1,7 @@
 # Troubleshooting Matrix
 
+Last updated: May 2026
+
 This matrix maps common failure signatures to likely causes and first-response actions.
 
 | Symptom | Likely Cause | First Checks | Remediation |

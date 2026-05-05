@@ -1,5 +1,7 @@
 # Standards and Governance
 
+Last updated: May 2026
+
 This directory contains the API governance artifacts that must stay aligned with code behavior.
 
 ## Contract Standards

@@ -1,5 +1,7 @@
 # Feature Domains Overview
 
+Last updated: May 2026
+
 ## Purpose
 
 This document captures the frontend at product-domain level. It is the authoritative feature map for ownership, integrations, and change impact assessment.

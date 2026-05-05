@@ -1,5 +1,7 @@
 # Security Model
 
+Last updated: May 2026
+
 This document describes the backend security posture based on implemented authentication, authorization, and error-handling behavior.
 
 ## Authentication

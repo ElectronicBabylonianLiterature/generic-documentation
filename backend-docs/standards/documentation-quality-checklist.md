@@ -1,5 +1,7 @@
 # Documentation Quality Checklist
 
+Last updated: May 2026
+
 Use this checklist to evaluate whether backend documentation meets industry expectations for maintainability, operability, and consumer trust.
 
 ## API Contract Documentation

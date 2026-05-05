@@ -1,5 +1,7 @@
 # Backend Service Map
 
+Last updated: May 2026
+
 This guide maps backend capabilities to owning domains and route entry points.
 
 ## Composition Root
@@ -20,7 +22,7 @@ Application startup occurs in `ebl/app.py`:
 | Corpus | `ebl/corpus/web/bootstrap.py` |
 | Dictionary | `ebl/dictionary/web/bootstrap.py` |
 | Files | `ebl/files/web/bootstrap.py` |
-| Fragmentarium | `ebl/fragmentarium/web/bootstrap.py` |
+| Fragmentarium (Library) | `ebl/fragmentarium/web/bootstrap.py` |
 | Lemmatization | `ebl/lemmatization/web/bootstrap.py` |
 | Markup | `ebl/markup/web/bootstrap.py` |
 | AfO Register | `ebl/afo_register/web/bootstrap.py` |
@@ -32,7 +34,7 @@ Application startup occurs in `ebl/app.py`:
 | Capability Group | Primary Responsibilities | Main Integration Dependencies |
 |---|---|---|
 | Corpus | Text/chapter retrieval, search, chapter updates | Transliteration query factory, bibliography, changelog, cache |
-| Fragmentarium | Fragment retrieval/query, metadata updates, annotations, media | Dictionary, bibliography, photo/folio storage, AI client, cache |
+| Fragmentarium (Library) | Fragment retrieval/query, metadata updates, annotations, media | Dictionary, bibliography, photo/folio storage, AI client, cache |
 | Lexical Services | Word/sign search, transliteration helpers, lemma suggestions | Sign repository, annotation/media services, lemma repository |
 | Reference Services | Bibliography, AfO register, dossiers, provenance lookups | Domain-specific repositories, shared query parsing |
 | Support Services | Auth, error mapping, file delivery, cache, changelog | Auth0, Falcon middleware, MongoDB/GridFS |

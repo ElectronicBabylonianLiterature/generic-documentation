@@ -1,5 +1,7 @@
 # Testing Strategy
 
+Last updated: May 2026
+
 ## Purpose
 
 Define how the frontend validates domain behavior, UI behavior, and contract correctness with a predictable release gate.

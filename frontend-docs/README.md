@@ -1,5 +1,7 @@
 # eBL Frontend Documentation
 
+Last updated: May 2026
+
 This documentation set is architecture-first and domain-first. It explains how the system works and how to change it safely without maintaining one document per source file.
 
 ## Goals

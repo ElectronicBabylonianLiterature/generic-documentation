@@ -1,5 +1,7 @@
 # Policy: API Versioning and Deprecation
 
+Last updated: May 2026
+
 This policy defines how API changes should be introduced and communicated.
 
 ## Versioning Strategy

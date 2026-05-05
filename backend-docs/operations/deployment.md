@@ -1,5 +1,7 @@
 # Operations and Deployment
 
+Last updated: May 2026
+
 ## Build and Runtime Artifacts
 
 - `Dockerfile` (22 lines)

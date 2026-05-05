@@ -1,5 +1,7 @@
 # Error and Status Mapping
 
+Last updated: May 2026
+
 Derived from `ebl/error_handler.py`.
 
 | Exception Type | Handler | HTTP Status Behavior |

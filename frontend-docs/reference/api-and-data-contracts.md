@@ -1,5 +1,7 @@
 # Reference: API and Data Contracts
 
+Last updated: May 2026
+
 ## Purpose
 
 Authoritative frontend view of backend integration contracts: transport behavior, endpoint families, authentication modes, and error semantics.

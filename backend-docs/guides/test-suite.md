@@ -1,5 +1,7 @@
 # Testing Guide and Coverage Map
 
+Last updated: May 2026
+
 - Test-related files: 263
 - Total test lines: 127159
 

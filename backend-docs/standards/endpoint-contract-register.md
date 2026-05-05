@@ -1,5 +1,7 @@
 # Endpoint Contract Register
 
+Last updated: May 2026
+
 This register defines how contracts are documented and reviewed for every endpoint in the API.
 
 ## Scope Coverage

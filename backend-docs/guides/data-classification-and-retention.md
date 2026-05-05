@@ -1,5 +1,7 @@
 # Data Classification and Retention
 
+Last updated: May 2026
+
 This document defines data classes and retention guidance for API domains.
 
 ## Data Classes

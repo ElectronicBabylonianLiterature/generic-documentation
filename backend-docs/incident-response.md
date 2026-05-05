@@ -1,5 +1,7 @@
 # Runbook: Incident Response
 
+Last updated: May 2026
+
 This runbook defines a practical incident workflow for backend API outages, degradation, or data integrity concerns.
 
 ## Severity Levels
@@ -50,4 +52,4 @@ This runbook defines a practical incident workflow for backend API outages, degr
 
 - Publish incident report with timeline, root cause, and preventive actions.
 - Add/update regression tests for the failed path.
-- Update runbooks and ADR/policy docs if architecture/process changes were required.
+- Update runbooks and policy docs if architecture/process changes were required.

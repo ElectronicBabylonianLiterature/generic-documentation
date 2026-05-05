@@ -1,5 +1,7 @@
 # Architecture Overview
 
+Last updated: May 2026
+
 ## System Context
 
 The frontend is a React + TypeScript single-page application for eBL scholarly workflows. It supports fragment research, corpus navigation, lexical lookup, sign analysis, bibliography management, and related editorial tools.

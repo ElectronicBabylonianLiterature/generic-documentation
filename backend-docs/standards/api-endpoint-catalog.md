@@ -1,5 +1,7 @@
 # API Endpoint Catalog
 
+Last updated: May 2026
+
 Authoritative route inventory derived from route bootstraps and resource handlers.
 
 | URI | Resource Class | Methods | Scope Decorators | Dynamic Scope Guards | Resource Source | Bootstrap Source |

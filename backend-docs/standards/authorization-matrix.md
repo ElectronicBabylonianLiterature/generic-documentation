@@ -1,5 +1,7 @@
 # Authorization Matrix
 
+Last updated: May 2026
+
 Scope and guard coverage derived from resource decorators and guard functions.
 
 | Scope/Guard | Route Count | Routes |

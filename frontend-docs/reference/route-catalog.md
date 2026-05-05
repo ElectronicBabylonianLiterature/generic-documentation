@@ -1,5 +1,7 @@
 # Reference: Route Catalog
 
+Last updated: May 2026
+
 ## Purpose
 
 Current route families and path patterns used by the application router.

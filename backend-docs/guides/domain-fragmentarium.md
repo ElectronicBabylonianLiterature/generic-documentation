@@ -1,6 +1,8 @@
-# Domain Guide: Fragmentarium
+# Domain Guide: Fragmentarium (Library)
 
-Fragmentarium is the largest API surface in the backend and provides fragment search, retrieval, filtering, metadata updates, annotation workflows, media access, and cross-links to corpus context.
+Last updated: May 2026
+
+Fragmentarium (Library) is the largest API surface in the backend and provides fragment search, retrieval, filtering, metadata updates, annotation workflows, media access, and cross-links to corpus context.
 
 ## Route Surface
 

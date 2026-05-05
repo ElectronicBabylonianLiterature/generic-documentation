@@ -1,5 +1,7 @@
 # Domain Guide: Bibliography, AfO Register, and Dossiers
 
+Last updated: May 2026
+
 These domains provide reference-oriented search surfaces and are frequently used as supporting dimensions for corpus/fragment workflows.
 
 ## Bibliography

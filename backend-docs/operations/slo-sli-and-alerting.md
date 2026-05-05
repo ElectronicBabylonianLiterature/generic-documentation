@@ -1,5 +1,7 @@
 # SLO, SLI, and Alerting Baseline
 
+Last updated: May 2026
+
 This document defines an initial reliability baseline for the API and can be refined with production telemetry over time.
 
 ## Service Level Indicators (SLIs)

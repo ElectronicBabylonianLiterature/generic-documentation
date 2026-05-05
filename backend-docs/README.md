@@ -1,5 +1,7 @@
 # EBL API Backend Documentation
 
+Last updated: May 2026
+
 This folder contains architecture, API contract, security, operations, and engineering guidance for the EBL backend API.
 
 ## Documentation Principles
@@ -11,7 +13,7 @@ This folder contains architecture, API contract, security, operations, and engin
 
 ## Start Here
 
-- [Architecture Overview](architecture/overview.md)
+- [Architecture Overview](architecture.md)
 - [Backend Service Map](guides/backend-service-map.md)
 - [Dependency and Data Flow](guides/dependency-and-data-flow.md)
 
@@ -27,34 +29,29 @@ This folder contains architecture, API contract, security, operations, and engin
 ## Domain Guides
 
 - [Corpus Domain Guide](guides/domain-corpus.md)
-- [Fragmentarium Domain Guide](guides/domain-fragmentarium.md)
+- [Fragmentarium (Library) Domain Guide](guides/domain-fragmentarium.md)
 - [Lexical and Transliteration Guide](guides/domain-lexical-services.md)
 - [Reference Services Guide](guides/domain-reference-services.md)
 - [Support Services Guide](guides/domain-support-services.md)
 
 ## Security, Operations, and Reliability
 
-- [Security Model](security/security-model.md)
-- [Data Classification and Retention](security/data-classification-and-retention.md)
+- [Security Model](guides/security-model.md)
+- [Data Classification and Retention](guides/data-classification-and-retention.md)
 - [Deployment](operations/deployment.md)
 - [SLO, SLI, and Alerting](operations/slo-sli-and-alerting.md)
-- [Incident Response](runbooks/incident-response.md)
-- [Backup and Restore](runbooks/backup-and-restore.md)
+- [Incident Response](incident-response.md)
+- [Backup and Restore](backup-and-restore.md)
 
 ## Engineering Workflow and Governance
 
-- [Contribution and Review Guide](developer/contribution-and-review.md)
-- [Troubleshooting Matrix](developer/troubleshooting-matrix.md)
-- [Testing Guide](testing/test-suite.md)
-- [API Versioning and Deprecation Policy](policies/api-versioning-and-deprecation.md)
+- [Contribution and Review Guide](contribution-and-review.md)
+- [Troubleshooting Matrix](troubleshooting-matrix.md)
+- [Testing Guide](guides/test-suite.md)
+- [API Versioning and Deprecation Policy](api-versioning-and-deprecation.md)
 - [Docs Drift Governance](standards/docs-drift-governance.md)
 - [Documentation Quality Checklist](standards/documentation-quality-checklist.md)
 - [Documentation Status](standards/documentation-status.md)
-
-## Architecture Decisions
-
-- [ADR-0001 Auth and Scope Model](adr/ADR-0001-auth-and-scope-model.md)
-- [ADR-0002 Falcon and Mongo Architecture](adr/ADR-0002-falcon-mongo-service-architecture.md)
 
 ## Reference Position
 

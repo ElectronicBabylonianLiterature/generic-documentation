@@ -1,5 +1,7 @@
 # Developer Guide: Contribution and Review
 
+Last updated: May 2026
+
 This guide describes a high-confidence workflow for making backend changes while preserving API and data integrity.
 
 ## Local Workflow
@@ -37,7 +39,7 @@ Use repository task commands:
 
 1. Architecture/process changes
 
-- Add or update ADR in `backend-docs/adr/`.
+- Update [Architecture Overview](architecture.md) and relevant domain guides.
 
 ## Review Checklist
 

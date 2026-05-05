@@ -1,5 +1,7 @@
 # Documentation Drift Governance
 
+Last updated: May 2026
+
 This policy minimizes divergence between code and documentation.
 
 ## Required Update Triggers

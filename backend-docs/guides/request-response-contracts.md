@@ -1,5 +1,7 @@
 # Request and Response Contracts
 
+Last updated: May 2026
+
 This document describes where request validation and response serialization are defined, and how contracts propagate from endpoints to domain models.
 
 ## Contract Layers

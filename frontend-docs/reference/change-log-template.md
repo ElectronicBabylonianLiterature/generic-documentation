@@ -1,5 +1,7 @@
 # Change Log Template
 
+Last updated: May 2026
+
 ## Release
 
 - Version/Tag:

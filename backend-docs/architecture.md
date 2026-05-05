@@ -1,5 +1,7 @@
 # Architecture Overview
 
+Last updated: May 2026
+
 The EBL API is a Falcon-based backend organized around domain modules, repository-driven persistence, and explicit contract boundaries between web resources, application services, and domain models.
 
 ## System Context
@@ -12,6 +14,14 @@ Primary components:
 - Auth0-backed authentication with guest fallback.
 - Sentry error reporting.
 - EBL AI integration for annotation workflows.
+
+## Technology Stack
+
+- **Falcon** — chosen for explicit, lightweight route control and fine-grained middleware placement.
+- **MongoDB** — repository pattern over collections and aggregation pipelines; strong fit for query-heavy domain logic and text indexing.
+- **Context composition root** — `ebl/context.py` wires all service and repository dependencies; injected at startup via `ebl/app.py`.
+- **Marshmallow** — schema-driven contract validation and serialization at the application layer boundary.
+- **Auth0 (RS256 JWT)** — token verification with scope extraction from both `scope` and `permissions` claims; see [Security Model](guides/security-model.md).
 
 ## Layered Architecture
 
@@ -59,7 +69,7 @@ Application composition starts in `ebl/app.py`:
 ## Domain Capability Map
 
 - Corpus: text/chapter retrieval, search, and chapter-level mutation flows.
-- Fragmentarium: fragment search, metadata updates, media and annotation workflows.
+- Fragmentarium (Library): fragment search, metadata updates, media and annotation workflows.
 - Lexical services: dictionary, signs, lemmatization, transliteration support.
 - Reference services: bibliography, AfO register, dossiers, provenance.
 - Support services: files/media, cache, auth/users, markup, error handling, changelog.

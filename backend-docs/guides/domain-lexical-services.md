@@ -1,5 +1,7 @@
 # Domain Guide: Lexical and Transliteration Services
 
+Last updated: May 2026
+
 This guide covers dictionary, signs, lemmatization, and transliteration modules, which together provide lexical search, sign operations, lemma suggestions, and transliteration parsing/query support.
 
 ## Dictionary

@@ -1,5 +1,7 @@
 # Documentation Status
 
+Last updated: May 2026
+
 This page tracks documentation maturity for the backend service.
 
 ## Current Baseline
