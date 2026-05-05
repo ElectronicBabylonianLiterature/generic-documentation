@@ -7,6 +7,7 @@ This domain powers the text/chapter APIs and chapter-level operations such as li
 Routes are registered in `ebl/corpus/web/bootstrap.py`.
 
 Primary endpoints:
+
 - `/texts`
 - `/textsearch`
 - `/texts/{genre}/{category}/{index}`
@@ -33,9 +34,11 @@ HTTP methods are implemented through Falcon resource handlers (`on_get`, `on_pos
 ## Core Service and Dependencies
 
 Primary service object:
+
 - `Corpus` in `ebl/corpus/application/corpus.py`
 
 Key dependencies:
+
 - `MongoTextRepository` for read/write persistence
 - Bibliography facade from context
 - `Changelog` for update tracking
@@ -45,10 +48,12 @@ Key dependencies:
 ## Request and Response Shape
 
 Primary schema layers:
+
 - Application schemas: `ebl/corpus/application/schemas.py`, `display_schemas.py`, `id_schemas.py`, `record_schemas.py`, `lemmatization_schema.py`
 - Web/API schemas: `ebl/corpus/web/chapter_schemas.py`, `text_schema.py`, `display_schemas.py`, `alignment_schema.py`, `chapter_info_schema.py`
 
 Typical response flow:
+
 1. Resource loads and validates incoming media.
 2. Resource constructs IDs from route params (`create_chapter_id` and text IDs).
 3. Service executes repository operation.
@@ -59,12 +64,14 @@ Typical response flow:
 Line and chapter mutations invalidate chapter-specific cache entries via `ChapterCache` before persisting updates.
 
 Mutating operations include:
+
 - line edits/imports
 - chapter-level update routes
 
 ## Query Model
 
 Corpus query behavior combines:
+
 - lemma filters
 - transliteration filters
 - chapter/text scoping
@@ -74,6 +81,7 @@ Transliteration query parsing is delegated to transliteration query factories an
 ## Persistence and Indexing
 
 Mongo text persistence and index creation are managed in:
+
 - `ebl/corpus/infrastructure/mongo_text_repository.py`
 - related modify/query helpers under `ebl/corpus/infrastructure/`
 

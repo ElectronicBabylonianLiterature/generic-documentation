@@ -5,6 +5,7 @@ The EBL API is a Falcon-based backend organized around domain modules, repositor
 ## System Context
 
 Primary components:
+
 - Falcon HTTP API application.
 - MongoDB persistence for domain records.
 - GridFS-backed media/file storage.
@@ -15,26 +16,31 @@ Primary components:
 ## Layered Architecture
 
 1. Web Layer (`ebl/*/web`)
+
 - Route registration and request handling.
 - Route/query/body parsing and response serialization.
 - Scope/guard enforcement at endpoint level.
 
-2. Application Layer (`ebl/*/application`)
+1. Application Layer (`ebl/*/application`)
+
 - Orchestration of use cases.
 - Schema-driven input/output contract handling.
 - Composition of domain and repository operations.
 
-3. Domain Layer (`ebl/*/domain`)
+1. Domain Layer (`ebl/*/domain`)
+
 - Core entities, value objects, and invariants.
 - Domain-specific logic isolated from transport/storage concerns.
 
-4. Infrastructure Layer (`ebl/*/infrastructure`)
+1. Infrastructure Layer (`ebl/*/infrastructure`)
+
 - Mongo and GridFS adapters.
 - Query/pipeline construction and indexing behavior.
 
 ## Composition and Startup
 
 Application composition starts in `ebl/app.py`:
+
 - Build infrastructure dependencies and repositories.
 - Assemble `Context` with service dependencies.
 - Create Falcon app with auth and cache middleware.

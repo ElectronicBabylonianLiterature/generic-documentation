@@ -1,14 +1,17 @@
 # Reference: Repository Map
 
 ## Purpose
+
 High-level map from top-level source directories to their architectural role.
 
 ## Boundary Conventions
+
 - Feature modules should keep domain logic, application orchestration, and infrastructure adapters aligned.
 - Shared modules should expose stable contracts to reduce cross-feature coupling.
 - Routing and transport modules are platform boundaries, not feature logic containers.
 
 ## Map
+
 - `src/about`: informational and editorial content UI
 - `src/afo-register`: register search domain
 - `src/akkadian`: linguistic/transcription domain helpers
@@ -32,6 +35,7 @@ High-level map from top-level source directories to their architectural role.
 - `src/transliteration`: transliteration domain and transformations
 
 ## Directory-Level Risk Notes
+
 - `src/router`: route contract drift can break deep links and navigation.
 - `src/http`: transport changes can affect all backend integrations.
 - `src/auth`: token/scope regressions can break protected operations globally.

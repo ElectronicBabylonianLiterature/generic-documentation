@@ -1,9 +1,11 @@
 # Feature Domains Overview
 
 ## Purpose
+
 This document captures the frontend at product-domain level. It is the authoritative feature map for ownership, integrations, and change impact assessment.
 
 ## Domain Ownership Model
+
 - Each domain owns its business rules, repository mappings, and UI behavior.
 - Shared platform modules provide reusable primitives but should not absorb domain-specific logic.
 - Cross-domain behavior should be orchestrated in application services, not by direct feature-to-feature imports where avoidable.
@@ -55,34 +57,40 @@ This document captures the frontend at product-domain level. It is the authorita
 | Bibliography | AFO Register, Auth | Reference creation, lookup, and edit workflows |
 
 ## Change Impact Heuristics
+
 - If a change modifies a domain model used by multiple domains, treat it as cross-domain risk and update tests in every impacted consumer.
 - If a change modifies query parameter behavior, validate dictionary, signs, and any query-driven route flows.
 - If a change modifies auth assumptions, validate all mutation and protected navigation paths.
 
 ## Domain Invariants
+
 - Repository and API boundary logic should remain in infrastructure or transport layers.
 - Domain transformations should remain explicit and typed.
 - Shared concerns must be centralized in platform modules, not duplicated per feature.
 - Feature UI should handle absent or partial backend data without crashing.
 
 ## High-Risk Cross-Domain Changes
+
 - Changes to transliteration and corpus model contracts.
 - Fragmentarium route or payload changes.
 - Authentication assumptions around mutation flows.
 - Query model changes that affect dictionary/sign search behavior.
 
 ## Domain Review Checklist
+
 1. Does the change stay inside the owning domain boundary?
 2. Are repository mappings and domain types updated together?
 3. Are route and contract docs updated when behavior changed?
 4. Are cross-domain regressions explicitly validated?
 
 ## Expected Updates When Features Change
+
 - Update [../reference/api-and-data-contracts.md](../reference/api-and-data-contracts.md) when endpoint behavior changes.
 - Update [../reference/route-catalog.md](../reference/route-catalog.md) when path structure changes.
 - Update [../guides/testing-strategy.md](../guides/testing-strategy.md) when validation requirements change.
 
 ## Definition of Done for Domain Changes
+
 - Behavior implemented in the correct layer.
 - Integration points validated for affected domains.
 - Contract/route docs updated if applicable.

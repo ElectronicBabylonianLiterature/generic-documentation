@@ -23,7 +23,7 @@ poetry run python ebl/atf_importer/runner/interactive_import_onepass.py
 
 Before running the importer, ensure that the following directory structure exists:
 
-```
+```text
 ebl/
  └── atf_importer/
      └── runner/
@@ -74,7 +74,7 @@ The script depends on the **eBL API environment**, including access to MongoDB.
 5. **Persistent Storage**
    - Lemma mappings are stored in:
 
-     ```
+     ```text
      ebl/atf_importer/runner/missing_lemmata.json
      ```
 
@@ -90,7 +90,7 @@ The script depends on the **eBL API environment**, including access to MongoDB.
 
 ## 🧩 Example Session
 
-```
+```text
 ======================================================
 ATF IMPORTER - SINGLE-PASS INTERACTIVE MODE
 ======================================================
@@ -112,7 +112,7 @@ UNKNOWN LEMMA ENCOUNTERED
 
 If the same lemma appears again:
 
-```
+```text
 → Using saved mapping: bītu [house] → bītu I
 ```
 
@@ -122,7 +122,7 @@ If the same lemma appears again:
 
 At the end of the import, a summary is displayed:
 
-```
+```text
 ======================================================
 IMPORT COMPLETE
 ======================================================

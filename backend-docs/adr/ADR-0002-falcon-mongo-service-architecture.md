@@ -10,6 +10,7 @@ The backend requires explicit route control, domain-oriented service modules, an
 ## Decision
 
 Adopt:
+
 - Falcon for lightweight HTTP resource handling.
 - Repository pattern over MongoDB collections and aggregation pipelines.
 - Context-based composition root for dependency wiring.
@@ -18,11 +19,13 @@ Adopt:
 ## Consequences
 
 Positive:
+
 - Clear control over routing and middleware.
 - Strong fit for query-heavy domain logic with Mongo indexes.
 - Modularity across domain packages.
 
 Trade-offs:
+
 - Contract and behavior discovery spans multiple layers.
 - Requires robust standards and domain documentation for maintainability.
 

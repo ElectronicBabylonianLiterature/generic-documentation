@@ -5,6 +5,7 @@ This guide maps backend capabilities to owning domains and route entry points.
 ## Composition Root
 
 Application startup occurs in `ebl/app.py`:
+
 1. Build infrastructure dependencies and repositories.
 2. Build `Context` with service dependencies.
 3. Create Falcon app and attach middleware.

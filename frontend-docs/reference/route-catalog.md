@@ -1,6 +1,7 @@
 # Reference: Route Catalog
 
 ## Purpose
+
 Current route families and path patterns used by the application router.
 
 ## Route Families
@@ -18,6 +19,7 @@ Current route families and path patterns used by the application router.
 | Legal/Footer | `/impressum`, `/datenschutz` |
 
 ## Route Behavior Classes
+
 - Static informational routes: mostly content-driven, low contract risk.
 - Search/list routes: query-driven routes with pagination/filter coupling.
 - Detail routes: identifier-based routes with strict data-loading expectations.
@@ -25,6 +27,7 @@ Current route families and path patterns used by the application router.
 - Utility routes: sitemap and other operational/static endpoints.
 
 ## Ownership by Router Modules
+
 - `src/router/fragmentariumRoutes.tsx`
 - `src/router/corpusRoutes.tsx`
 - `src/router/dictionaryRoutes.tsx`
@@ -37,11 +40,13 @@ Current route families and path patterns used by the application router.
 - `src/router/router.tsx`
 
 ## Route Change Guidance
+
 - Preserve deep-link compatibility unless migration is explicitly planned.
 - Update this catalog and release notes when adding or changing path structure.
 - Validate route-level data loading and error handling for changed paths.
 
 ## Route Change Process
+
 1. Declare route addition/change and expected compatibility.
 2. Update route definitions and related navigation links.
 3. Validate direct deep-link entry and back/forward browser behavior.
@@ -49,6 +54,7 @@ Current route families and path patterns used by the application router.
 5. Update release notes with migration guidance when path contracts change.
 
 ## High-Risk Route Changes
+
 - Renaming existing path segments used in external bookmarks.
 - Changing dynamic parameter semantics without compatibility handling.
 - Changing route guards for auth-sensitive pages.

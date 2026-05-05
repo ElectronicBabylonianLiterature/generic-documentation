@@ -7,6 +7,7 @@ Fragmentarium is the largest API surface in the backend and provides fragment se
 Routes are assembled in `ebl/fragmentarium/web/bootstrap.py`.
 
 Main endpoint families:
+
 - Fragment retrieval and search:
   - `/fragments`
   - `/fragments/{number}`
@@ -51,6 +52,7 @@ Main endpoint families:
 ## Core Services and Responsibilities
 
 Service composition in bootstrap includes:
+
 - `Fragmentarium`: repository-centric core operations.
 - `FragmentFinder`: enriched retrieval, listing, and presentation helper paths.
 - `FragmentUpdater`: controlled update operations with changelog integration.
@@ -60,6 +62,7 @@ Service composition in bootstrap includes:
 ## Dependency Flow
 
 Primary dependencies:
+
 - `MongoFragmentRepository` and adjunct repositories (`annotations`, `findspots`, cropped sign images).
 - Bibliography and dictionary services for reference and lexical enrichment.
 - `ParallelLineInjector` for transliteration/corpus joins where needed.
@@ -69,6 +72,7 @@ Primary dependencies:
 ## Request/Response Contracts
 
 Fragmentarium schema surface spans many dedicated files in `ebl/fragmentarium/application/`:
+
 - `fragment_schema.py`
 - `fragment_info_schema.py`
 - `fragment_fields_schemas.py`
@@ -83,9 +87,11 @@ API DTO shaping is managed in `ebl/fragmentarium/web/dtos.py` and endpoint-speci
 ## Persistence and Query Behavior
 
 Persistence adapter:
+
 - `ebl/fragmentarium/infrastructure/mongo_fragment_repository.py`
 
 The repository is responsible for:
+
 - index creation for high-cardinality query dimensions
 - query pipelines for search/filter flows
 - projection/update-by-field operations

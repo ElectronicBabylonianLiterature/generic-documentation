@@ -12,6 +12,7 @@ This guide describes a high-confidence workflow for making backend changes while
 ## Verification Commands
 
 Use repository task commands:
+
 - `task format`
 - `task lint`
 - `task type`
@@ -21,17 +22,21 @@ Use repository task commands:
 ## Change Types and Required Docs Updates
 
 1. Route/resource changes
+
 - Update `backend-docs/standards/api-endpoint-catalog.md`.
 - Update relevant domain guide in `backend-docs/guides/`.
 
-2. Scope/auth changes
+1. Scope/auth changes
+
 - Update `backend-docs/standards/authorization-matrix.md`.
 - Update `backend-docs/security/security-model.md`.
 
-3. Error handling changes
+1. Error handling changes
+
 - Update `backend-docs/standards/error-status-matrix.md`.
 
-4. Architecture/process changes
+1. Architecture/process changes
+
 - Add or update ADR in `backend-docs/adr/`.
 
 ## Review Checklist

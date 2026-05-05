@@ -18,14 +18,17 @@ This runbook defines a practical incident workflow for backend API outages, degr
 ## Immediate Response Steps
 
 1. Confirm incident scope
+
 - Reproduce via a known endpoint (for example `/statistics`, `/fragments`, `/texts`).
 - Check deploy history and config changes.
 
-2. Stabilize service
+1. Stabilize service
+
 - Roll back latest deployment if regression is confirmed.
 - Disable only non-critical write paths if necessary while preserving read access.
 
-3. Mitigate user impact
+1. Mitigate user impact
+
 - Communicate impact and temporary mitigations.
 - Prioritize auth and read path restoration.
 

@@ -5,36 +5,44 @@ This runbook standardizes data backup and restoration for MongoDB-backed API env
 ## Scope
 
 Includes:
+
 - Domain collections used by corpus, fragmentarium, dictionary, bibliography, dossiers, and related modules.
 - GridFS buckets where applicable (`photos`, `folios`, public files).
 
 Excludes by default in local migration script context:
+
 - `changelog` collection (based on existing `pull-db.sh` behavior).
 
 ## Backup Strategy
 
 1. Logical backups
+
 - Use `mongodump` with authenticated connection.
 - Capture all required collections and GridFS buckets.
 
-2. Frequency
+1. Frequency
+
 - Production: daily full backup + periodic snapshots before major migrations.
 - Staging: at least weekly, and before schema/index migrations.
 
-3. Retention
+1. Retention
+
 - Keep short-term rolling backups and periodic long-term snapshots.
 
 ## Restore Strategy
 
 1. Restore target selection
+
 - Always restore to isolated environment first for validation.
 
-2. Validation sequence
+1. Validation sequence
+
 - Confirm document counts for key collections.
 - Validate index presence on high-query collections.
 - Run smoke API checks (`/fragments`, `/texts`, `/signs`, `/bibliography`).
 
-3. Cutover
+1. Cutover
+
 - Perform restore in maintenance window for production.
 - Communicate expected read/write impact.
 

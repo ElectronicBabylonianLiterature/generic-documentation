@@ -10,7 +10,8 @@ The description (max. 150 words) should contain the following elements:
 4. **Content summary** — The dominant document types (loans, purchases, ration lists, letters, literary texts, etc.) and the commodities, activities, or institutions they concern.
 
 Example (Aššur M 12):
-```
+
+```text
 About 60 unbaked clay tablets (plus a few fragments and one baked tablet) were found inside a sealed clay pot in
 a small chamber of a private house in area eA9I. The tablets date to the late reign of Shalmaneser I and
 especially to Tukultī-Ninurta I’s early years (c. 1243–1207 BCE), as indicated by eponyms such as Tukultī-Ninurta,
@@ -34,6 +35,7 @@ The primary script/period classification of the dossier. Use standard eBL period
 
 **References**
 A list of the key scholarly works discussing the dossier. Each entry requires:
+
 - `id` — the eBL bibliography identifier of the work
 - `type` — typically `DISCUSSION` for works that analyse the dossier; other values may apply for editions or catalogues
 - `pages` — the specific page range relevant to the dossier (leave empty if the reference covers the dossier as a whole)

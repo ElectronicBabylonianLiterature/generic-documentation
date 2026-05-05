@@ -10,6 +10,7 @@ The API serves mixed public and privileged workflows with domain-specific write 
 ## Decision
 
 Use Auth0 JWT authentication with:
+
 - RS256 token verification.
 - Scope extraction from both `scope` and `permissions` claims.
 - Resource-level authorization via Falcon `before` hooks.
@@ -18,10 +19,12 @@ Use Auth0 JWT authentication with:
 ## Consequences
 
 Positive:
+
 - Flexible compatibility with different token claim conventions.
 - Fine-grained access control for sensitive content groups.
 
 Trade-offs:
+
 - Authorization reasoning is distributed across resource classes and guard helpers.
 - Route-level policy visibility requires maintained standards matrices.
 

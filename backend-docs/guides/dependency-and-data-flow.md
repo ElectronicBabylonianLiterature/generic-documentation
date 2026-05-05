@@ -7,6 +7,7 @@ This guide explains how data moves through the backend and where dependencies ar
 `ebl/app.py` is the composition root.
 
 Flow:
+
 1. Environment variables are read.
 2. Infrastructure clients/repositories are created.
 3. `Context` is instantiated with concrete implementations.
@@ -26,6 +27,7 @@ Flow:
 ## Write Path Considerations
 
 On write operations, the architecture usually includes:
+
 - authorization scope checks
 - schema validation and normalization
 - changelog entry creation/update
@@ -35,6 +37,7 @@ On write operations, the architecture usually includes:
 ## Read Path Considerations
 
 Read endpoints may combine:
+
 - direct repository fetch
 - aggregation pipelines for query/filter cases
 - post-fetch enrichment (for example dictionary/bibliography/media related data)
@@ -57,6 +60,7 @@ Read endpoints may combine:
 ## Testing Flow
 
 The test suite under `ebl/tests/` mirrors domain structure and validates:
+
 - schema contracts
 - service behavior
 - repository queries/index behavior

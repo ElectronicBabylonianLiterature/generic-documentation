@@ -4,13 +4,13 @@
 
 The simplest way is to add files is the file manager in NoSql Manager for MongoDB. Remember to check the "Write filenames without the paths."
 
-![](images/upload_images_collection_name.png?raw=true)
+![Upload images collection name](images/upload_images_collection_name.png?raw=true)
 
-![](images/upload_images_filenames_without_paths.png?raw=true)
+![Upload images filenames without paths](images/upload_images_filenames_without_paths.png?raw=true)
 
 Another option is to use `mongofiles` ([Download Mongo Database Tools](https://www.mongodb.com/try/download/database-tools)). The PowerShell script below will upload all `.jpg` files in the current folder.
 
-```
+```powershell
 ls *.jpg -file | % {mongofiles put  -h <HOST> -d ebl -u <USER NAME> -p <PASSWORD> /ssl /sslAllowInvalidCertificates --prefix <BUCKET> --type image/jpeg --replace $_.name}
 ```
 
@@ -28,7 +28,7 @@ Upload photos to the `photos` GridFS bucket. The filename must be in the form `<
 
 ### Upload images
 
-- Upload images to the `folios` GridFS bucket. See https://trello.com/c/Qaw9YsG5 for instructions on uploading. The file name must in the form `<name>_<number>.jpg`.
+- Upload images to the `folios` GridFS bucket. See <https://trello.com/c/Qaw9YsG5> for instructions on uploading. The file name must in the form `<name>_<number>.jpg`.
 
 ### Update fragments
 

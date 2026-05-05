@@ -5,19 +5,23 @@ This document describes where request validation and response serialization are 
 ## Contract Layers
 
 1. Web resources (`ebl/*/web/*.py`)
+
 - Parse route/query/body parameters.
 - Trigger validation helpers.
 - Call application services.
 
-2. Schema classes (`ebl/*/application/*schema*.py`, selected `ebl/*/web/*schema*.py`)
+1. Schema classes (`ebl/*/application/*schema*.py`, selected `ebl/*/web/*schema*.py`)
+
 - Validate incoming payloads.
 - Deserialize into domain model objects.
 - Serialize domain outputs for API responses.
 
-3. Domain entities (`ebl/*/domain/*.py`)
+1. Domain entities (`ebl/*/domain/*.py`)
+
 - Enforce invariants and typed model shape.
 
-4. Infrastructure repositories (`ebl/*/infrastructure/*.py`)
+1. Infrastructure repositories (`ebl/*/infrastructure/*.py`)
+
 - Persist and query data with MongoDB-specific field mapping.
 
 ## Contract Hotspots by Domain
@@ -46,6 +50,7 @@ This document describes where request validation and response serialization are 
 ## Practical Navigation
 
 To understand one endpoint contract end-to-end:
+
 1. Start in bootstrap route registration for URI to resource mapping.
 2. Open resource class and identify `on_get`/`on_post`/`on_put`/`on_delete` handlers.
 3. Trace schema `load`/`dump` calls.

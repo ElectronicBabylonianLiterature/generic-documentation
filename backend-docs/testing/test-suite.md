@@ -4,8 +4,9 @@
 - Total test lines: 127159
 
 ## Test Distribution by Feature Folder
+
 - **conftest.py**: 1 files
-- **ebl/tests/__init__.py**: 1 files
+- **ebl/tests/**init**.py**: 1 files
 - **ebl/tests/afo_register**: 3 files
 - **ebl/tests/alignment**: 5 files
 - **ebl/tests/assertions.py**: 1 files
@@ -40,6 +41,7 @@
 - **ebl/tests/users**: 5 files
 
 ## Representative Test Entry Points
+
 - `conftest.py`
 - `ebl/tests/__init__.py`
 - `ebl/tests/afo_register/test_afo_register.py`

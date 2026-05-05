@@ -72,7 +72,7 @@ d) iti izim munu₄-gu₇ <sup>d</sup>nin-ĝir₂-su-ka-ka "in the month of Nin�
 
 Names are not reconstructed but transliterated and normalized according to the cuneiform signs, grammar, vocabulary (based on AHw/dialectal dictionaries for Akkadian), and etymology.
 
-a) <sup>d</sup>SUEN-*i-din-nam* = Sîn-iddinam "Sîn gave to me," **not** Sîn-idinnam. 
+a) <sup>d</sup>SUEN-*i-din-nam* = Sîn-iddinam "Sîn gave to me," **not** Sîn-idinnam.
 
 b) *e-gar-šu-e-mid* = Igāršu-ēmid "I leaned against his wall," **not** Egāršu-ēmid.
 

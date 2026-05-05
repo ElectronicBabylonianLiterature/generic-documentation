@@ -5,6 +5,7 @@ This register defines how contracts are documented and reviewed for every endpoi
 ## Scope Coverage
 
 The authoritative list of endpoints is maintained in:
+
 - [API Endpoint Catalog](api-endpoint-catalog.md)
 
 Every endpoint in that catalog is required to satisfy the contract rules in this register.
@@ -31,24 +32,29 @@ Every endpoint in that catalog is required to satisfy the contract rules in this
 ## Minimum Contract Requirements Per Endpoint
 
 1. Request contract
+
 - Route params and query params are validated.
 - Body payload schema is explicit for write operations.
 
-2. Response contract
+1. Response contract
+
 - Success response shape is defined by schema/DTO layer.
 - Status codes are explicit for each operation.
 
-3. Error contract
+1. Error contract
+
 - Domain and validation errors map to documented statuses.
 - Unauthorized and forbidden behavior is documented for protected routes.
 
-4. Example coverage
+1. Example coverage
+
 - At least one representative successful request/response example for write and complex query endpoints.
 - At least one representative failure example for validation-protected endpoints.
 
 ## Change Management Rules
 
 When an endpoint is added, removed, or modified:
+
 1. Update [API Endpoint Catalog](api-endpoint-catalog.md) in the same change.
 2. Update auth/error matrices if scope or error behavior changes.
 3. Update request/response guidance if schema behavior changes.

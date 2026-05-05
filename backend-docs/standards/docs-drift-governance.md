@@ -5,20 +5,25 @@ This policy minimizes divergence between code and documentation.
 ## Required Update Triggers
 
 1. Route/resource changes
+
 - Update endpoint catalog and endpoint contract register.
 
-2. Auth scope guard changes
+1. Auth scope guard changes
+
 - Update authorization matrix and security model.
 
-3. Error mapping changes
+1. Error mapping changes
+
 - Update error/status matrix.
 
-4. Architecture or dependency-flow changes
+1. Architecture or dependency-flow changes
+
 - Update guides and create/update ADR entries.
 
 ## Pull Request Requirements
 
 Each PR that changes behavior must include:
+
 - updated docs links in PR description,
 - evidence of matrix updates where applicable,
 - migration notes for any contract changes.
