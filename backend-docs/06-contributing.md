@@ -10,18 +10,48 @@ in sync with the code.
 
 ## Local Setup
 
+### Prerequisites
+
+Cloud / dev-container path (recommended): GitHub Codespaces or VS Code with
+the Dev Containers extension. The dev container installs MongoDB 4.4,
+Poetry, Python packages, Task, and the Rust compiler automatically.
+
+Manual setup:
+
+- [PyPy 3.11](https://www.pypy.org/) and `pip`.
+- [Task](https://taskfile.dev/).
+- MongoDB 4.4.4.
+- [`ggshield`](https://docs.gitguardian.com/ggshield-docs/getting-started)
+  for secret scanning.
+- [Rust compiler](https://www.rust-lang.org/tools/install) (required to
+  build `libcst`).
+
+```bash
+pip install poetry
+poetry install --no-root --with dev
+```
+
+### First Run
+
 The repository is Poetry-managed and ships with a `Taskfile.dist.yml` that
 defines the canonical commands. A typical first run:
 
-1. Install dependencies via Poetry (configuration in `pyproject.toml` /
+1. Copy `.env.example` to `.env` and populate the required values (Auth0,
+   MongoDB, Sentry, EBL AI, cache — see
+   [Operations](./05-operations.md#environments-and-configuration)).
+2. Install dependencies (Poetry; configuration in `pyproject.toml` /
    `poetry.toml`).
-2. Provide environment variables for Auth0, MongoDB, Sentry, the EBL AI
-   service, and the cache (see [Operations](./05-operations.md#environments-and-configuration)).
 3. Bring up the stack with one of the compose targets:
    - `docker-compose.yml` — full local stack.
    - `docker-compose-api-only.yml` — API only, against an external DB.
    - `docker-compose-updater.yml` — data updater workload.
-4. Use `task start` (or the equivalent compose command) to run the API.
+4. Use `task start` (or `poetry run waitress-serve --port=8000 --call
+   ebl.app:get_app`) to run the API.
+
+Poetry does not read `.env` files. Export the required variables in the
+shell, run via `task` (which loads them), or use a helper such as
+[`direnv`](https://direnv.net/) or
+[`Set-PsEnv`](https://github.com/rajivharris/Set-PsEnv).
 
 ## Standard Commands
 
@@ -30,15 +60,98 @@ All flows go through `task` so that CI and local runs match:
 | Command | Purpose |
 |---|---|
 | `task format` | Apply formatters. |
+| `task format -- --check` | Check formatting without writing. |
 | `task lint` | Lint Python sources. |
 | `task type` | Run static type checks. |
 | `task test` | Run the test suite. |
-| `task test-all` | Run the full test suite (extended scope). |
+| `task test -- -n auto` | Run tests in parallel via `pytest-xdist`. |
+| `task test -- --cov=ebl --cov-report term --cov-report xml` | Coverage run (slow on PyPy). |
+| `task test-all` | Run format, lint, type checks, and tests. |
+| `task test-secrets` | Synthetic secret-scanning regression checks. |
 | `task start` | Start the API locally. |
+| `task cp --- "commit-message"` | Run format/lint/type checks, then `git add`, commit, push. |
 
-Run `task format && task lint && task type && task test` before opening a
-PR. CI (`.github/workflows/main.yml`, `.github/workflows/codeql.yml`) must
-be green for merge.
+Run `task test-all` before opening a PR. CI
+(`.github/workflows/main.yml`, `.github/workflows/codeql.yml`,
+`.github/workflows/secret-scan.yml`) must be green for merge.
+
+To avoid race conditions when running tests in parallel, first prime the
+downloader cache:
+
+```bash
+poetry run python -m ebl.tests.downloader
+```
+
+Test results may differ between PyPy and CPython (CPython is used by some
+automatic checks). If a test fails only under CPython, debug with the same
+CPython version.
+
+### `pymongo_inmemory` Configuration
+
+The tests use
+[`pymongo_inmemory`](https://github.com/kaizendorks/pymongo_inmemory).
+Depending on the OS, the correct MongoDB build may need to be pinned, for
+example on Ubuntu 20:
+
+```dotenv
+PYMONGOIM__MONGO_VERSION=4.4
+PYMONGOIM__OPERATING_SYSTEM=ubuntu
+PYMONGOIM__OS_VERSION=20
+```
+
+## Code Style
+
+- [Black](https://black.readthedocs.io/) with line length 88.
+- [PEP 8](https://www.python.org/dev/peps/pep-0008/#naming-conventions)
+  naming.
+- `bugbear` `B950` is used instead of `E501`; PEP 8 checks `E501`, `E203`,
+  and `E231` are disabled in editors.
+- Use type hints in new code; add them to old code when modifying it.
+
+## Package Dependency Rules
+
+- Avoid directed dependency cycles between packages.
+- Domain packages depend only on other domain packages.
+- Application packages depend only on application and domain packages.
+- Web and infrastructure packages depend only on application and domain
+  packages.
+- All packages may depend on common modules at the top of `ebl/`.
+
+Analyze the dependency graph with
+[`pydepgraph`](https://github.com/stefano-maggiolo/pydepgraph):
+
+```bash
+pydepgraph -p . -e tests -g 2 | dot -Tpng -o graph.png
+```
+
+## Secret Scanning
+
+The upstream repository blocks commits that introduce detected secrets.
+
+- Local pre-commit scans run through GitGuardian `ggshield`.
+- CI runs GitGuardian via `.github/workflows/secret-scan.yml`.
+- Dev containers and Codespaces install `ggshield` automatically.
+
+Set up local scanning:
+
+```bash
+poetry run pre-commit install
+ggshield auth login
+```
+
+Or export `GITGUARDIAN_API_KEY` (token with at least `scan` scope from
+<https://dashboard.gitguardian.com>) in the shell and CI secrets.
+
+Manual commands:
+
+```bash
+ggshield secret scan pre-commit
+ggshield secret scan path --recursive --use-gitignore .
+task test-secrets
+```
+
+On a positive finding, replace the real secret immediately, do not commit
+it, and prefer dynamically generated values in test payloads.
 
 ## Test Suite Layout
 
@@ -124,4 +237,4 @@ Every core doc:
 
 ## Last Reviewed
 
-2026-05-06
+2026-05-12

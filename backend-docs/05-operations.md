@@ -24,19 +24,91 @@ Operational reference for running, deploying, monitoring, and recovering
 ## Environments and Configuration
 
 The service is configured by environment variables read at startup in
-`ebl/app.py`. The categories that matter operationally:
+`ebl/app.py`. Required values (see
+[`ebl-api/README.md`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/README.md#environment-variables)
+for the authoritative list):
 
-- **Auth0** — issuer, audience, client credentials. Misconfiguration shows
-  up as 401/403 spikes.
+```dotenv
+AUTH0_AUDIENCE=<Identifier from Auth0 API Settings>
+AUTH0_ISSUER=<Domain from Auth0 Application Settings, or custom domain>
+AUTH0_PEM=<Signing Certificate (PEM) from Auth0 Application Advanced Settings, base64-encoded>
+MONGODB_URI=<MongoDB connection URI, may include database>
+MONGODB_DB=<MongoDB database name; optional, defaults to the auth DB>
+EBL_AI_API=<AI API URL; use a safe dummy value if not needed>
+SENTRY_DSN=<Sentry DSN>
+SENTRY_ENVIRONMENT=<development|production>
+CACHE_CONFIG=<Falcon-Caching configuration JSON; optional, Null backend by default>
+```
+
+Operational categories that matter most:
+
+- **Auth0** — issuer, audience, base64-encoded signing certificate.
+  Misconfiguration shows up as 401/403 spikes. The backend reads scopes
+  from both the `scope` claim and the `permissions` claim and merges
+  them; a legacy Auth0 Rule used to copy permissions into `scope` and is
+  no longer required, but the upstream README keeps the example for
+  reference. Auth0 user metadata supplies the `eblName` field via a Rule
+  / Action.
 - **MongoDB** — connection string and credentials. Drives nearly every
   request.
 - **Sentry** — DSN for error reporting.
 - **EBL AI service** — endpoint and credentials for annotation workflows.
-- **Cache** — backend configuration for `ebl/cache/`.
+- **Cache** — `CACHE_CONFIG` JSON (for example
+  `{"CACHE_TYPE": "simple"}`) selects the
+  [Falcon-Caching](https://falcon-caching.readthedocs.io/) backend.
+
+Poetry does not read `.env` files. Export variables in the shell, run via
+`task` (which loads them), or use a helper such as
+[`direnv`](https://direnv.net/) or
+[`Set-PsEnv`](https://github.com/rajivharris/Set-PsEnv).
 
 Validate `.env` (or the equivalent secret store entries) before any
 deployment; missing values are the most common cause of local startup
 failures.
+
+### Caching Usage in Code
+
+Falcon-Caching is wired into resources via two patterns documented in the
+upstream README:
+
+```python
+@cache.cached(timeout=DEFAULT_TIMEOUT)
+def on_get(self, req, resp):
+    resp.text = ...  # `text`, not `media`: v1.0.1 does not cache `media`
+```
+
+```python
+@cache_control(["public", "max-age=600"])
+def on_get(self, req, resp):
+    ...
+```
+
+A predicate may be passed to `cache_control` to control conditional
+headers (for example, only add the header for unauthenticated requests).
+
+### Docker Compose: MongoDB User Bootstrap
+
+When bringing up the full stack via `docker-compose up`, create
+`./docker-entrypoint-initdb.d/create-users.js` **before** the database is
+started for the first time:
+
+```javascript
+db.createUser({
+  user: "ebl-api",
+  pwd: "<password>",
+  roles: [{ role: "readWrite", db: "ebl" }],
+});
+```
+
+In addition to the variables above, compose-based runs need:
+
+```dotenv
+MONGODB_URI=mongodb://ebl-api:<password>@mongo:27017/ebl
+MONGO_INITDB_ROOT_USERNAME=<Mongo root user>
+MONGO_INITDB_ROOT_PASSWORD=<Mongo root user password>
+MONGOEXPRESS_LOGIN=<Mongo Express login username>
+MONGOEXPRESS_PASSWORD=<Mongo Express login password>
+```
 
 ## CI
 
@@ -174,6 +246,71 @@ Integrity checks after restore:
 - Verify reference linking (fragment references, chapter text links).
 - Validate media retrieval if GridFS data is included.
 - Verify scope-gated endpoints with representative users.
+
+## Data Update Scripts
+
+Schema and parser changes can leave existing documents stale. The
+upstream codebase ships maintenance entry points for the affected
+domains. Each can be run locally (`poetry run python -m <module>`),
+in a standalone container, or via the dedicated compose target.
+
+| Module | Purpose | Side effects |
+|---|---|---|
+| `ebl.fragmentarium.update_fragments` | Re-derive transliteration + signs for all fragments. | Writes `invalid_fragments.tsv`. |
+| `ebl.corpus.update_texts` | Resave Corpus texts under the latest schema. | Writes `invalid_texts.tsv`. Does **not** reparse transliterations. |
+| `ebl.alignment.align_fragmentarium` | Align all Fragmentarium fragments against the Corpus. | Writes results to the path passed via `-o`. |
+| `ebl.fragmentarium.migrate_cropped_images` | Clean up and regenerate cropped sign images from annotations (resolves orphaned image duplicates). | Rewrites the cropped image bucket. |
+
+`align_fragmentarium` accepts:
+
+```text
+-h, --help                     show this help message and exit
+-s SKIP, --skip SKIP           Number of fragments to skip.
+-l LIMIT, --limit LIMIT        Number of fragments to align.
+--minScore MIN_SCORE           Minimum score to show in the results.
+--maxLines MAX_LINES           Maximum size of fragment to align.
+-o OUTPUT, --output OUTPUT     Filename for saving the results.
+-w WORKERS, --workers WORKERS  Number of parallel workers.
+-t, --threads                  Use threads instead of processes for workers.
+```
+
+### Production Database Update Procedure
+
+Follow these steps in order; do **not** start the migration before the
+new deployment is confirmed live.
+
+1. Implement the new functionality.
+2. Implement fallback logic to handle old data if the new model is
+   incompatible.
+3. Verify on the development database that fragments update correctly.
+4. Deploy to production.
+5. Run the migration script.
+6. Fix invalid fragments listed in the `*.tsv` output.
+7. Remove the fallback logic.
+8. Deploy to production.
+
+### `pull-db.sh`
+
+The helper script uses `mongodump` / `mongorestore` to copy data from a
+source MongoDB instance. It excludes the `changelog` collection and the
+`photos` / `folios` GridFS buckets. Defaults can be set via:
+
+```dotenv
+PULL_DB_DEFAULT_SOURCE_HOST=<source MongoDB host>
+PULL_DB_DEFAULT_SOURCE_USER=<source MongoDB user>
+PULL_DB_DEFAULT_SOURCE_PASSWORD=<source MongoDB password>
+```
+
+### ATF Importer
+
+The ATF importer converts external `.atf` files (Oracc, c-ATF) to the
+eBL-ATF flavor. Command-line surface and troubleshooting steps are
+documented in
+[`tools/atf-importer-runner/README.md`](../tools/atf-importer-runner/README.md)
+and in the upstream
+[`ebl-api/README.md`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/README.md#importing-atf-files).
+The eBL-ATF grammar itself lives at
+[`ebl-api/docs/ebl-atf.md`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/docs/ebl-atf.md).
 
 ## Operational Snippets
 
@@ -313,4 +450,4 @@ Fast verification commands during an incident:
 
 ## Last Reviewed
 
-2026-05-06
+2026-05-12

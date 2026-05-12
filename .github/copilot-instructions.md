@@ -13,8 +13,14 @@ when generating, editing, or reviewing content in this repository.
   sets, editorial guides, operational notes, and small companion tools. There is
   no application code to compile or ship.
 - The two code repositories this documentation describes are:
-  - `https://github.com/ElectronicBabylonianLiterature/ebl-frontend` (TypeScript + React).
-  - `https://github.com/ElectronicBabylonianLiterature/ebl-api` (Python + Falcon).
+  - `https://github.com/ElectronicBabylonianLiterature/ebl-frontend` — React +
+    TypeScript SPA. Toolchain: `yarn`, Node 20, Prettier, ESLint, Jest + React
+    Testing Library. Auth via Auth0 + `@auth0/auth0-spa-js`; cancellable
+    promises via Bluebird; CSS classes follow BEM.
+  - `https://github.com/ElectronicBabylonianLiterature/ebl-api` — Python +
+    Falcon backend. Toolchain: PyPy 3.11, Poetry, [Task](https://taskfile.dev/),
+    MongoDB 4.4, Black, pytest. Auth via Auth0 + `falcon-auth`; caching via
+    Falcon-Caching.
 - Do not make any changes to files unless explicitly requested.
 - Do not commit changes unless the user explicitly asks to commit.
 
@@ -32,8 +38,6 @@ when generating, editing, or reviewing content in this repository.
   - `tools/cuneiform-tablet-stitch-tools/`
 - `_meta/` — plans, logs, audits. Internal workflow records only; **never** link
   to `_meta/` from primary docs or `README.md`.
-- `operations-sensitive.md` — sensitive operational notes; never reference from
-  public-facing docs.
 
 ## Source-of-Truth Alignment
 
@@ -47,6 +51,35 @@ when generating, editing, or reviewing content in this repository.
   upstream code.
 - Cross-stack concepts (e.g. `ScopeItem`, folio types, Auth0 scopes) live in
   multiple places upstream. Reference each location; do not redefine.
+
+## Upstream References (for accurate docs)
+
+Use these canonical anchors when documentation needs to cite or link upstream
+behavior. Link, do not copy:
+
+- **Auth0 scopes (canonical list in `ebl-api/README.md`).** Active scopes:
+  - Corpus — `write:texts`, `create:texts`.
+  - Fragmentarium — `lemmatize:fragments`, `transliterate:fragments`,
+    `annotate:fragments`.
+  - Bibliography — `write:bibliography`.
+  - Dictionary — `write:words`, `create:proper_nouns`.
+  - Folio scopes follow `read:<Folio name>-folios`.
+  - Per-fragment scopes follow `read:<Fragment group>-fragments`.
+  - The backend reads permissions from both the `scope` claim and the
+    `permissions` claim and merges them.
+- **eBL-ATF specification** lives at
+  `https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/docs/ebl-atf.md`.
+  Link to it from `guides/atfFlavors.md`; do not duplicate the grammar.
+- **Frontend session/authorization helpers** (`SessionContext`,
+  `isAllowedTo…` predicates) live in `ebl-frontend`. Reference the source file;
+  do not invent predicate names.
+- **Secret scanning.** Both upstream repos enforce GitGuardian `ggshield` on
+  commit and in CI. This documentation repo does not run `ggshield`, but the
+  same rule applies: no secrets, tokens, PATs, or credentials in any file
+  outside `operations-sensitive.md`.
+- **Sitemap automation** (frontend-only) is documented in `ebl-frontend/README.md`.
+  If `frontend-docs/` needs to mention it, link there rather than duplicating
+  the PAT-rotation procedure.
 
 ## Markdown Style
 
