@@ -76,7 +76,7 @@ behavior. Link, do not copy:
 - **Secret scanning.** Both upstream repos enforce GitGuardian `ggshield` on
   commit and in CI. This documentation repo does not run `ggshield`, but the
   same rule applies: no secrets, tokens, PATs, or credentials in any file
-  outside `operations-sensitive.md`.
+  in this repository.
 - **Sitemap automation** (frontend-only) is documented in `ebl-frontend/README.md`.
   If `frontend-docs/` needs to mention it, link there rather than duplicating
   the PAT-rotation procedure.
@@ -95,7 +95,7 @@ behavior. Link, do not copy:
   `guides/images/` and reference them with relative paths.
 - Do not include Trello links, private URLs, credentials, secrets, hostnames of
   production systems, or personal data anywhere outside
-  `operations-sensitive.md`.
+  the approved secure channels.
 
 ## Metadata Convention
 
@@ -206,8 +206,7 @@ completion while any of them is violated.
    reference MUST resolve. Heading renames MUST update all inbound links in the
    same change.
 6. **Sensitive content isolation.** Credentials, internal URLs, personal data,
-   Trello links, and operational secrets MUST NOT appear outside
-   `operations-sensitive.md`.
+  Trello links, and operational secrets MUST NOT appear in this repository.
 7. **Preserve structure.** The names of `backend-docs/`, `frontend-docs/`,
    `guides/`, `tools/atf-importer-runner/`, and
    `tools/cuneiform-tablet-stitch-tools/` MUST NOT be renamed or relocated.
