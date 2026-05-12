@@ -1,5 +1,8 @@
 # eBL Coding Standards
 
+Created: 2025-03-28
+Last Reviewed: 2026-05-12
+
 ## General
 
 - Write [clean code](https://www.amazon.de/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882). Use linters and analysers to find code smells.
@@ -14,9 +17,9 @@
 
 ## JavaScript
 
+- Use statically typed alternative (e.g. [TypeScript](https://www.typescriptlang.org/)); do not mix the languages in a single project.
 - Use [Prettier](https://prettier.io) or [JavaScript Standard Style](https://standardjs.com/).
 - Stick to the [good parts](https://smile.amazon.de/JavaScript-Parts-Working-Shallow-Grain/dp/0596517742).
-- Consider using statically typed alternative (e.g. [TypeScript](typescriptlang.org)), but do not mix the languages in a single project.
 - Avoid [Common mistakes with React Testing Library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library).
 
 ## Python
@@ -26,4 +29,4 @@
 ## HTML/CSS
 
 - Try to use semantic HTML.
-- Use [BEM](http://getbem.com/) naming convention. 
+- Use [BEM](http://getbem.com/) naming convention.
