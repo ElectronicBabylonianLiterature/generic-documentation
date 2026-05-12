@@ -12,15 +12,13 @@ See the [eBL-ATF specification](https://github.com/ElectronicBabylonianLiteratur
 * `\t` always will be converted to a space character ` `.
 * Only interlinear [translations](http://oracc.museum.upenn.edu/doc/help/editinginatf/translations/index.html) are supported. The extent of the translation can be given after the language code, e.g. `tr.en.(o iii 3):`.
 
-## Legacy grammar
+### Legacy grammar
 
 * Vowels (`[aeiuAEIU]`) can have acute and grave accents, which correspond to `₂` and `₃` in the sign respectively. Thus, `šá` → `ša₂`, `àm` → `am₃`
 
-## Lemmatization
+### Lemmatization
 
 In Oracc lemmatization is done with `#lem:` lines. eBL has specialized GUI for lemmatization, which is separate from the transliteration. Oracc transliteration needs to be converted and saved first. Then the Oracc lemmatization has to be converted to the eBL lemmatization object and updated to the fragment.
-
-## C-ATF
 
 ## Archibab ATF
 

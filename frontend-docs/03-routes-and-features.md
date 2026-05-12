@@ -71,6 +71,37 @@ upstream README).
   workflow; manual fallback documented in [Build and
   Operations](./04-build-and-operations.md).
 
+### TEI Export
+
+Every fragment page exposes a **TEI Export** action that downloads a
+[TEI XML P5](https://tei-c.org/guidelines/p5/)–compatible `.xml` file
+for the current fragment. The output is intended to be ingestible by
+third-party TEI tooling without further transformation.
+
+The document always contains a `<teiHeader>` and a `<text>` element
+with a `<body>`:
+
+- `<teiHeader>` — fragment metadata: `<title>` (text number),
+  `<publicationStmt>` (location/collection where the text is
+  published), and `<sourceDesc>` (description of the original source
+  the digital file is derived from).
+- `<body>` — transliteration content as line groups (`<lg>`). Each
+  line group contains one or more `<line>` elements, each of which is
+  built from `<w>` word elements.
+  - Line groups segment the text by structural notes — paratextual
+    [`@`-lines](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/docs/ebl-atf.md#-lines)
+    are rendered as `<note>` at the start of the line group they
+    define.
+  - State notes —
+    [`$`-lines](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/docs/ebl-atf.md#-lines-1)
+    — render as `<note>` inside the relevant line group.
+  - A general note about the fragment, if present, renders as a
+    trailing `<note>` after the last line group.
+- `<line>` carries an `n` attribute combining the text number and the
+  line number (`<text>.<line>`).
+- `<w>` carries a `lemma` attribute with the word’s lemma or lemmata
+  where available.
+
 ## Route Change Process
 
 1. Declare the route addition / change and the expected backward

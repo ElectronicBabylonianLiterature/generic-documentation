@@ -143,11 +143,144 @@ Strategy:
 4. Cutovers happen in a maintenance window with read/write impact
    communicated up front.
 
+### Per-Collection Snapshot Before a Migration
+
+For targeted work (notably reshaping a field on `fragments`) it is
+sufficient — and faster than a full backup — to duplicate the affected
+collection in place. The naming convention is
+`<source-collection-name>_backup_<yyyy-mm-dd>`. Two equivalent options:
+
+1. In Studio 3T (or any equivalent GUI), right-click the collection and
+   choose **Duplicate Collection**, then set the name as above.
+2. From `mongosh` or VS Code's Mongo extension:
+
+   ```js
+   use("ebldev");
+
+   const today = new Date().toISOString().slice(0, 10);
+   db.getCollection("fragments").aggregate([
+     { $out: `fragments_backup_${today}` },
+   ]);
+   ```
+
+Use production credentials and the production DB name when the target is
+production. Keep the backup until the migration has been validated end
+to end.
+
 Integrity checks after restore:
 
 - Verify reference linking (fragment references, chapter text links).
 - Validate media retrieval if GridFS data is included.
 - Verify scope-gated endpoints with representative users.
+
+## Operational Snippets
+
+Short scripts kept on hand for one-off maintenance. Run them against a
+recent backup first; both touch the `fragments` collection directly.
+
+### Remove duplicate folios
+
+Deduplicates folios within each fragment by `(number, name)`.
+
+```js
+db.getCollection("fragments")
+  .find({ "folios.0": { $exists: true } })
+  .forEach(({ _id, folios }) => {
+    const newFolios = folios.filter(
+      (folio, index, self) =>
+        self.findIndex(
+          (folio2) =>
+            folio2.number === folio.number && folio2.name === folio.name,
+        ) === index,
+    );
+    db.getCollection("fragments").update(
+      { _id },
+      { $set: { folios: newFolios } },
+    );
+  });
+```
+
+### Find fragments in a collection without photos
+
+Returns the IDs of fragments in the given collection that have neither a
+photo in the `photos` GridFS bucket nor a join under the `joins`
+collection.
+
+```js
+var fragments = db.fragments
+  .find({ collection: "Kuyunjik" }, { museumNumber: 1 })
+  .toArray();
+
+var idsWithoutImageMatch = [];
+
+fragments.forEach(function (fragment) {
+  var joinedFragments = db.joins
+    .find({ "fragments.museumNumber": fragment.museumNumber })
+    .toArray();
+
+  if (joinedFragments.length === 0) {
+    var imageExists =
+      db.photos.files.countDocuments({ filename: fragment._id + ".jpg" }) > 0;
+    if (!imageExists) {
+      idsWithoutImageMatch.push(fragment._id);
+    }
+  }
+});
+
+idsWithoutImageMatch;
+```
+
+### Attach folios to fragments in bulk
+
+Given a list of `(name, number, _id/accession)` tuples, attach each
+folio entry to its fragment and return the list of fragments that
+could not be found. Adapt `name` and the list as needed.
+
+```js
+function attachFolios() {
+  const folios = [
+    { number: "001", accession: "", _id: "BM.45657" },
+    { number: "002", accession: "", _id: "BM.45727" },
+    // ...
+  ];
+  const missing = [];
+  folios.forEach(({ number, _id, accession }) => {
+    const query = accession !== "" ? { accession } : { _id };
+    if (db.getCollection("fragments").findOne(query)) {
+      db.getCollection("fragments").updateOne(query, {
+        $addToSet: { folios: { name: "WMR", number } },
+      });
+    } else {
+      missing.push({ number, accession, _id });
+    }
+  });
+  return missing;
+}
+attachFolios();
+```
+
+After a bulk folio import, prepend a record entry describing the
+provenance of the change so it shows up in the fragment’s history:
+
+```js
+db.getCollection("fragments").updateMany(
+  { "folios.name": "WMR" },
+  {
+    $push: {
+      record: {
+        $each: [
+          {
+            user: "Mayer",
+            type: "HistoricalTransliteration",
+            date: "1970-01-01/2018-12-31",
+          },
+        ],
+        $position: 0,
+      },
+    },
+  },
+);
+```
 
 ## Troubleshooting
 

@@ -47,13 +47,11 @@ The eBL project uses a version of the A(scii)T(ransliteration)F(ormat). The ATF,
 
 12. **Colophons should be added to the [Colophon database](https://gwi-fm1.gwi.uni-muenchen.de/fmi/webd/AsbCol) (user name and password provided separately).** [Addition, 05.2020]
 
-13. **Tablets with interesting epigraphic features should be added to the [epigraphic features tracking list](https://trello.com/c/fmxeDDGE), so that they can be systematically tagged.** [Addition 09.2020]
-
-14. In the case of intralinear bilinguals sumerian and akkadian should each be transliterated in a separate line. To differentiate add `a` and `b` to the line number, so. e.g.
+13. In the case of intralinear bilinguals sumerian and akkadian should each be transliterated in a separate line. To differentiate add `a` and `b` to the line number, so. e.g.
 `4a. %sum [transliteration of the sumerian version]`  
 `4b. ($___$) [transliteration of the akkadian version]`
 
-15. If textcritical glosses don't repeat the antecedent in full the respective word needs to be supplied, e.g. `er₂-ra : <(er₂)>-ta`.
+14. If textcritical glosses don't repeat the antecedent in full the respective word needs to be supplied, e.g. `er₂-ra : <(er₂)>-ta`.
 
 ## **Joins**
 

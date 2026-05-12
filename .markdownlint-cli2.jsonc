@@ -1,5 +1,1 @@
-{
-  // Files managed by external tools (e.g. Eraser diagram sync) that
-  // automatically rewrite their content should be excluded from linting.
-  "ignores": ["guides/Archaeology.md"]
-}
+{}

@@ -77,6 +77,25 @@ Three guard styles are used at the resource level:
 
 All other documented routes are unscoped (publicly readable).
 
+### Configuring Scopes
+
+A scope is defined in three places that must stay in sync:
+
+1. The `ScopeItem` enum in
+   [`ebl/common/domain/scopes.py`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/common/domain/scopes.py)
+   \u2014 the backend source of truth.
+2. The `Folio` class in
+   [`src/fragmentarium/domain/Folio.ts`](https://github.com/ElectronicBabylonianLiterature/ebl-frontend/blob/master/src/fragmentarium/domain/Folio.ts)
+   \u2014 used by `SessionContext.isAllowedTo*` to gate the UI. See
+   [frontend-docs/02-data-and-api.md \u2014 Scope-Gated UI](../frontend-docs/02-data-and-api.md#scope-gated-ui).
+3. The Auth0 tenant \u2014 each scope must be defined on the API
+   (`Applications > APIs > Dictionary > Permissions`) and granted to the
+   relevant role (`User Management > Roles`).
+
+Scopes whose name matches `OPEN` / `isOpen` are public; restricted
+scopes use `RESTRICTED` / `isOpen = false` in the source code and the
+actual gate is enforced by Auth0 role membership.
+
 ## Error Mapping
 
 Global error handlers are registered in `ebl/error_handler.py`. Mapping:

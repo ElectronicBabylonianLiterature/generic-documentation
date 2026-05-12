@@ -128,6 +128,50 @@ Loading a fragment record (`/library/:id`):
   repository level; rapid route transitions must not produce stale
   updates.
 
+### Data Fetching with `withData`
+
+The higher-order component at `src/http/withData.tsx` is the standard
+seam between a presentational component and the async data it needs.
+Wrapping a component in `withData` lets the wrapper manage the promise
+lifecycle (spinner → fetch → unwrap → render) so the inner component
+only deals with resolved data.
+
+```ts
+export default withData<
+  { text: string },                  // A: shared props
+  { markupService: MarkupService },  // B: getter-only props
+  readonly MarkupPart[]              // C: data type
+>(
+  ({ data }): JSX.Element => MarkupText(data),                  // D: display
+  ({ markupService, text }) => markupService.fromString(text),  // E: getter
+);
+
+// call site
+<Markup
+  markupService={markupService}                  // matches B
+  text="Refer to @bib{foobar2024} (@i{sic!})."  // matches A
+/>
+```
+
+- **A** — props passed to both the display component (D) and the getter
+  (E). Every prop in A must be supplied at the call site.
+- **B** — extra props for the getter only. Also required at the call
+  site; not visible to D.
+- **C** — the data type passed to D. The getter must return a promise
+  resolving to this type (in the example, the call signatures of
+  `MarkupText(parts: readonly MarkupPart[])` and
+  `markupService.fromString(text: string): Bluebird<readonly MarkupPart[]>`
+  match).
+- **D** — receives `data` plus the props from A. Props from B are not
+  visible here.
+- **E** — issues the request, typically as a method on a service or
+  repository.
+
+Optional behavior knobs (watching prop changes to trigger a reload,
+default values, error handling) are passed through `withData`’s
+additional options — see the implementation at
+`src/http/withData.tsx` for the full signature.
+
 ## Risk Hotspots
 
 - Model drift across `src/transliteration`, `src/corpus`, and

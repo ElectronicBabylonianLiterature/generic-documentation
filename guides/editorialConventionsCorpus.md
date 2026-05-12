@@ -2,7 +2,7 @@
 
 ## How to use this document?
 
-The first part of this document explains and defines key concepts and elements of the eBL Corpus Editor. Part 2 explains how these elements should be used when editing with eBL. Elements defined in Part 1 are capitalised throughout the entire document. A basic knowledge of [eBL-ATF](https://github.com/ElectronicBabylonianLiterature/generic-documentation/wiki/eBL-ATF-and-other-ATF-flavors) is required.
+The first part of this document explains and defines key concepts and elements of the eBL Corpus Editor. Part 2 explains how these elements should be used when editing with eBL. Elements defined in Part 1 are capitalised throughout the entire document. A basic knowledge of [eBL-ATF](atfFlavors.md) is required.
 
 ## Table of Contents
 
@@ -278,7 +278,7 @@ A manuscript siglum has to be unique within a [Chapter](#16-chapter). A siglum i
 
 ### 2.2.4 Edit Colophons
 
-Colophons are to be edited in the respective field in the List of Manuscripts. The transliteration should follow the [eBL-ATF](https://github.com/ElectronicBabylonianLiterature/generic-documentation/wiki/eBL-ATF-and-other-ATF-flavors) standard as it applies to editions of [Fragments](#110-fragment) in the [Fragmentarium](https://www.ebabylon.org/fragmentarium). Note that the use of labels like e.g. `o` for obverse (see [2.3.1](#231-sides-and-columns)) is not allowed. Use [@-lines](#192-paratextual-and-discoursive-features--lines) instead.
+Colophons are to be edited in the respective field in the List of Manuscripts. The transliteration should follow the [eBL-ATF](atfFlavors.md) standard as it applies to editions of [Fragments](#110-fragment) in the [Fragmentarium](https://www.ebabylon.org/fragmentarium). Note that the use of labels like e.g. `o` for obverse (see [2.3.1](#231-sides-and-columns)) is not allowed. Use [@-lines](#192-paratextual-and-discoursive-features--lines) instead.
 
 #### Example
 
@@ -342,7 +342,7 @@ Add lower case letters (`a, b, c`) to the line number if a [Manuscript Line](#19
 
 ## 2.4 Transliterate Manuscript Lines
 
-The transliteration should follow the [eBL-ATF standard](https://github.com/ElectronicBabylonianLiterature/generic-documentation/wiki/eBL-ATF-and-other-ATF-flavors) that also applies to the Fragmentarium. The most important rules will also be illustrated below:
+The transliteration should follow the [eBL-ATF standard](atfFlavors.md) that also applies to the Fragmentarium. The most important rules will also be illustrated below:
 
 ### 2.4.1 Broken Parts and Supplied Text
 
