@@ -1,5 +1,7 @@
 # Data Model
 
+Created: 2026-05-06
+
 ## Purpose
 
 Describe how the eBL API stores its data: which MongoDB collections each

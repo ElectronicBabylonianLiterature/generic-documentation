@@ -1,5 +1,8 @@
 # Generic Documentation for eBL
 
+Created: 2026-04-21
+Last Reviewed: 2026-05-12
+
 This repository collects technical and editorial documentation for the
 [Electronic Babylonian Library (eBL)](https://www.ebl.lmu.de/) platform.
 It is the entry point for backend and frontend contributors and editors.

@@ -1,5 +1,7 @@
 # Build and Operations
 
+Created: 2026-05-06
+
 ## Purpose
 
 Document the artifacts, scripts, environment, CI workflows, and

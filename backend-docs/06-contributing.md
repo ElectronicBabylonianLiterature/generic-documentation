@@ -1,5 +1,7 @@
 # Contributing
 
+Created: 2026-05-06
+
 ## Purpose
 
 How to make a change to `ebl-api` safely: local setup, test commands, PR

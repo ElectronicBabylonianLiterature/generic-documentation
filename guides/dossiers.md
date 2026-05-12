@@ -1,5 +1,8 @@
 # Adding New Dossiers
 
+Created: 2026-02-26
+Last Reviewed: 2026-05-12
+
 This guide covers the editor-facing convention for writing a dossier's
 free-text **description**. The persisted document shape (`provenance`,
 year range, `script.period`, `references`, etc.) is documented in

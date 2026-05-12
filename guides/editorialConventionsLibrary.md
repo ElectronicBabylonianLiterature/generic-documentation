@@ -1,5 +1,8 @@
 # Instructions for the use of the Library
 
+Created: 2025-03-28
+Last Reviewed: 2026-05-12
+
 ## General Transliteration Rules for the eBL
 
 The eBL project uses a version of the A(scii)T(ransliteration)F(ormat). The ATF, used both by CDLI (in its ASCII version) and by Oracc (in its Unicode version), is the most popular format for the transliteration of cuneiform texts. A complete guide to Oracc ATF can be found in the [Oracc ATF guide](http://oracc.org/doc/help/editinginatf/). The eBL-specific conventions are documented in the [eBL-ATF specification](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/docs/ebl-atf.md).

@@ -1,5 +1,7 @@
 # Contributing
 
+Created: 2026-05-06
+
 ## Purpose
 
 Local setup, code style, test discipline, PR expectations, and

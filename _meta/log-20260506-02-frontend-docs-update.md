@@ -1,5 +1,7 @@
 # Frontend Docs Restructure — Implementation Log
 
+Created: 2026-05-06
+
 ID: 20260506-02
 
 Plan: [plan-20260506-02-frontend-docs-update.md](./plan-20260506-02-frontend-docs-update.md)

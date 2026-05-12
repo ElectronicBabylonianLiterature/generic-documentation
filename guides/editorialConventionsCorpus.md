@@ -1,5 +1,8 @@
 # Conventions for eBL-Corpus Editions
 
+Created: 2025-03-28
+Last Reviewed: 2026-05-12
+
 ## How to use this document?
 
 The first part of this document explains and defines key concepts and elements of the eBL Corpus Editor. Part 2 explains how these elements should be used when editing with eBL. Elements defined in Part 1 are capitalised throughout the entire document. A basic knowledge of [eBL-ATF](atfFlavors.md) is required.

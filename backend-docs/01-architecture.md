@@ -1,5 +1,7 @@
 # Architecture
 
+Created: 2026-05-06
+
 ## Purpose
 
 Describe the components of `ebl-api`, how they are wired together at startup,

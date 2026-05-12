@@ -1,5 +1,8 @@
 # How to Create Photo Montages of Tablets to Check Joins
 
+Created: 2025-03-28
+Last Reviewed: 2026-05-12
+
 ## Summary
 
 1) [Choose Layer Order for Fragments](#1-choose-layer-order-for-fragments)  

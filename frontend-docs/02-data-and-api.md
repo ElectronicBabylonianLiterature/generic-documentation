@@ -1,5 +1,7 @@
 # Data and API
 
+Created: 2026-05-06
+
 ## Purpose
 
 Describe how `ebl-frontend` talks to `ebl-api`: the transport primitives,

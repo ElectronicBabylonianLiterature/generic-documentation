@@ -1,5 +1,8 @@
 # 🧩 Interactive Runner for ATF Importer
 
+Created: 2025-11-06
+Last Reviewed: 2026-05-12
+
 ## Overview
 
 `interactive_import_onepass.py` is a **runner script** that automates the process of importing ATF (ASCII Transliteration Format) data from **Oracc** or **CDLI** into the **eBL database**.  

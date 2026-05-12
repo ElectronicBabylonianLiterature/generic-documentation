@@ -1,5 +1,7 @@
 # Documentation Audit — 2026-05-12
 
+Created: 2026-05-12
+
 Scope: every tracked document in this repo **except** `backend-docs/` and
 `frontend-docs/` (those were restructured under
 [plan-20260506-01-docs-update.md](plan-20260506-01-docs-update.md) and

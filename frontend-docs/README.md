@@ -1,5 +1,7 @@
 # Frontend Documentation
 
+Created: 2026-04-21
+
 This directory is the entire frontend documentation set for
 `ebl-frontend`. It is structured as one entry point plus six numbered
 core docs, mirroring the backend doc set under

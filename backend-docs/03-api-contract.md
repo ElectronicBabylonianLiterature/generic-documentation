@@ -1,5 +1,7 @@
 # API Contract
 
+Created: 2026-05-06
+
 ## Purpose
 
 Describe the public contract of the eBL API: how routes are organized, how

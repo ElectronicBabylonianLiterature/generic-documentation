@@ -1,5 +1,7 @@
 # Lifecycle and Compatibility
 
+Created: 2026-05-06
+
 ## Purpose
 
 Define how the eBL API evolves: versioning posture, what counts as

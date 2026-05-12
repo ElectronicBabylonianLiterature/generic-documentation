@@ -1,5 +1,8 @@
 # ATF Flavors
 
+Created: 2025-03-28
+Last Reviewed: 2026-05-12
+
 See the [eBL-ATF specification](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/docs/ebl-atf.md)
 
 * eBL validates transliterations against a sign list. If a value is not present in the sign list, the transliteration is considered invalid even if the syntax is correct.

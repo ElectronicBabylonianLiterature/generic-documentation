@@ -1,5 +1,7 @@
 # Routes and Features
 
+Created: 2026-05-06
+
 ## Purpose
 
 Map every top-level route to its owning domain, the router module that

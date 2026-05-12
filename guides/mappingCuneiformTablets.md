@@ -1,5 +1,8 @@
 # **A manual for mapping cuneiform tablets in the context of the CAIC project**
 
+Created: 2025-10-15
+Last Reviewed: 2026-05-12
+
 Moritz Kellerer; 10.10.2025
 
 ## **Introduction**

@@ -1,5 +1,7 @@
 # Operations
 
+Created: 2026-05-06
+
 ## Purpose
 
 Operational reference for running, deploying, monitoring, and recovering

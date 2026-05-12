@@ -1,5 +1,7 @@
 # Backend Documentation
 
+Created: 2026-04-21
+
 This directory documents the eBL backend (`ebl-api`) for contributors.
 Source: <https://github.com/ElectronicBabylonianLiterature/ebl-api/>.
 

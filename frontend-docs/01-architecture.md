@@ -1,5 +1,7 @@
 # Architecture
 
+Created: 2026-05-06
+
 ## Purpose
 
 Describe how `ebl-frontend` is composed, the layering each domain

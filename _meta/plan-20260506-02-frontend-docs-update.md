@@ -1,5 +1,7 @@
 # Frontend Docs Restructure Plan and Todo
 
+Created: 2026-05-06
+
 ID: 20260506-02
 
 Date: 2026-05-06
