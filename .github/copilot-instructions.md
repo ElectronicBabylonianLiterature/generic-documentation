@@ -106,6 +106,21 @@ when generating, editing, or reviewing content in this repository.
 - These files carry the same `Created` / `Last Reviewed` metadata block.
 - `_meta/` is never linked from primary docs; it is an internal record.
 
+## Task Documentation
+
+- Every non-trivial task MUST be tracked by paired Markdown files under
+  `_meta/`:
+  - `plan-YYYYMMDD-NN-<slug>.md` — the agreed approach before execution.
+  - `log-YYYYMMDD-NN-<slug>.md` — the running record of what was actually
+    done, kept up to date while working.
+  - `audit-YYYYMMDD-<slug>.md` — when the task is a review or audit.
+- Keep the plan and log constantly updated; do not let them drift from reality.
+- Both files use the standard metadata block (`Created` / `Last Reviewed`).
+- Before a PR is merged, the task plan/log files in `_meta/` are reviewed and,
+  if no longer needed for institutional memory, removed in the same PR. The
+  assistant MUST warn the user about pending `_meta/` task files before
+  approving a merge.
+
 ## Tooling
 
 - The repo uses `markdownlint-cli2` (configured via `.markdownlint-cli2.jsonc`).
@@ -170,3 +185,12 @@ completion while any of them is violated.
    `_meta/`.
 10. **Scope discipline.** Make only the changes the user requested. Do not
     refactor, reformat, or re-title untouched files as a side effect.
+11. **Task documentation present.** Every non-trivial change MUST have an
+    up-to-date `plan-YYYYMMDD-NN-<slug>.md` and `log-YYYYMMDD-NN-<slug>.md`
+    pair under `_meta/`. Work MUST NOT be reported complete while these files
+    are missing, stale, or contradict the actual changes.
+12. **Pre-merge `_meta/` cleanup warning.** Before a PR is approved or merged,
+    the assistant MUST list the `_meta/` plan/log/audit files associated with
+    the PR and explicitly warn the user to review them and remove any that are
+    no longer needed in the same PR. A merge MUST NOT be recommended while
+    this warning is outstanding.
