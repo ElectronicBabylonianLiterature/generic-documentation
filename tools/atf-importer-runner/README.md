@@ -34,7 +34,8 @@ ebl/
          ├── missing_lemmata.json     # Automatically created or updated
          └── data/
              ├── *.atf                # ATF files to be imported
-             ├── *.json               # Glossary and lemma mapping files
+             ├── *.json               # Glossary and lemma mapping files 
+             ├── akk-x-ltebab.glo     # a lemma mapping file for the most common words
              └── logs/                # Import logs (created automatically)
 ```
 
