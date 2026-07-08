@@ -506,17 +506,20 @@ Translations are to be added to the respective [Lines of Text](#17-lines-of-text
 ## 2.10 Canonical Examples
 
 ```atf
+#tr.en: “I heal the sick person whom fever afflicts,
 41'. %n uballaṭ | marṣa || ša ubburūš | liʾbu
 UrkHel1 r 7a. u₂-bal-laṭ GIG ša₂ ub-bu-ru-uš li-bi
 $ line continues
 UrkHel3 o 13. {(he-pi₂)} <(u₂-bal-laṭ)> GIG ša₂ ub-bu-ru-šu₂ le-e-bu
 
+#tr.en: “(And) bring back from the Netherworld the sick (and) dying,
 42'. %n utār-ma† | ultu arallê || šibṭa | namtara
 † UrkHel3 itâr
 UrkHel1 r 7b. u₂-tari(GUR)-ma <ul-tu> a-ra-le-e ši-biṭ {d}nam-tar-ri
 UrkHel3 o 14. i-ta-ri ul-tu a-ra-al-le-e ši-biṭ nam-ta-ri
 UncNBSch1 i 1–3. u₂-ta-ru₃ | <ul-tu₂> a-ra-le-e | ši-biṭ nam-tar-ri |
 
+#tr.en: “He whose life has faded from his breast,
 43'. %n ša ina irtīšu || uzabbilu | napšassu
 UrkHel1 r 8a. ša₂ ina GABA-šu₂ i-zab-bil nap-šat-su
 $ line continues
@@ -525,12 +528,15 @@ $ line continues
 UncNBSch1 i 4–5a. ša₂ <ina> GABA!-šu₂ i-zab-bil | nap-šat#-su#
 $ line continues
 
+#tr.en: “And death has covered it (scil. his breast), bearing him towards the grave,
 44'. %n mūtu | īrimūšī-ma || našûšu | ana qabri
 UrkHel1 r 8b. mu-u₂-tu₂ i-ri-mu-ši-ma na-šu-šu₂ a-na qab-ri₃
 UrkHel3 15b. mu-u₂-tu i-ri-mu-ši-ma <...>
 ```
 
 ```atf
+
+#tr.en: “Creator of grain and flax, who causes vegetation to spring up,
 2. %n bānû (|) ê (|) u qê || mušēṣû (|) urqīti
 // (Marduk 5 14)
 #tr.en: The creator of barley and flax, who made plant life grow.
@@ -545,6 +551,7 @@ NinNACom6 i 6-10. !bs {+ru}RU₂ & !cm ba-nu-u | ($___$) !bs SAR & !cm ŠE.IM | 
 $ single ruling
 BabaNBCom3 r 8'-9'. !qt ba-nu-u₂ ŠE#.IM u GU-e [x x x x x x x] | !zz ($___$) GU#-u₂# ṣi-hir#-t[u ...]
 
+#tr.en: “(37) PAGALGUENNA, foremost of all lords, whose strength is outstanding,
 93. %n pagalguʾenna | ašarēd naphar bēlī || ša šaqâ | emūqāšu
 // cf. (LB 3272 Vs. 5)
 NinNA4b r 2. [{d}pa₅]-gal-gu₂#-en#-na [x x x x x x x x x x x x x x]
@@ -554,6 +561,7 @@ HuzNA2 r 5b. {d}pa₄-gal-gu₂-en-na a-ša₂-red nap-har be-li ša₂ ša₂-q
 NinNAQuo2 5'–6'. [{d}pa₄-gal-gu₂-en-na &] {d#}MIN & a-ša₂-r[ed x x x x] | ša₂ ša₂-qa-a# [x x x x]
 NinNAQuo3 3'–4'. [x x x x x x & x x & x x x] nap#-har be-li₃ | [x ša₂-qa]-a# e-mu-qa-šu₂
 
+#tr.en: His heart is deep, his feelings all encompassing,
 155. %n rūqu | libbašu || rapaš | karassu
 // I.2 VI 138
 NinNA2 r 31'. ru-u-qu lib₃-ba-šu₂ la*-ʾ-iṭ k[a]r-as#-[su]
