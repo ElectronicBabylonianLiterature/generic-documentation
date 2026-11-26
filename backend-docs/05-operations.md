@@ -1,6 +1,7 @@
 # Operations
 
 Created: 2026-05-06
+Last Reviewed: 2026-11-26
 
 ## Purpose
 
@@ -116,8 +117,16 @@ GitHub Actions workflows live under `.github/workflows/`:
 
 - `main.yml` — primary build/test pipeline run on pushes and pull requests.
 - `codeql.yml` — security analysis.
+- `secret-scan.yml` — GitGuardian secret scanning.
 
-PRs are expected to be green on both before merge.
+Required build, test, quality, and security checks must pass before merge.
+CI uses a local single-node MongoDB replica set. Media integration tests cover
+transactions, source collisions, atomic swaps, failed batches, concurrent
+promotions, typed identities, stale deletion completion, protected legacy
+bytes, forged handles, interrupted writes, and binary validation. Locally,
+media tests reuse a replica-set test client or start a temporary instance with
+`pymongo-inmemory`; unique test databases are removed after use and production
+connection settings are unnecessary.
 
 ## Deployment
 
@@ -128,6 +137,131 @@ PRs are expected to be green on both before merge.
 - A deployment is considered healthy when the standard read paths
   (`/statistics`, `/fragments`, `/texts`, `/words`, `/signs`) return 2xx
   with baseline latency.
+
+## Chapter Display Cache Deployment and Recovery
+
+Before activation, API maintainers and the database operator must confirm the
+production read preference, inventory all API replicas and batch workers, and
+approve a deployment window that permits the quiescent procedure below.
+Chapter caching requires primary reads; other read preferences bypass caching
+and emit a warning when the cache-state repository is initialized.
+
+The [cache protocol](./02-data-model.md#caching) describes lease expiry and
+revision fencing during normal operation.
+
+Old workers do not participate in this protocol. Mixed old/new workers are
+unsafe during deployment or rollback; this is separate from normal operation,
+where expired writer leases recover automatically. Before first activation,
+after rollback, or after any overlap with old writers:
+
+1. Stop **all** old and new chapter readers, writers, and batch jobs, and wait
+   for every in-flight request and job to finish.
+2. With workers still stopped, run the cleanup against an explicitly selected
+   endpoint and database:
+
+   ```sh
+   poetry run python -m ebl.cache.clear_versioned_chapter_cache \
+     --uri-env CACHE_RECOVERY_URI --database DATABASE --confirm-quiescent
+   ```
+
+3. Start only workers implementing the shared cache protocol.
+
+The command deletes only private `chapter-display-v2:` payloads and normally
+preserves chapter revision/pending metadata. Add `--repair-pending` only while
+quiescent to clear abandoned counters, including pre-lease legacy state. Repair
+rotates the epoch and increments the revision. Never run recovery while any
+reader or writer remains active; a request could otherwise repopulate a cache
+after cleanup. The command is not part of ordinary request handling.
+
+Source: [`clear_versioned_chapter_cache.py`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/cache/clear_versioned_chapter_cache.py).
+
+## Media Index Preparation and Rollout
+
+Media writes require the transactional topology documented in
+[Data Model](./02-data-model.md#transaction-and-read-requirements).
+Index preparation is explicit: application imports, runtime construction,
+and media reads do not initialize indexes or trigger a backfill.
+
+Before the first media write, initialize the metadata and storage indexes in
+an authorized maintenance process configured for the intended database:
+
+```python
+from ebl.media.infrastructure.grid_fs_media_representation_store import (
+    GridFsMediaRepresentationStore,
+)
+from ebl.media.infrastructure.mongo_media_repository import MongoMediaRepository
+
+repository = MongoMediaRepository(database)
+store = GridFsMediaRepresentationStore(database)
+repository.assert_writable_topology()
+repository.create_indexes()
+store.create_indexes()
+```
+
+Preparation validates existing media/source-reservation consistency first.
+It derives each canonical source key from the stored import source, rejects
+missing or mismatched keys, and verifies every reservation owner. It refuses
+inconsistent preexisting records rather than silently repairing them.
+Preparation does not import originals or create gallery records. See the
+[shared collection/index definitions](./02-data-model.md#media-collections-and-indexes).
+
+The [`ebl.io.media.backfill`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/io/media/backfill.py) command
+provides `dry-run`, `prepare-indexes`, and `apply` phases. Use its help and
+explicitly selected environment/database configuration for the approved
+maintenance operation. A dry run must not prepare indexes or apply writes.
+Write phases require a matching `--confirm-database`; `apply` also requires
+`--confirm-source-writes-paused`. Retain the staging journal for recovery.
+Use bounded migration batches and measured throughput rather than many
+competing metadata writers, which acquire the same transaction lock.
+
+Deploy the compatible backend, run and verify the separately scheduled
+migration, then enable the frontend gallery. Set `MEDIA_API_ENABLED=true` and
+restart the backend to register the media routes; the default is `false`.
+Disabling the flag restores the existing route/response shape and leaves
+legacy photo and thumbnail routes available. Read behavior is defined by the
+[media API contract](./03-api-contract.md#media-reads).
+
+Keep legacy originals protected and available while unresolved sources are
+reviewed. A partial import, missing optional previews, or an empty media
+collection must preserve existing photo access. Generate owned migration
+previews rather than adopting thumbnails that a legacy generator may clear.
+Preserve adopted original file IDs; direct maintenance/database operations
+remain capable of deleting legacy bytes despite adapter-level protection.
+
+### Media Failure Recovery and Deletion
+
+A failed or interrupted owned upload has a registry entry with `ready=false`.
+It is never readable. An exception during writing deletes only that upload's
+owned file and marks its registry entry deleted. A process crash can leave
+pending entries for a later explicit recovery command to inspect.
+
+Retain an adopted registration when metadata creation fails, so retrying the
+same audited source reuses the protected handle. Do not apply generic binary
+cleanup to borrowed handles on a failed import. Generated previews may be
+cleaned up by their exact owned handles.
+
+Replacement returns superseded handles without deleting their bytes. Physical
+cleanup must wait until readers holding those handles have finished; the store
+does not coordinate active streams. The read-only media HTTP API
+exposes no replacement or deletion routes, and the migration preserves existing
+records.
+
+Metadata deletion first hides the media and reserves its import source.
+The returned `StoredMedia.deletion_token` identifies that exact deletion
+generation. Pass the returned object unchanged to `finish_delete` after binary
+cleanup. An old completion cannot remove a later identical deletion generation.
+
+## Findspot Filter Index
+
+The database operator must prebuild the `fragments` index
+`{archaeology.findspotId: 1}` before deploying, or approve a startup build window.
+Otherwise, application startup builds the index and waits for it to finish.
+The declaration lives in
+[`MongoFragmentRepository`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/fragmentarium/infrastructure/mongo_fragment_repository.py).
+Coordinate the build against the intended database and collection before
+restarting serving replicas. Complete the
+[all-replicas compatibility rollout](./04-lifecycle-and-compatibility.md#findspot-filter-rollout)
+before enabling filter-dependent clients.
 
 ## Reliability Baseline (SLO / SLI)
 
@@ -450,4 +584,4 @@ Fast verification commands during an incident:
 
 ## Last Reviewed
 
-2026-05-12
+2026-11-26

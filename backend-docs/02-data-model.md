@@ -1,6 +1,7 @@
 # Data Model
 
 Created: 2026-05-06
+Last Reviewed: 2026-11-26
 
 ## Purpose
 
@@ -18,7 +19,8 @@ captures mutations. The authoritative source is the infrastructure code in
   media (photos, folios, public files).
 - Each domain owns its repository module under
   `ebl/<domain>/infrastructure/`. Indexes are created by the repository at
-  startup; any new query dimension should add a matching index there.
+  startup or during explicit operator preparation; media index creation
+  is explicit. Query dimensions need matching repository indexes.
 - The `changelog` collection is global and cross-cutting (see below).
 
 A reference diagram of the live collections is checked in alongside this
@@ -50,6 +52,7 @@ encoded in the repository helpers.
 | Cache | cache documents | `ebl/cache/infrastructure/mongo_cache_repository.py` |
 | Users / scopes | (Auth0-derived; not persisted as a primary store) | `ebl/users/infrastructure/auth0.py` |
 | Cross-cutting | `changelog` | `ebl/changelog.py` |
+| Media | `media`, `mediaSources`, `mediaLocks`, `mediaFiles` | `ebl/media/infrastructure/` |
 
 Collection names are owned by the corresponding repository module; treat
 that module as the single source of truth if a name needs verification.
@@ -60,24 +63,118 @@ Binary data is stored in named GridFS buckets on the same MongoDB instance:
 
 | Bucket | Contents | Filename convention | Served by |
 |---|---|---|---|
-| `photos` | Tablet photographs and thumbnails | `<fragment number>.jpg` | `ebl/fragmentarium/web/photo.py` |
+| `photos` | Legacy tablet photographs | `<fragment number>.jpg` | `ebl/fragmentarium/web/photo.py` |
 | `folios` | Folio scans (per scholar) | `<name>_<number>.jpg` | `ebl/fragmentarium/web/folios.py`, `ebl/fragmentarium/web/folio_pager.py` |
+| `thumbnails` | Legacy generated thumbnails | (legacy naming) | Fragment thumbnail route |
+| `media` | Owned media representations | Internal file identity | `ebl/media/web/resources.py` |
 | public files | Generic image/file delivery | (free-form) | `ebl/files/web/files.py` |
 
 Bucket access is repository-mediated. Endpoints touching media are
 `/fragments/{number}/photo`, `/fragments/{number}/thumbnail/{resolution}`,
 `/folios/{name}/{number}`, and `/images/{file_name}`.
 
-The canonical ingestion path for photos is the
+The legacy ingestion path for photos is the
 `upload-photos-with-thumbnails.py` script in
 [ebl-api-data-preparation](https://github.com/ElectronicBabylonianLiterature/ebl-api-data-preparation/blob/main/scripts/upload-photos-with-thumbnails.py),
 which compresses images, uploads them to the `photos` bucket, and
 generates thumbnails. Manual uploads via `mongofiles` or a GridFS GUI
 remain possible but bypass the thumbnail step.
 
+## Media Persistence and Ownership
+
+Media metadata and binary representations use separate repositories:
+[`MongoMediaRepository`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/media/infrastructure/mongo_media_repository.py)
+and
+[`GridFsMediaRepresentationStore`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/media/infrastructure/grid_fs_media_representation_store.py).
+Their construction and read paths do not prepare indexes or run a backfill.
+See [Operations](./05-operations.md#media-index-preparation-and-rollout) for
+explicit preparation and rollout.
+
+### Transaction and Read Requirements
+
+All metadata mutations require a MongoDB replica set or sharded cluster with
+transaction support. Reads do not require transactions. Call
+`MongoMediaRepository.assert_writable_topology()` for a read-only preflight.
+Unsupported standalone servers fail before any mutation.
+
+Metadata mutations acquire the same transaction lock in `mediaLocks`, then commit
+with snapshot reads, primary read preference, and majority write concern. This
+serializes imports, replacements, primary selection, and deletion. The initial
+migration should use bounded batches and measured throughput; it should not
+launch many competing metadata writers.
+
+Both concrete adapters use primary reads even when the supplied database has a
+secondary read preference. This prevents stale metadata or registry reads during
+retry, deletion, and immediate reads after an import.
+
+Primary selection is atomic. Explicit creation or replacement still preserves
+the supplied primary flags, as required by the existing contracts. A later
+explicit primary creation can introduce another primary; the migration should
+default to non-primary records until its selection policy is applied.
+
+### Media Collections and Indexes
+
+The definitions in
+[`media_indexes.py`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/media/infrastructure/media_indexes.py)
+are shared by preparation and migration readiness checks. Implicit identifier
+indexes are included below. Named indexes use simple collation regardless of
+the collection default.
+
+| Collection | Index or state | Purpose |
+| --- | --- | --- |
+| `media` | Unique `_id_` | Public media identity |
+| `media` | `media_import_source` on `sourceKey` | Import-source lookup |
+| `media` | `media_fragment_state` | Batch fragment reads and visible state |
+| `mediaSources` | Unique `_id_` (full source) | Import-source reservation |
+| `mediaSources` | `media_source_owner` | Reservation cleanup by media |
+| `mediaLocks` | Unique `_id_`, document `writes` | Transaction serialization |
+| `mediaFiles` | Unique `_id_` | Immutable logical representation handle |
+| `mediaFiles` | `media_file_recovery` | Find owned pending writes |
+| `media.files` | `filename_1_uploadDate_1` | Standard GridFS file lookup |
+| `media.chunks` | Unique `files_id_1_n_1` | Standard GridFS chunk identity |
+
+Each source reservation records its system, container, and typed file identity.
+An ObjectId and a string with identical characters remain distinct sources.
+Owners can switch atomically during a multi-record source swap: the unique
+reservation identifier and shared transaction enforce uniqueness, rather than
+a unique index on the media document's lookup field.
+
+### Binary Ownership and Validation
+
+Legacy adoption permits only the existing `photos` and `thumbnails` buckets.
+Adopted handles are server-internal; public DTOs never contain file IDs or
+registry handles. Open and delete operations require an exact match of media,
+representation, role, and thumbnail size against the immutable registry record.
+
+New writes own files only in `media.files` and `media.chunks`. Every write receives
+a fresh logical handle and file ID. Deleting an adopted representation only
+tombstones its registry entry; it never deletes legacy chunks or file metadata.
+Repeated cleanup is harmless, and deleted handles cannot be revived.
+
+Adoption checks complete byte count, SHA-256 when present, and raster signature
+against the supplied metadata. It does not pixel-decode large legacy originals;
+the migration audit must validate dimensions and structural integrity. New owned
+raster writes validate dimensions and decode every frame before any
+registry or GridFS write. A 40,000,000-pixel limit applies to the canvas and
+the total of decoded frame pixels, independently of Pillow's global settings.
+WebP canvas dimensions are checked from a bounded header before creating a
+native decoder.
+The adapter currently accepts JPEG, PNG, and WebP. SVG writes fail closed until
+an explicit sanitizer is added.
+
+Legacy protection applies to the new adapters. Existing maintenance jobs and
+direct database operations remain capable of deleting legacy bytes. In
+particular, the old thumbnail generator clears its thumbnail bucket. The
+migration should generate owned previews instead of adopting those thumbnails,
+and operators must preserve adopted original file IDs.
+
+For interrupted uploads, deletion completion, and safe retries, see
+[Media failure recovery and deletion](./05-operations.md#media-failure-recovery-and-deletion).
+
 ## Indexing
 
-Each repository creates the indexes it needs on startup. The general rules:
+Repositories declare the indexes their queries need. Many are created at
+startup; media indexes require explicit preparation. The general rules:
 
 - High-cardinality query dimensions (transliteration n-grams, lemma codes,
   sign codes, museum/provenance, periods, genres, accession identifiers) are
@@ -199,9 +296,8 @@ maintained on Eraser —
     Warka, `3N` for the third Nippur campaign
   - `number` (string) — artifact number
   - `suffix` (string) — additional identifier suffix
-- `site` (string) — archaeological site name from the canonical list
-  in
-  [`ebl/common/domain/provenance.py`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/common/domain/provenance.py).
+- `site` (string) — archaeological site name resolved through the
+  [provenance service](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/provenance/application/provenance_service.py).
   Long names (`Aššur`, `Ḫuzirina`) follow the
   [Cuneiform Inscriptions Geographical Site Index (CIGS)](https://zenodo.org/records/14568765)
   where available.
@@ -269,6 +365,11 @@ Example:
 - `primaryContext` (boolean | null) — whether tablets were found in
   their original location
 - `site` (string) — same vocabulary as `archaeology.site` above
+- `mapLocation` (optional object) — curated polygon references and source
+  metadata owned by the canonical findspot read model. Definitions live in
+  [`map_location.py`](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/fragmentarium/domain/map_location.py);
+  the [API contract](./03-api-contract.md#findspot-map-locations) describes
+  its read-only behavior.
 
 Example:
 
@@ -374,8 +475,24 @@ Read paths that are expensive enough to cache use `ebl/cache/`:
 - `custom_cache.py` — TTL/keying helpers for domain-specific caches.
 - `mongo_cache_repository.py` — Mongo-backed cache store.
 
-The cache is invalidated by write paths before persistence. The most
-notable example is the chapter-level cache invalidated by Corpus mutations.
+Chapter display caching uses revisions shared by every API worker and the
+`update_texts` batch worker. Pending writes bypass caches for a five-minute lease
+measured by the MongoDB server clock from the first outstanding writer.
+Overlapping writers do not extend that deadline, so abandoned leases expire
+automatically even when other edits continue.
+Every successful chapter update also replaces a private `_cacheRevision` token
+in the same atomic write as its content. Readers check that token with a bounded,
+indexed chapter lookup before reusing a cached display. This fence remains safe
+when a live writer takes longer than its lease, resumes after a pause, or cannot
+finish its cache-state cleanup. A cache built before that write cannot be reused
+after the new content token is visible. Legacy chapters need no migration.
+Writer completion is scoped to the epoch captured when that writer started,
+so a late completion cannot alter writer state recreated after metadata loss.
+
+Chapter display caching requires primary reads. Other read preferences bypass
+caching and emit a warning when the cache-state repository is initialized.
+See the [cache-state implementation](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/cache/infrastructure/mongo_chapter_cache_state.py)
+and the [quiescent recovery procedure](./05-operations.md#chapter-display-cache-deployment-and-recovery).
 
 ## Data Ingestion
 
@@ -563,4 +680,4 @@ reversible. The general procedure:
 
 ## Last Reviewed
 
-2026-05-06
+2026-11-26
