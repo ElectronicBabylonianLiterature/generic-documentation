@@ -1,6 +1,7 @@
 # Lifecycle and Compatibility
 
 Created: 2026-05-06
+Last Reviewed: 2026-11-26
 
 ## Purpose
 
@@ -75,6 +76,34 @@ steps.
   entry, the replacement, and the planned sunset.
 - The matching update to this directory's docs ships in the same PR.
 
+## Coordinated Backend Rollouts
+
+### Chapter Cache Workers
+
+Old chapter readers, writers, and batch workers do not participate in the
+shared cache protocol. Follow the
+[quiescent activation and recovery procedure](./05-operations.md#chapter-display-cache-deployment-and-recovery)
+when activating it, rolling back, or recovering from mixed worker versions.
+Ordinary lease expiry does not replace that deployment procedure.
+
+### Media Compatibility
+
+Media persistence, the read-only API, and migration tools share the storage
+contract. Deploy the compatible backend and verify the data migration before
+enabling the frontend gallery. Preserve legacy originals and legacy photo
+access throughout partial imports and recovery. Follow the
+[operational procedure](./05-operations.md#media-index-preparation-and-rollout)
+and the [media response contract](./03-api-contract.md#media-reads).
+
+### Findspot Filter Rollout
+
+Before enabling clients that send `findspotId` or `findspotIds`, update every
+serving backend replica to support these filters. Older replicas ignore them,
+so a mixed-version rollout cannot guarantee findspot-restricted results.
+Complete the [index preparation](./05-operations.md#findspot-filter-index)
+as part of deployment. Keep filter-dependent clients disabled during a rollback
+to an incompatible backend version.
+
 ## Governance Triggers
 
 Before merging a contract-impacting change, confirm:
@@ -99,4 +128,4 @@ Before merging a contract-impacting change, confirm:
 
 ## Last Reviewed
 
-2026-05-06
+2026-11-26

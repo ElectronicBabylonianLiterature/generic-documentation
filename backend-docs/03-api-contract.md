@@ -1,6 +1,7 @@
 # API Contract
 
 Created: 2026-05-06
+Last Reviewed: 2026-11-26
 
 ## Purpose
 
@@ -30,6 +31,7 @@ Routes are registered per domain via `create_*_routes` functions in each
 | `/words*`, `/signs*`, `/lemmas` | `ebl/dictionary/web`, `ebl/signs/web`, `ebl/lemmatization/web` |
 | `/bibliography*`, `/afo-register*`, `/dossiers*`, `/provenances*` | `ebl/bibliography/web`, `ebl/afo_register/web`, `ebl/dossiers/web`, `ebl/provenance/web` |
 | `/images*`, `/markup`, `/cached-markup` | `ebl/files/web`, `ebl/markup/web` |
+| `/media*` (when enabled) | `ebl/media/web` |
 
 The full machine-derived inventory (URI, resource class, methods, scope
 guards) lives next to the code; treat the bootstrap modules and resource
@@ -77,7 +79,10 @@ Three guard styles are used at the resource level:
 | `write:texts` | `/texts/{...}/chapters/{...}/{alignment,import,lines,manuscripts}` |
 | `write:words` | `/words/{object_id}` |
 
-All other documented routes are unscoped (publicly readable).
+Media list and binary reads use the requested fragment's existing access
+policy; they are not universally public or universally login-only. Other
+routes must be checked against their current bootstrap/resource definitions
+before treating them as unscoped.
 
 ### Configuring Scopes
 
@@ -173,11 +178,84 @@ listing endpoints should follow the patterns established in
 `ebl/fragmentarium/web/fragments.py` (`/fragments/query`) and
 `ebl/corpus/web/chapters.py` (`/corpus/query`).
 
+## Media Reads
+
+`MEDIA_API_ENABLED=false` is the default. Enabling it and restarting the API
+registers the media routes and enriches fragment/query responses with
+`mediaSummary`. Disabling it restores the existing route and response shape.
+Legacy photo and thumbnail routes remain available in either mode.
+
+The canonical endpoints are:
+
+- `GET /media?fragment=K.1`
+- `GET /media/{media_id}/file?fragment=K.1`
+- `GET /media/{media_id}/display?fragment=K.1`
+- `GET /media/{media_id}/thumbnail/{size}?fragment=K.1`
+
+The `fragment` query parameter is required and percent-encoded so museum
+numbers containing slashes round-trip through Falcon. List and binary reads
+check the fragment's existing permissions. Binary URLs require the same
+authorization as listing, are private and non-cacheable, and never expose
+GridFS identifiers. SVG originals are attachment-only. The HTTP API is
+read-only and exposes no replacement or deletion routes.
+
+`hasPhoto` reports legacy-photo availability independently of imported media,
+including during a partial import. `thumbnailPath` retains its legacy value;
+enrichment does not add it to fragment-detail or retrieve-all rows. Clients
+load `mediaSummary.primary.thumbnail` with the required authorization when
+available and retain the legacy photo choice whenever `hasPhoto` is true.
+
+The sources of truth are the
+[route registration](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/media/web/bootstrap.py) and
+[resources](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/media/web/resources.py).
+See [Operations](./05-operations.md#media-index-preparation-and-rollout) for
+index preparation, migration verification, and gallery activation.
+
+## Findspot Map Locations
+
+Findspot responses from `GET /findspots` and the `archaeology.findspot` of
+`GET /fragments/{number}` may include a read-only `mapLocation` object. API
+clients must omit `findspot.mapLocation` when submitting archaeology updates
+with `POST /fragments/{number}/archaeology`; supplying it returns HTTP 422
+without writing an update. Curated map locations belong to the canonical
+findspot read model, and the archaeology update response returns that stored
+read model, including `mapLocation`.
+
+The [schema](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/fragmentarium/application/map_location_schema.py)
+and [domain model](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/fragmentarium/domain/map_location.py)
+define polygon references, precision, match method, and source metadata.
+`mapLocation` carries references to polygons, not polygon geometry. Invalid
+enum values or malformed metadata are rejected; clients cannot write this
+curated field through archaeology updates.
+
+## Findspot Query Filters
+
+`GET /fragments/query` accepts a singular `findspotId` and comma-separated
+`findspotIds`. When both are supplied, their IDs are unioned; other query
+predicates and fragment authorization still apply. Duplicates are removed,
+and pagination and document-total semantics are preserved.
+
+IDs are non-negative decimal integers within the signed BSON 64-bit range.
+Leading zeros and surrounding whitespace are accepted within the raw input
+bounds. Empty, repeated, non-decimal, negative, oversized, or out-of-range
+parameters return HTTP 422. The combined selection is limited to 200 distinct
+IDs; the plural input is also limited to 200 entries. The
+[parameter parser](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/common/query/parameter_parser.py)
+defines the raw string bounds and validation messages, and the
+[pattern matcher](https://github.com/ElectronicBabylonianLiterature/ebl-api/blob/master/ebl/fragmentarium/infrastructure/fragment_pattern_matcher.py)
+define composition with the other predicates.
+
+Follow the [mixed-version rollout rule](./04-lifecycle-and-compatibility.md#findspot-filter-rollout)
+and [index preparation procedure](./05-operations.md#findspot-filter-index)
+before enabling clients to send these filters.
+
 ## Caching
 
-Some read endpoints route through cache helpers in `ebl/cache/`. Mutating
-operations on cached entities (notably chapter-level updates) explicitly
-invalidate the relevant cache entries before persisting changes.
+Some read endpoints use `ebl/cache/`. Chapter display responses are guarded
+by shared revision and pending-write state plus an atomic content-revision
+fence. See [Data Model — Caching](./02-data-model.md#caching) for the protocol
+and [Operations](./05-operations.md#chapter-display-cache-deployment-and-recovery)
+for activation and recovery requirements.
 
 ## Contract Change Rules
 
@@ -201,4 +279,4 @@ When adding, removing, or modifying an endpoint:
 
 ## Last Reviewed
 
-2026-05-06
+2026-11-26
